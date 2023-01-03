@@ -1,6 +1,10 @@
 ---
+import { SEO } from "astro-seo";
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+
+
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,28 +12,29 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <SEO
+      title="Cypher Queenz | Bgirl Organization"
+      description="Welcome to Naka Studio! Alisha Nakamura's full-service hair salon is located in Seattle and offers a range of services including haircuts, coloring, styling, and more. Alisha Nakamura is dedicated to providing you with the best possible service and helping you achieve the look you desire. Visit us today and let us help you feel and look your best!"
+      charset="UTF-8"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	    <GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Anybody:wght@400;800&family=Space+Mono:ital@1&display=swap" />
+
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body><style is:global>
+    :root {
+      --font-family-skin-display: "Anybody";
+      --color-bg-base: #fffaf0;
+      --color-bg-accent: #f4f0e6;
+      --color-shadow: 135 103 123;
+      --bg-image-skin-pattern: url("../images/cactus-seamless.webp");
+      --bg-image-skin-pattern-size: 250px;
+    }
+  </style>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
