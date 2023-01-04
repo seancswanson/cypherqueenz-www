@@ -1,0 +1,18 @@
+---
+import { Image } from "@astrojs/image/components";
+import goodfootLogo from "../images/home/goodfoot-logo.webp";
+import zuluLogo from "../images/home/zulu-logo.webp";
+---
+
+<section class="m-auto mb-14 max-w-4xl p-6">
+  <h1 class="text-4xl font-extrabold drop-shadow-sm">Partners</h1>
+  <h2 class="mb-6 text-2xl font-extrabold drop-shadow-sm">Cypher Queenz is proud to partner with:</h2>
+  <div class="flex justify-evenly">
+    <a href="https://www.206zulu.org/" class="relative bottom-0 w-48 rounded-md border-2 border-dotted border-gray-900 p-3 shadow-test transition-all duration-150 hover:bottom-2">
+      <Image src={zuluLogo} alt="206 Zulu Logo" class="object-contain object-center h-full" />
+    </a>
+    <a href="https://www.thegoodfootarts.org/" class="relative bottom-0 w-48 rounded-md border-2 border-dotted border-gray-900 p-3 shadow-test transition-all duration-150 hover:bottom-2">
+      <Image src={goodfootLogo} alt="GoodFoot Collective Logo" class="invert object-contain h-full object-center" />
+    </a>
+  </div>
+</section>

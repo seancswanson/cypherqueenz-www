@@ -1,0 +1,27 @@
+---
+import { Image } from "@astrojs/image/components";
+import heroGroup from "../images/shared/group-cutout.webp";
+import heroVideo from "../video/cypher-queenz-video-compressed.mp4";
+---
+
+<div class="border-b-4 border-gray-300 bg-opacity-60 bg-rainbow bg-cover bg-center bg-no-repeat p-6">
+  <section class="m-auto mb-16 max-w-4xl border-black">
+    <Image src={heroGroup} class="w-3/4 sm:w-3/5 m-auto cypher-queenz-logo object-contain object-center" alt="logo" />
+  </section>
+  <section class="m-auto mb-16 flex max-w-4xl flex-col gap-4 sm:flex-row">
+    <div class="flex flex-1 flex-col rounded-lg p-1 shadow-test">
+      <h1 class="bottom rounded-lg rounded-br-none rounded-bl-none bg-skin-base p-2 text-4xl font-extrabold underline">@CypherQueenz</h1>
+      <h2 class="h-full rounded-lg rounded-tr-none rounded-tl-none bg-skin-base p-2 text-3xl">A Bgirl collective coming together to grow and leveling up the scene by highlighting the female voice in Hip Hop</h2>
+    </div>
+    <div class="basis-1/2 rounded-lg shadow-test">
+      <video autoplay playsinline muted loop id="myVideo" class="h-full rounded-lg object-cover p-1">
+        <source src={heroVideo} type="video/mp4" />
+      </video>
+    </div>
+  </section>
+  <section class="m-auto mb-14 max-w-4xl rounded-full border-4 border-gray-900 bg-skin-base p-5 px-6 text-center shadow-test">
+    <h2 class="text-lg">
+      We offer <b>free monthly workshops/cypher sessions</b> and <b>supportive community</b> for experience dancers and those just getting started <b>from day one.</b>
+    </h2>
+  </section>
+</div>

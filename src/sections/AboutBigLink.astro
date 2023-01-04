@@ -1,0 +1,16 @@
+---
+import { Image } from "@astrojs/image/components";
+import rightArrow from "../images/icons/right-arrow.webp";
+---
+
+<a href="/about" class="m-auto block w-full max-w-4xl">
+  <section class="m-4 m-auto mb-14 flex max-w-4xl flex-col items-center justify-evenly rounded-full border-4 border-gray-900 p-5 px-6 text-center text-2xl shadow-test sm:flex-row">
+    <h2>
+      Read more about our
+      <span style="font-variant:small-caps;" class="text-3xl font-extrabold">mission</span>,
+      <span style="font-variant:small-caps;" class="text-3xl font-extrabold">vision</span> and
+      <span style="font-variant:small-caps;" class="text-3xl font-extrabold">values</span>
+    </h2>
+    <Image src={rightArrow} class="w-12 h-full" alt="Right arrow icon" />
+  </section>
+</a>
