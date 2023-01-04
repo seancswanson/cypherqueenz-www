@@ -19,7 +19,7 @@ module.exports = {
 			},
 			backgroundImage: {
 				skinPattern: 'var(--bg-image-skin-pattern)',
-				rainbow: "url('./src/images/shared/rainbow-bg.webp')"
+				rainbow: "url('../src/images/shared/rainbow-bg.webp')"
 			},
 			backgroundSize: {
 				skinPattern: 'var(--bg-image-skin-pattern-size)'
