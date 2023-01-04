@@ -1,0 +1,31 @@
+---
+import { Image } from "@astrojs/image/components";
+import swansong from "../images/icons/swansong-thick-24.webp";
+---
+
+<footer class="w-full bg-gray-900 text-white">
+  <div class="max-w-4xl m-auto">
+    <div class="flex flex-col sm:flex-row justify-between py-5 px-5 items-center">
+      <a href="#" class="font-extrabold text-xl pb-4 tracking-tight">CypherQueenz</a>
+      <div class="links flex gap-12">
+        <section class="resources flex flex-col gap-1 items-center sm:items-start">
+          <h2 class="font-extrabold text-sm tracking-tight">Resources</h2>
+          <a href="#" class="text-sm tracking-tight text-teal-200 hover:text-white">Resource</a>
+          <a href="#" class="text-sm tracking-tight text-teal-200 hover:text-white">Resource</a>
+          <a href="#" class="text-sm tracking-tight text-teal-200 hover:text-white">Resource</a>
+        </section>
+        <section class="social flex flex-col gap-1 items-center sm:items-start">
+          <h2 class="font-extrabold text-sm tracking-tight">Connect With Us</h2>
+          <a href="#" class="text-sm tracking-tight text-teal-200 hover:text-white">Instagram</a>
+          <a href="#" class="text-sm tracking-tight text-teal-200 hover:text-white">Facebook</a>
+          <a href="#" class="text-sm tracking-tight text-teal-200 hover:text-white">YouTube</a>
+        </section>
+      </div>
+    </div>
+    <hr class="opacity-50" />
+    <a href="https://wwww.swansondigitalarts.com" target="_blank" rel="noreferrer" class="shadow rounded p-2 italic m-auto font-skinMono text-white text-xs block text-center">
+      <span class="inline-block">website by swansondigitalarts</span>
+      <Image src={swansong} alt="swanson digital arts logo" class="invert inline-block" />
+    </a>
+  </div>
+</footer>

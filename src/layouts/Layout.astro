@@ -2,7 +2,6 @@
 import { SEO } from "astro-seo";
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 
-
 export interface Props {
   title: string;
 }
@@ -19,13 +18,13 @@ const { title } = Astro.props;
       charset="UTF-8"
     />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 	    <GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Anybody:wght@400;800&family=Space+Mono:ital@1&display=swap" />
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="flex flex-col bg-skinPattern bg-repeat w-screen h-screen font-skinDisplay">
     <slot />
   </body><style is:global>
     :root {
@@ -33,8 +32,8 @@ const { title } = Astro.props;
       --color-bg-base: #fffaf0;
       --color-bg-accent: #f4f0e6;
       --color-shadow: 135 103 123;
-      --bg-image-skin-pattern: url("../images/cactus-seamless.webp");
-      --bg-image-skin-pattern-size: 250px;
+      --bg-image-skin-pattern: url("http://cdn.backgroundhost.com/backgrounds/subtlepatterns/brillant.png");
+      --bg-image-skin-pattern-size: 3px;
     }
   </style>
 </html>
