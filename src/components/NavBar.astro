@@ -1,10 +1,11 @@
 ---
+import Emoji from "astro-emoji";
 ---
 
 <header class="w-full bg-gray-900">
   <nav class="m-auto flex max-w-4xl flex-wrap items-center justify-between p-6">
     <div class="mr-6 flex flex-shrink-0 items-center text-white">
-      <a href="#" class="text-xl font-extrabold tracking-tight">CypherQueenz</a>
+      <a href="/" class="text-xl font-extrabold tracking-tight">CypherQueenz</a>
     </div>
     <div class="block sm:hidden">
       <button id="hamburger" class="flex items-center rounded border border-teal-400 px-3 py-2 text-teal-200 hover:border-white hover:text-white">
@@ -13,10 +14,11 @@
     </div>
     <div id="navMenuContainer" class="hidden w-full gap-4 sm:flex sm:w-auto sm:items-center">
       <div id="navMenuLinks" class="text-sm sm:flex-grow">
-        <a href="#" class="mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block"> Blog</a>
-        <a href="#" class="mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block"> About</a>
-        <a href="#" class="mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block"> Gallery</a>
-        <a href="#" class="mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block"> Events</a>
+        <a href="/blog" class="mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block">Blog</a>
+        <a href="/about" class="mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block">About</a>
+        <a href="/gallery" class="mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block">Gallery</a>
+        <a href="/events" class="mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block">Events</a>
+        <a href="/merch" class="mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block"><Emoji symbol="🛒" /></a>
       </div>
       <div>
         <a href="#" class="mt-4 inline-block rounded border border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-teal-500 sm:mt-0">Join Mailing List</a>
@@ -31,7 +33,6 @@
   hamburger?.addEventListener("click", () => {
     console.log(navMenuContainer);
     navMenuContainer?.classList.toggle("hidden");
-    navMenuContainer?.classList.toggle("animate-pulse");
   });
   console.log(hamburger);
 </script>

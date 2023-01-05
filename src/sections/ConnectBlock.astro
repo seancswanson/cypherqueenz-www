@@ -4,27 +4,31 @@ import portlandMap from "../images/home/portland-map.webp";
 import seattleMap from "../images/home/seattle-map.webp";
 ---
 
-<section class="mb-14 flex flex-col justify-evenly bg-gray-200 bg-opacity-70 py-8">
+<section class="flex flex-col justify-evenly py-8 shadow-inner">
   <div class="m-auto w-full max-w-4xl p-6">
     <h1 class="text-4xl font-extrabold drop-shadow-sm">Catch us in your city! 🌏</h1>
     <h2 class="mb-6 text-2xl font-extrabold drop-shadow-sm">Currently in:</h2>
     <div class="mb-8 flex justify-evenly">
-      <a href="/" class="relative bottom-0 flex w-48 flex-col items-center rounded-md border-4 border-gray-900 shadow-test transition-all duration-150 hover:bottom-2">
-        <Image src={seattleMap} alt="Seattle Map" />
+      <a href="/" class="relative bottom-0 flex w-48 flex-col items-center rounded-md border-2 border-gray-900 bg-skin-base shadow-test transition-all duration-150 hover:bottom-2">
+        <Image src={seattleMap} alt="Seattle Map" class="border-b-2 border-gray-500" />
         <p class="p-3 text-lg">Seattle, WA</p>
       </a>
-      <a href="/" class="relative bottom-0 flex w-48 flex-col items-center rounded-md border-4 border-gray-900 shadow-test transition-all duration-150 hover:bottom-2">
-        <Image src={portlandMap} alt="Portland Map" />
-        <p class="p-3 text-lg">Portland, OR</p>
+      <a href="/" class="relative bottom-0 flex w-48 flex-col items-center rounded-md border-2 border-gray-900 bg-skin-base shadow-test transition-all duration-150 hover:bottom-2">
+        <Image src={portlandMap} alt="Portland Map" class="border-b-2 border-gray-500" />
+        <p class="border-black p-3 text-lg">Portland, OR</p>
       </a>
     </div>
-    <h2 class="text-2xl font-extrabold">+ Are you looking to connect with some amazing bgirls in your city?</h2>
-    <p class="mb-8 text-lg">
-      Just send us a message on Instagram and we'll do our best to connect you with talented dancers in your area. Even if we don't have a Cypher Queenz crew established in your city yet, we'll still do our best to make some introductions for you.
-    </p>
-    <h2 class="text-2xl font-extrabold">+ Want to stay up to date on all things Cypher Queenz?</h2>
-    <p class="text-lg">
-      Be sure to add your name to our mailing list for newsletters and future updates. Don't miss out - <a href="/mailing-list" style="font-variant:small-caps;" class="text-3xl font-extrabold">sign up now!</a>
-    </p>
+    <div class="mb-8 rounded-lg border border-slate-800 bg-skin-base p-2 shadow-test">
+      <h2 class="text-2xl font-extrabold">+ Are you looking to connect with some bgirls in your city?</h2>
+      <p class="text-lg">
+        Just send us a message on Instagram and we'll do our best to connect you with talented dancers in your area. Even if we don't have a Cypher Queenz crew established in your city yet, we'll still do our best to make some introductions for you.
+      </p>
+    </div>
+    <div class="mb-8 rounded-lg border border-slate-800 bg-skin-base p-2 shadow-test">
+      <h2 class="text-2xl font-extrabold">+ Want to stay up to date on all things Cypher Queenz?</h2>
+      <p class="text-lg">
+        Be sure to add your name to our mailing list for newsletters and future updates. Don't miss out - <a href="/mailing-list" style="font-variant:small-caps;" class="text-3xl font-extrabold">sign up now!</a>
+      </p>
+    </div>
   </div>
 </section>

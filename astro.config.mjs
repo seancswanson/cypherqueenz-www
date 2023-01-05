@@ -18,7 +18,22 @@ import compress from "astro-compress";
 // https://astro.build/config
 
 // https://astro.build/config
+import sanity from "astro-sanity";
+
+// https://astro.build/config
 export default defineConfig({
-  site: 'https://naka.studio',
-  integrations: [image(), tailwind(), prefetch(), sitemap(), compress()]
+  site: "https://naka.studio",
+  integrations: [
+    image(),
+    tailwind(),
+    prefetch(),
+    sitemap(),
+    sanity({
+      projectId: "k34rqpdo",
+      dataset: "production",
+      apiVersion: "2021-03-25",
+      useCdn: true
+    }),
+    compress(),
+  ],
 });
