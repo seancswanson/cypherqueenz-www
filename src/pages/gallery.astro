@@ -1,16 +1,82 @@
 ---
+import { Image } from "@astrojs/image/components";
+
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
+
+import { getAllMedia } from "../sanity/api";
+import { urlForMedia } from "../sanity/urlForMedia";
+
+const media = await getAllMedia();
+let selectedMedia;
+console.log(media);
 ---
 
 <Layout title="Cypher Queenz | Gallery">
   <NavBar />
-  <main class="m-auto mb-4 block h-full w-full max-w-4xl font-skinDisplay shadow-test">
-    <div class="p-8">
+  <main class="m-auto block w-full max-w-4xl pb-32 font-skinDisplay">
+    <div class="h-full p-8">
       <h1 class="mb-2 text-4xl">Media Gallery</h1>
-      <p class="italic">Under construction!</p>
+      <div class="selected-image-container m-auto my-10 hidden w-full rounded sm:w-3/4">
+        <Image src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png" format="png" alt="Empty" width="1" height="1" class="m-auto border rounded border-black gallery-image-selected h-full w-full object-center" />
+        <div class="image-data-container">
+          <h2 class="title"></h2>
+        </div>
+      </div>
+      <section class="m-auto flex w-full flex-wrap justify-center gap-4">
+        {
+          media.map((mediaItem: any) => {
+            if (!mediaItem.galleryBoolean) {
+              return;
+            }
+            const originalImageUrl = urlForMedia(mediaItem.imageFile).url();
+            const resizedUrlForGallery = originalImageUrl + "?w=300&fit=fill&fm=webp";
+            console.log(originalImageUrl);
+            console.log(resizedUrlForGallery);
+            return (
+              <button class="h-40 w-64">
+                <div class="h-full rounded border border-black shadow">
+                  <Image
+                    src={resizedUrlForGallery}
+                    data-title={mediaItem.title || ""}
+                    data-originalurl={originalImageUrl}
+                    format="png"
+                    alt={mediaItem.title}
+                    width="300"
+                    aspectRatio="3:2"
+                    class="gallery-image mb-2 h-full rounded object-cover object-center"
+                  />
+                </div>
+              </button>
+            );
+          })
+        }
+      </section>
     </div>
   </main>
   <Footer />
 </Layout>
+<script>
+  // Find all buttons with the `alert` class on the page.
+  const galleryImages: NodeListOf<HTMLImageElement> = document.querySelectorAll(".gallery-image");
+  const selectedImage = document.querySelector(".gallery-image-selected") as HTMLImageElement;
+  const selectedImageContainer = document.querySelector(".selected-image-container") as HTMLDivElement;
+  const selectedImageTitleEl = document.querySelector(".title") as HTMLHeadingElement;
+  // Handle clicks on each button.
+  galleryImages.forEach((img) => {
+    img.addEventListener("click", (e) => {
+      if (!(e.target instanceof HTMLImageElement)) {
+        return;
+      }
+      if (selectedImageContainer.classList.contains("hidden")) {
+        selectedImageContainer.classList.toggle("hidden");
+      }
+
+      const selectedImageOriginalImageUrl = e.target.dataset.originalurl ? e.target.dataset.originalurl : "";
+      const selectedImageTitle = e.target.dataset.title ? e.target.dataset.title : "Title";
+      selectedImage.src = selectedImageOriginalImageUrl;
+      selectedImageTitleEl.textContent = selectedImageTitle;
+    });
+  });
+</script>

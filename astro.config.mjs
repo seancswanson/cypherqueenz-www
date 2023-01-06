@@ -30,7 +30,7 @@ export default defineConfig({
     sitemap(),
     sanity({
       projectId: "k34rqpdo",
-      dataset: "production",
+      dataset: "production_www",
       apiVersion: "2021-03-25",
       useCdn: true
     }),
