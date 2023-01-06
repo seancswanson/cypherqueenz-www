@@ -10,7 +10,6 @@ import { urlForMedia } from "../sanity/urlForMedia";
 
 const media = await getAllMedia();
 let selectedMedia;
-console.log(media);
 ---
 
 <Layout title="Cypher Queenz | Gallery">
@@ -32,8 +31,7 @@ console.log(media);
             }
             const originalImageUrl = urlForMedia(mediaItem.imageFile).url();
             const resizedUrlForGallery = originalImageUrl + "?w=300&fit=fill&fm=webp";
-            console.log(originalImageUrl);
-            console.log(resizedUrlForGallery);
+
             return (
               <button class="h-40 w-64">
                 <div class="h-full rounded border border-black shadow">
