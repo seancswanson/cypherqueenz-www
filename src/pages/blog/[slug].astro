@@ -29,7 +29,7 @@ const post = Astro.props;
 <BlogLayout title={post.title}>
   <NavBar />
   <main class="m-auto block w-full max-w-4xl p-8 font-skinDisplay">
-    <Breadcrumbs breadcrumbData={{ parentPath: "/blog", slug: post.slug.current }} />
+    <Breadcrumbs breadcrumbData={{ parentPath: "/blog", slug: post.slug.current, excerpt: post.excerpt }} />
     <hr class="mb-4" />
     <div class="mb-4">
       <h1 class="text-4xl font-extrabold">{post.title}</h1>
@@ -44,7 +44,7 @@ const post = Astro.props;
       <PortableText portableText={post.content} />
     </div>
     <hr class="mb-4" />
-    <Breadcrumbs breadcrumbData={{ parentPath: "/blog", slug: post.slug.current }} />
+    <Breadcrumbs breadcrumbData={{ parentPath: "/blog", slug: post.slug.current, excerpt: post.excerpt }} />
   </main>
 </BlogLayout>
 <Footer />

@@ -16,7 +16,7 @@ const blogPosts = await getAllBlogPosts();
   <main class="mx-auto mb-auto block w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
       <h1 class="mb-8 text-4xl font-extrabold">Blog</h1>
-      <div class="flex flex-col gap-5 sm:flex-row">
+      <div class="flex flex-col flex-wrap justify-evenly gap-5 sm:flex-row">
         {
           !blogPosts.length ? (
             <div class="flex flex-col">
@@ -44,8 +44,8 @@ const blogPosts = await getAllBlogPosts();
           ) : (
             blogPosts.map((post) => {
               const postDate = new Date(post._createdAt).toLocaleString("en-us", {
-                year: "numeric",
-                month: "long",
+                year: "2-digit",
+                month: "short",
                 day: "numeric",
               });
 
@@ -70,7 +70,7 @@ const blogPosts = await getAllBlogPosts();
                     <h2 class="text-lg">{post.title}</h2>
                     <span class="extrabold ml-4 text-xl">↗</span>
                   </div>
-                  <span>{postDate}</span>
+                  <span class="text-xs italic">Posted {postDate}</span>
                   <p class="text w-full" style="line-break:anywhere">
                     {post.excerpt}
                   </p>

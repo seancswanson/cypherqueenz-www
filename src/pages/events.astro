@@ -16,7 +16,7 @@ const eventPosts = await getAllEventPosts();
   <main class="mx-auto mb-auto block w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
       <h1 class="mb-8 text-4xl font-extrabold">Events</h1>
-      <div class="flex flex-col gap-5 sm:flex-row">
+      <div class="flex flex-col flex-wrap justify-evenly gap-5 sm:flex-row">
         {
           !eventPosts.length ? (
             <div class="flex flex-col">
@@ -63,6 +63,11 @@ const eventPosts = await getAllEventPosts();
               return (
                 <>
                   <a href={`/events/${post.slug.current}`} class="w-full sm:w-1/3">
+                    <div class="flex w-10 flex-col items-center justify-around self-start rounded border border-slate-300 bg-gray-800 px-9 py-2 text-white sm:my-auto">
+                      <p class="text-lg font-extrabold uppercase leading-5">{eventDate[0]}</p>
+                      <p class="text-xl font-extrabold ">{eventDate[1]}</p>
+                      <p class=" leading-none">'{eventDate[2]}</p>
+                    </div>
                     <div class="flex justify-center">
                       <Image
                         src={resizedUrlForGallery}
@@ -79,16 +84,29 @@ const eventPosts = await getAllEventPosts();
                       <h2 class="text-lg">{post.title}</h2>
                       <span class="extrabold ml-4 text-xl">↗</span>
                     </div>
-                    <div class="flex w-full flex-col gap-2 sm:flex-row">
-                      <div class="mx-auto mb-3 flex w-1/3 flex-col items-center justify-around self-start rounded border border-black px-8 py-2 sm:my-auto">
-                        <p class="text-2xl font-extrabold uppercase">{eventDate[0]}</p>
-                        <p class="text-4xl font-extrabold">{eventDate[1]}</p>
-                        <p class="text-xl">'{eventDate[2]}</p>
-                      </div>
-                      <div class="mx-auto mb-3 flex w-1/3 flex-col items-center justify-around self-start rounded border border-black px-8 py-2 sm:my-auto">
-                        <p class="text-2xl font-extrabold uppercase">{eventDate[0]}</p>
-                        <p class="text-4xl font-extrabold">{eventDate[1]}</p>
-                        <p class="text-xl">'{eventDate[2]}</p>
+                    <div class="flex w-full flex-col gap-2">
+                      <div class="mb-3 flex w-full flex-col self-start rounded sm:my-auto">
+                        <p class="flex flex-col text-lg uppercase">
+                          <span class="font-extrabold">
+                            <Emoji symbol="📍" />
+                            Location:
+                          </span>
+                          <span class="text-truncate w-3/4 ">{post.location}</span>
+                        </p>
+                        <p class="flex gap-2 text-lg uppercase">
+                          <span class="font-extrabold">
+                            <Emoji symbol="💰" />
+                            Cost:
+                          </span>
+                          {post.entryFee}
+                        </p>
+                        <p class="flex gap-2 text-lg uppercase">
+                          <span class="font-extrabold">
+                            <Emoji symbol="⏰" />
+                            Time:
+                          </span>
+                          {post.time}
+                        </p>
                       </div>
                     </div>
                   </a>
