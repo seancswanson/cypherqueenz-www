@@ -11,18 +11,12 @@ console.log(breadcrumbData);
 <script>
   const facebookIcon = document.querySelector(".fb");
   facebookIcon?.addEventListener("click", (e) => {
-    console.log(facebookIcon);
     console.log("https://cypherqueenz.com" + window.location.pathname);
-    FB.ui(
-      {
-        method: "share",
-        // href: `https://cypherqueenz.com${window.location.pathname}`,
-        href: `https://cypherqueenz.com${window.location.pathname}`,
-      },
-      function (response: any) {
-        console.log(response);
-      }
-    );
+    FB.ui({
+      method: "share",
+      // href: `https://cypherqueenz.com${window.location.pathname}`,
+      href: `https://cypherqueenz.com${window.location.pathname}`,
+    });
   });
 </script>
 <div class="mb-2 flex items-center justify-between text-xs">

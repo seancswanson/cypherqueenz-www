@@ -5,13 +5,13 @@ import { urlForMedia } from "../sanity/urlForMedia";
 
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
-import PostsLayout from "../layouts/PostsLayout.astro";
+import BlogLayout from "../layouts/BlogLayout.astro";
 import { getAllEventPosts } from "../sanity/api";
 
 const eventPosts = await getAllEventPosts();
 ---
 
-<PostsLayout>
+<BlogLayout title="Cypher Queenz | Blog">
   <NavBar />
   <main class="mx-auto mb-auto block w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
@@ -96,4 +96,4 @@ const eventPosts = await getAllEventPosts();
     </div>
   </main>
   <Footer />
-</PostsLayout>
+</BlogLayout>
