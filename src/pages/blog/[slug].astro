@@ -1,0 +1,50 @@
+---
+import { Image } from "@astrojs/image/components";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Footer from "../../components/Footer.astro";
+import NavBar from "../../components/NavBar.astro";
+import PortableText from "../../components/PortableText.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import { getAllBlogPosts } from "../../sanity/api";
+import { urlForMedia } from "../../sanity/urlForMedia";
+
+export async function getStaticPaths() {
+  const posts = await getAllBlogPosts();
+  return posts.map((post) => {
+    const postDate = new Date(post._createdAt).toLocaleString("en-us", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    return {
+      params: { slug: post.slug.current },
+      props: { ...post, postDate },
+    };
+  });
+}
+
+const post = Astro.props;
+---
+
+<BlogLayout title={post.title}>
+  <NavBar />
+  <main class="m-auto block w-full max-w-4xl p-8 font-skinDisplay">
+    <Breadcrumbs breadcrumbData={{ parentPath: "/blog", slug: post.slug.current, excerpt: post.excerpt }} />
+    <hr class="mb-4" />
+    <div class="mb-4">
+      <h1 class="text-4xl font-extrabold">{post.title}</h1>
+      <p class="italic">{post.postDate} {post.author ? "/ Author: " + post.author : ""}</p>
+    </div>
+    <div class="m-auto mb-12 w-1/2">
+      <Image src={urlForMedia(post.galleryImages.imageFile.asset._ref).url()} class="w-full border border-black object-cover object-center mb-2" alt="logo" aspectRatio="1:1" format="png" width="800" />
+      <p>{post.galleryImages.title}</p>
+      <p class="italic">{post.galleryImages.caption}</p>
+    </div>
+    <div class="mb-24 flex flex-col">
+      <PortableText portableText={post.content} />
+    </div>
+    <hr class="mb-4" />
+    <Breadcrumbs breadcrumbData={{ parentPath: "/blog", slug: post.slug.current, excerpt: post.excerpt }} />
+  </main>
+</BlogLayout>
+<Footer />

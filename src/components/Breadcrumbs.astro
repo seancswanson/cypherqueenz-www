@@ -1,0 +1,31 @@
+---
+import { Image } from "@astrojs/image/components";
+import facebookIcon from "../images/icons/facebook-48.webp";
+import twitterIcon from "../images/icons/twitter-48.webp";
+
+const { breadcrumbData } = Astro.props;
+---
+
+<script is:inline src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+  const facebookIcon = document.querySelector(".fb");
+  facebookIcon?.addEventListener("click", (e) => {
+    FB.ui({
+      method: "share",
+      href: `https://cypherqueenz.com${window.location.pathname}`,
+    });
+  });
+</script>
+<div class="mb-2 flex items-center justify-between text-xs">
+  <div class="flex gap-2">
+    <a href={`${breadcrumbData.parentPath}`} class="underline">All {`${breadcrumbData.parentPath === "/blog" ? "Posts" : "Events"}`}</a> → <span>{breadcrumbData.slug}</span>
+  </div>
+  <div class="social-links flex gap-2">
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text={breadcrumbData.excerpt} data-hashtags="cypherqueenz" data-show-count="false" class="h-6"
+      ><Image src={twitterIcon} alt="twitter share icon" width="24" class="object-center object-cover h-full" /></a
+    >
+    <div>
+      <Image src={facebookIcon} alt="facebook share icon" width="24" class="fb object-center object-cover h-full" />
+    </div>
+  </div>
+</div>

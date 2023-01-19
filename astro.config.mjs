@@ -22,7 +22,7 @@ import sanity from "astro-sanity";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://naka.studio",
+  site: "https://cypherqueenz.com",
   integrations: [
     image(),
     tailwind(),

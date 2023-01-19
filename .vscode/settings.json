@@ -3,5 +3,5 @@
     "terminal.selectionBackground": "#fff",
     "tree.indentGuidesStroke": "#008070"
   },
-  "window.title": "${activeEditorShort}${separator}${rootName} ${separator} [Branch: main]"
+  "window.title": "${activeEditorShort}${separator}${rootName} ${separator} [Branch: staging]"
 }

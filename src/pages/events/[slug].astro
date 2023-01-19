@@ -1,0 +1,77 @@
+---
+import { Image } from "@astrojs/image/components";
+import Emoji from "astro-emoji";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import EventsLayout from "../../layouts/EventsLayout.astro";
+
+import Footer from "../../components/Footer.astro";
+import NavBar from "../../components/NavBar.astro";
+import PortableText from "../../components/PortableText.astro";
+import { getAllEventPosts } from "../../sanity/api";
+import { urlForMedia } from "../../sanity/urlForMedia";
+
+export async function getStaticPaths() {
+  const posts = await getAllEventPosts();
+  return posts.map((post) => {
+    const postDate = new Date(post._createdAt).toLocaleString("en-us", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    const eventDate = new Date(post.date)
+      .toLocaleString("en-us", {
+        year: "2-digit",
+        month: "short",
+        day: "numeric",
+      })
+      .replace(",", "")
+      .split(" ");
+    return {
+      params: { slug: post.slug.current },
+      props: { ...post, postDate, eventDate },
+    };
+  });
+}
+
+const post = Astro.props;
+---
+
+<EventsLayout title={post.title}>
+  <NavBar />
+  <main class="m-auto block w-full max-w-4xl p-8 font-skinDisplay">
+    <Breadcrumbs breadcrumbData={{ parentPath: "/events", slug: post.slug.current, excerpt: post.title }} />
+    <hr class="mb-4" />
+    <div class="mb-4">
+      <h1 class="text-4xl font-extrabold">{post.title}</h1>
+      <p class="italic">Posted {post.postDate} {post.author ? "/ Author: " + post.author : ""}</p>
+    </div>
+    <div class="m-auto mb-12 w-1/2">
+      <Image src={urlForMedia(post.blogAndEventImages.imageFile.asset._ref).url()} class="w-full border border-black object-cover object-center mb-2" alt="logo" aspectRatio="1:1" format="png" width="800" />
+      <p>{post.blogAndEventImages.title}</p>
+      <p class="italic">{post.blogAndEventImages.caption}</p>
+    </div>
+    <div class="flex flex-col items-center gap-2 sm:flex-row">
+      <div class="mx-auto mb-3 flex flex-col items-center justify-around self-start rounded border border-black px-8 py-2 sm:my-auto">
+        <p class="text-2xl font-extrabold uppercase">{post.eventDate[0]}</p>
+        <p class="text-4xl font-extrabold">{post.eventDate[1]}</p>
+        <p class="text-xl">'{post.eventDate[2]}</p>
+      </div>
+      <div class="mb-8 flex flex-col gap-3 self-start px-8 py-2">
+        <p class="flex flex-col text-lg uppercase">
+          <span class="font-extrabold"><Emoji symbol="📍" />Location:</span><a href={`https://www.google.com/maps/search/${post.location}`}>{post.location} <span class="text-xs underline opacity-70">(Google Maps)</span></a>
+        </p>
+        <div class="flex gap-4">
+          <p class="flex flex-col text-lg uppercase"><span class="font-extrabold"><Emoji symbol="💰" />Cost:</span>{post.entryFee}</p>
+          <p class="flex flex-col text-lg uppercase"><span class="font-extrabold"><Emoji symbol="⏰" />Time:</span>{post.time}</p>
+        </div>
+      </div>
+    </div>
+    <hr class="mb-8" />
+    <div class="mb-24 flex flex-col px-8">
+      <PortableText portableText={post.content} />
+    </div>
+    <hr class="mb-4" />
+    <Breadcrumbs breadcrumbData={{ parentPath: "/events", slug: post.slug.current, excerpt: post.title }} />
+  </main>
+</EventsLayout>
+<Footer />
