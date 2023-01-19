@@ -21,6 +21,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="flex h-screen flex-col bg-skinPattern font-skinDisplay">
+    <div id="fb-root"></div>
     <script>
       declare const window: any;
       window.fbAsyncInit = function () {

@@ -12,10 +12,11 @@ console.log(breadcrumbData);
   const facebookIcon = document.querySelector(".fb");
   facebookIcon?.addEventListener("click", (e) => {
     console.log("https://cypherqueenz.com" + window.location.pathname);
+    console.log("https://staging--illustrious-sunburst-7b5f12.netlify.app" + window.location.pathname);
     FB.ui({
       method: "share",
       // href: `https://cypherqueenz.com${window.location.pathname}`,
-      href: `https://cypherqueenz.com${window.location.pathname}`,
+      href: `https://staging--illustrious-sunburst-7b5f12.netlify.app${window.location.pathname}`,
     });
   });
 </script>
