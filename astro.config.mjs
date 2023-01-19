@@ -21,19 +21,17 @@ import compress from "astro-compress";
 import sanity from "astro-sanity";
 
 // https://astro.build/config
+import netlify from "@astrojs/netlify/functions";
+
+// https://astro.build/config
 export default defineConfig({
+  output: 'server',
+  adapter: netlify(),
   site: "https://cypherqueenz.com",
-  integrations: [
-    image(),
-    tailwind(),
-    prefetch(),
-    sitemap(),
-    sanity({
-      projectId: "k34rqpdo",
-      dataset: "production_www",
-      apiVersion: "2021-03-25",
-      useCdn: true
-    }),
-    compress(),
-  ],
+  integrations: [image(), tailwind(), prefetch(), sitemap(), sanity({
+    projectId: "k34rqpdo",
+    dataset: "production_www",
+    apiVersion: "2021-03-25",
+    useCdn: true
+  }), compress()],
 });
