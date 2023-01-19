@@ -16,7 +16,7 @@ let selectedMedia;
   <NavBar />
   <main class="m-auto block w-full max-w-4xl pb-32 font-skinDisplay">
     <div class="h-full p-8">
-      <h1 class="mb-2 text-4xl">Media Gallery</h1>
+      <h1 class="mb-8 text-4xl font-extrabold">Media Gallery</h1>
       <div class="selected-image-container m-auto my-10 hidden w-full rounded sm:w-3/4">
         <Image src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png" format="png" alt="Empty" width="1" height="1" class="m-auto border rounded border-black gallery-image-selected h-full w-full object-center" />
         <div class="image-data-container">
@@ -26,9 +26,6 @@ let selectedMedia;
       <section class="m-auto flex w-full flex-wrap justify-center gap-4">
         {
           media.map((mediaItem: any) => {
-            if (!mediaItem.galleryBoolean) {
-              return;
-            }
             const originalImageUrl = urlForMedia(mediaItem.imageFile).url();
             const resizedUrlForGallery = originalImageUrl + "?w=300&fit=fill&fm=webp";
 
@@ -70,6 +67,11 @@ let selectedMedia;
       if (selectedImageContainer.classList.contains("hidden")) {
         selectedImageContainer.classList.toggle("hidden");
       }
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
 
       const selectedImageOriginalImageUrl = e.target.dataset.originalurl ? e.target.dataset.originalurl : "";
       const selectedImageTitle = e.target.dataset.title ? e.target.dataset.title : "Title";

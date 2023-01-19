@@ -12,7 +12,7 @@ const { title } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <SEO title="Cypher Queenz | Bgirl Organization" description="Cypher Queenz is a Bgirl collective coming together to grow and leveling up the scene by highlighting the female voice in Hip Hop" charset="UTF-8" />
+    <SEO title="Cypher Queenz | Events" description="Cypher Queenz is a Bgirl collective coming together to grow and leveling up the scene by highlighting the female voice in Hip Hop" charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;800&family=Space+Mono:ital@1&display=swap" />
@@ -21,6 +21,19 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="flex h-screen flex-col bg-skinPattern font-skinDisplay">
+    <script>
+      declare const window: any;
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "549851657070188",
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: "v15.0",
+        });
+      };
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
     <slot />
     <style is:global>
       :root {

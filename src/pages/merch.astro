@@ -2,14 +2,20 @@
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
+
+import { Image } from "@astrojs/image/components";
+import merch from "../images/merch/merch.webp";
 ---
 
 <Layout title="Cypher Queenz | Merch">
   <NavBar />
-  <main class="m-auto block h-full w-full max-w-4xl font-skinDisplay shadow-test">
+  <main class="m-auto block h-full w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
-      <h1 class="mb-2 text-4xl">Merch</h1>
+      <h1 class="mb-2 text-4xl font-extrabold">Merch</h1>
       <p class="italic">Under construction!</p>
+      <div class="w-full rounded shadow-test shadow-skinShadow">
+        <Image src={merch} alt="Picture of dancer holding up a sweatshirt" class="h-full object-cover object-center" />
+      </div>
     </div>
   </main>
   <Footer />

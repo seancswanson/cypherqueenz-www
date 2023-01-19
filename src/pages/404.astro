@@ -1,0 +1,17 @@
+---
+import Footer from "../components/Footer.astro";
+import NavBar from "../components/NavBar.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <NavBar />
+  <main class="m-auto flex h-full items-center justify-center text-center font-skinDisplay">
+    <div class="rounded border p-8 shadow-test shadow-skinShadow">
+      <h1 class="mb-4 font-skinMono text-4xl">404</h1>
+      <h2 class="mb-8 font-skinMono text-2xl">Page Not Found</h2>
+      <a href="/" class="rounded border border-gray-900 p-2 text-xl font-extrabold tracking-tight">Return</a>
+    </div>
+  </main>
+  <Footer />
+</Layout>
