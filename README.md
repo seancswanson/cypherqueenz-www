@@ -1,55 +1,63 @@
-# Welcome to [Astro](https://astro.build)
+# CypherQueenz Astro.js App
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+![CypherQueenz Logo](path-to-logo-image.jpg)  
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This repository contains the source code for the official website of CypherQueenz, a Bgirl collective that promotes the female voice in Hip Hop through events, blogs, galleries, and more.
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+## 🚀 Tech Stack
 
+- **Frontend**: [Astro.js](https://astro.build/) - Modern front-end framework for faster websites.
+- **Static Site Generation**: Utilizing Astro's SSG capabilities for optimized site performance.
+- **Sanity.io CMS**
+- **Styling**: Tailwind
+- **Hosting**: Vercel
 
-## 🚀 Project Structure
+## 🎨 Design
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Logo Design**: Chris Kaku
+- **Web Design**: Myself
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🔧 Local Development
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. **Setup**:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+   Clone the repository:
+   ```bash
+   git clone https://github.com/seancswanson/cypherqueenz-www.git
+   cd cypherqueenz-astro-app
+   ```
+   Install Dependencies:
+   
+   Using npm:
 
-Any static assets, like images, can be placed in the `public/` directory.
+   ```bash
+   npm install
+   ```
+   OR using yarn:
+   ```bash
+   yarn install
+      ```
+2. **Running Locally**:
 
-## 🧞 Commands
+   ```bash
+   npm run dev
+   ```
+   or
+   ```bash
+   yarn dev
+   ```
+   The website should be available at http://localhost:3000/ (or another specified port).
 
-All commands are run from the root of the project, from a terminal:
+## 📦 Build
+   To build the production version of the app:
 
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
+   ```bash
+   npm run build
+   ```
+   or0
+  ```bash
+   yarn build
+   ```
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-
-## Acknowledgements
-
-BG Image - https://unsplash.com/photos/C_NJKfnTR5A
+## 🤝 Contributing
+   Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
