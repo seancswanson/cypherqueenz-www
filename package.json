@@ -19,7 +19,7 @@
     "@portabletext/to-html": "^1.0.4",
     "@types/facebook-js-sdk": "^3.3.6",
     "astro": "^1.8.0",
-    "astro-compress": "^1.1.24",
+    "astro-compress": "^2.0.15",
     "astro-emoji": "^1.2.0",
     "astro-google-fonts-optimizer": "^0.2.2",
     "astro-sanity": "^1.1.2",

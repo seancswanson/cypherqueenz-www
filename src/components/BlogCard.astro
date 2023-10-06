@@ -1,0 +1,53 @@
+---
+import { Image } from "@astrojs/image/components";
+import { urlForMedia } from "../sanity/urlForMedia";
+// import props
+const { post } = Astro.props;
+const postDate = new Date(post._createdAt).toLocaleString("en-us", {
+  year: "2-digit",
+  month: "short",
+  day: "numeric",
+});
+
+const originalImageUrl = urlForMedia(post.galleryImages.imageFile).url();
+const resizedUrlForGallery = originalImageUrl + "?w=500&fit=fill&fm=webp";
+---
+
+<article class="w-full max-w-xl rounded-lg bg-white p-4 shadow sm:w-[48%]">
+  <a
+    href={`/blog/${post.slug.current}`}
+    class="flex h-full flex-col gap-4"
+    aria-label={`Read blog post ${post.title}`}
+  >
+    <!-- Image -->
+    <div class="flex justify-center">
+      <Image
+        data-title={"Blog Post Picture" || ""}
+        src={resizedUrlForGallery}
+        data-originalurl={originalImageUrl}
+        format="png"
+        alt={"Blog Post Picture"}
+        width="500"
+        aspectRatio="1:1"
+        class="gallery-image w-full h-full rounded object-cover object-center shadow-sm"
+      />
+    </div>
+
+    <!-- Title and Arrow -->
+    <div class="flex flex-col justify-start gap-2">
+      <h2 class="text-xl">{post.title}</h2>
+      <span class="text-xs italic">Posted {postDate}</span>
+      <hr />
+    </div>
+
+    <!-- Date -->
+
+    <!-- Excerpt -->
+    <p class="text w-full" style="line-break:anywhere">
+      {post.excerpt}
+    </p>
+
+    <!-- Read More -->
+    <p class="mt-auto justify-self-end text-sm underline">Read More</p>
+  </a>
+</article>
