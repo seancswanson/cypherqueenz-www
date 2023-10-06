@@ -1,0 +1,83 @@
+---
+import { Image } from "@astrojs/image/components";
+import Emoji from "astro-emoji";
+import { urlForMedia } from "../sanity/urlForMedia";
+const { post } = Astro.props;
+
+const eventDate = new Date(post.date)
+  .toLocaleString("en-us", {
+    year: "2-digit",
+    month: "long",
+    day: "numeric",
+  })
+  .replace(",", "")
+  .split(" ");
+
+const originalImageUrl = urlForMedia(post.blogAndEventImages.imageFile).url();
+const resizedUrlForGallery = originalImageUrl + "?w=400&fit=fill&fm=webp";
+---
+
+<article
+  class="my-4 flex w-full flex-col gap-2 rounded-lg border bg-white p-6 sm:flex-row sm:justify-around sm:gap-5"
+>
+  <div class="left">
+    <!-- Event Date -->
+    <div
+      class="mb-4 flex items-center gap-2 rounded bg-gray-800 px-4 text-white"
+    >
+      <p class="py-2 text-xl font-bold uppercase">
+        {eventDate[0]}
+        {eventDate[1]} '{eventDate[2]}
+      </p>
+    </div>
+
+    <!-- Image -->
+    <div class="flex w-full justify-center">
+      <Image
+        src={resizedUrlForGallery}
+        data-title={"Event Picture" || ""}
+        data-originalurl={originalImageUrl}
+        format="png"
+        alt={"Event Picture"}
+        width="400"
+        aspectRatio="1:1"
+        class="gallery-image rounded border-2 object-cover object-center shadow-sm"
+      />
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="right">
+    <h2 class="w-full text-2xl font-bold">{post.title}</h2>
+    <!-- Details -->
+    <div class="mt-4 flex w-full flex-col gap-2">
+      <p class="text-lg uppercase">
+        <span class="font-extrabold">
+          <Emoji symbol="📍" />
+          Location:
+        </span>
+        {post.location}
+      </p>
+      <p class="text-lg uppercase">
+        <span class="font-extrabold">
+          <Emoji symbol="💰" />
+          Cost:
+        </span>
+        {post.entryFee}
+      </p>
+      <p class="text-lg uppercase">
+        <span class="font-extrabold">
+          <Emoji symbol="⏰" />
+          Time:
+        </span>
+        {post.time}
+      </p>
+      <a
+        href={`/events/${post.slug.current}`}
+        class="text-lg text-blue-600 underline"
+      >
+        Learn More
+      </a>
+    </div>
+  </div>
+</article>

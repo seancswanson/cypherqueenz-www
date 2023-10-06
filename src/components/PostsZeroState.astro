@@ -1,0 +1,39 @@
+---
+import Emoji from "astro-emoji";
+const { type } = Astro.props;
+---
+
+<div class="flex flex-col">
+  <h2 class="mb-8 text-2xl">No {type} posted yet!</h2>
+  <h3 class="mb-8 text-xl">
+    Join the
+    <a
+      href="/mailing-list"
+      style="font-variant:small-caps;"
+      class="font-extrabold text-teal-600 underline"
+    >
+      {" "}
+      mailing list
+    </a>
+    or follow us to stay in the know when we make announcements.
+  </h3>
+  <h4 class="text-lg">
+    Also be sure to follow us on{" "}
+    <a
+      href="https://www.instagram.com/cypherqueenz/?hl=en"
+      style="font-variant:small-caps;"
+      class="font-extrabold text-teal-600 underline"
+    >
+      Instagram
+    </a>{" "}
+    and{" "}
+    <a
+      href="https://m.facebook.com/Cypher-Queenz-111665977110803/"
+      style="font-variant:small-caps;"
+      class="font-extrabold text-teal-600 underline"
+    >
+      Facebook
+    </a>
+    ! <Emoji symbol="😄" />
+  </h4>
+</div>

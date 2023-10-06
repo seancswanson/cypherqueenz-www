@@ -7,6 +7,8 @@ import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
 import BlogLayout from "../layouts/BlogLayout.astro";
 import { getAllEventPosts } from "../sanity/api";
+import EventCard from "../components/EventCard.astro";
+import PostsZeroState from "../components/PostsZeroState.astro";
 
 const eventPosts = await getAllEventPosts();
 ---
@@ -16,104 +18,28 @@ const eventPosts = await getAllEventPosts();
   <main class="mx-auto mb-auto block w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
       <h1 class="mb-8 text-4xl font-extrabold">Events</h1>
-      <div class="flex flex-col flex-wrap justify-evenly gap-5 sm:flex-row">
+      <h2 class="font-bold">Upcoming</h2>
+      <div class="flex flex-col">
         {
           !eventPosts.length ? (
-            <div class="flex flex-col">
-              <h2 class="mb-8 text-2xl">No events posted yet!</h2>
-              <h3 class="mb-8 text-xl">
-                Join the
-                <a href="/mailing-list" style="font-variant:small-caps;" class="font-extrabold text-teal-600 underline">
-                  {" "}
-                  mailing list
-                </a>
-                or follow us to stay in the know when we make announcements.
-              </h3>
-              <h4 class="text-lg">
-                Also be sure to follow us on{" "}
-                <a href="https://www.instagram.com/cypherqueenz/?hl=en" style="font-variant:small-caps;" class="font-extrabold text-teal-600 underline">
-                  Instagram
-                </a>{" "}
-                and{" "}
-                <a href="https://m.facebook.com/Cypher-Queenz-111665977110803/" style="font-variant:small-caps;" class="font-extrabold text-teal-600 underline">
-                  Facebook
-                </a>
-                ! <Emoji symbol="😄" />
-              </h4>
-            </div>
+            <>
+              <PostsZeroState type="events" />
+            </>
           ) : (
             eventPosts.map((post) => {
-              const postDate = new Date(post.date).toLocaleString("en-us", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              });
-              const eventDate = new Date(post.date)
-                .toLocaleString("en-us", {
-                  year: "2-digit",
-                  month: "short",
-                  day: "numeric",
-                })
-                .replace(",", "")
-                .split(" ");
-
-              const originalImageUrl = urlForMedia(post.blogAndEventImages.imageFile).url();
-              const resizedUrlForGallery = originalImageUrl + "?w=300&fit=fill&fm=webp";
-
-              return (
-                <>
-                  <a href={`/events/${post.slug.current}`} class="w-full sm:w-1/3">
-                    <div class="flex w-10 flex-col items-center justify-around self-start rounded border border-slate-300 bg-gray-800 px-9 py-2 text-white sm:my-auto">
-                      <p class="text-lg font-extrabold uppercase leading-5">{eventDate[0]}</p>
-                      <p class="text-xl font-extrabold ">{eventDate[1]}</p>
-                      <p class=" leading-none">'{eventDate[2]}</p>
-                    </div>
-                    <div class="flex justify-center">
-                      <Image
-                        src={resizedUrlForGallery}
-                        data-title={"Blog Post Picture" || ""}
-                        data-originalurl={originalImageUrl}
-                        format="png"
-                        alt={"Blog Post Picture"}
-                        width="300"
-                        aspectRatio="1:1"
-                        class="gallery-image mb-2 h-full w-full rounded  border-2 object-cover object-center shadow-sm"
-                      />
-                    </div>
-                    <div class="flex justify-start">
-                      <h2 class="text-lg">{post.title}</h2>
-                      <span class="extrabold ml-4 text-xl">↗</span>
-                    </div>
-                    <div class="flex w-full flex-col gap-2">
-                      <div class="mb-3 flex w-full flex-col self-start rounded sm:my-auto">
-                        <p class="flex flex-col text-lg uppercase">
-                          <span class="font-extrabold">
-                            <Emoji symbol="📍" />
-                            Location:
-                          </span>
-                          <span class="text-truncate w-3/4 ">{post.location}</span>
-                        </p>
-                        <p class="flex gap-2 text-lg uppercase">
-                          <span class="font-extrabold">
-                            <Emoji symbol="💰" />
-                            Cost:
-                          </span>
-                          {post.entryFee}
-                        </p>
-                        <p class="flex gap-2 text-lg uppercase">
-                          <span class="font-extrabold">
-                            <Emoji symbol="⏰" />
-                            Time:
-                          </span>
-                          {post.time}
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </>
-              );
+              if (post.date < new Date().toISOString().slice(0, 10))
+                return <EventCard post={post} />;
             })
           )
+        }
+      </div>
+      <h2 class="font-bold">Past Events</h2>
+      <div class="flex flex-col">
+        {
+          eventPosts.map((post) => {
+            if (post.date > new Date().toISOString().slice(0, 10))
+              return <EventCard post={post} />;
+          })
         }
       </div>
     </div>
