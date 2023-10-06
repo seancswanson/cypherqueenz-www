@@ -28,7 +28,9 @@ const post = Astro.props;
 
 <BlogLayout title={post.title}>
   <NavBar />
-  <main class="m-auto block w-full max-w-4xl p-8 font-skinDisplay">
+  <main
+    class="m-auto block w-full max-w-4xl bg-white p-8 font-skinDisplay shadow"
+  >
     <Breadcrumbs
       breadcrumbData={{
         parentPath: "/blog",
