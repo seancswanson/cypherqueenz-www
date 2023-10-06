@@ -17,8 +17,17 @@ let selectedMedia;
   <main class="m-auto block w-full max-w-4xl pb-32 font-skinDisplay">
     <div class="h-full p-8">
       <h1 class="mb-8 text-4xl font-extrabold">Media Gallery</h1>
-      <div class="selected-image-container m-auto my-10 hidden w-full rounded sm:w-3/4">
-        <Image src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png" format="png" alt="Empty" width="1" height="1" class="m-auto border rounded border-black gallery-image-selected h-full w-full object-center" />
+      <div
+        class="selected-image-container m-auto my-10 hidden w-full rounded sm:w-3/4"
+      >
+        <Image
+          src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png"
+          format="png"
+          alt="Empty"
+          width="1"
+          height="1"
+          class="m-auto border rounded border-black gallery-image-selected h-full w-full object-center"
+        />
         <div class="image-data-container">
           <h2 class="title"></h2>
         </div>
@@ -27,7 +36,8 @@ let selectedMedia;
         {
           media.map((mediaItem: any) => {
             const originalImageUrl = urlForMedia(mediaItem.imageFile).url();
-            const resizedUrlForGallery = originalImageUrl + "?w=300&fit=fill&fm=webp";
+            const resizedUrlForGallery =
+              originalImageUrl + "?w=300&fit=fill&fm=webp";
 
             return (
               <button class="h-40 w-64">
@@ -54,10 +64,17 @@ let selectedMedia;
 </Layout>
 <script>
   // Find all buttons with the `alert` class on the page.
-  const galleryImages: NodeListOf<HTMLImageElement> = document.querySelectorAll(".gallery-image");
-  const selectedImage = document.querySelector(".gallery-image-selected") as HTMLImageElement;
-  const selectedImageContainer = document.querySelector(".selected-image-container") as HTMLDivElement;
-  const selectedImageTitleEl = document.querySelector(".title") as HTMLHeadingElement;
+  const galleryImages: NodeListOf<HTMLImageElement> =
+    document.querySelectorAll(".gallery-image");
+  const selectedImage = document.querySelector(
+    ".gallery-image-selected"
+  ) as HTMLImageElement;
+  const selectedImageContainer = document.querySelector(
+    ".selected-image-container"
+  ) as HTMLDivElement;
+  const selectedImageTitleEl = document.querySelector(
+    ".title"
+  ) as HTMLHeadingElement;
   // Handle clicks on each button.
   galleryImages.forEach((img) => {
     img.addEventListener("click", (e) => {
@@ -73,8 +90,12 @@ let selectedMedia;
         behavior: "smooth",
       });
 
-      const selectedImageOriginalImageUrl = e.target.dataset.originalurl ? e.target.dataset.originalurl : "";
-      const selectedImageTitle = e.target.dataset.title ? e.target.dataset.title : "Title";
+      const selectedImageOriginalImageUrl = e.target.dataset.originalurl
+        ? e.target.dataset.originalurl
+        : "";
+      const selectedImageTitle = e.target.dataset.title
+        ? e.target.dataset.title
+        : "Title";
       selectedImage.src = selectedImageOriginalImageUrl;
       selectedImageTitleEl.textContent = selectedImageTitle;
     });

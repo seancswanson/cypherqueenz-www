@@ -18,7 +18,7 @@ const eventPosts = await getAllEventPosts();
   <main class="mx-auto mb-auto block w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
       <h1 class="mb-8 text-4xl font-extrabold">Events</h1>
-      <h2 class="font-bold">Upcoming</h2>
+      <h2 class="text-2xl font-bold">Upcoming</h2>
       <div class="flex flex-col">
         {
           !eventPosts.length ? (
@@ -27,13 +27,19 @@ const eventPosts = await getAllEventPosts();
             </>
           ) : (
             eventPosts.map((post) => {
-              if (post.date < new Date().toISOString().slice(0, 10))
-                return <EventCard post={post} />;
+              if (post.date > new Date().toISOString().slice(0, 10))
+                return (
+                  <div class="py-4">
+                    <PostsZeroState type="events" />
+                  </div>
+                );
+
+              return <EventCard post={post} />;
             })
           )
         }
       </div>
-      <h2 class="font-bold">Past Events</h2>
+      <h2 class="text-xl font-bold">Past Events</h2>
       <div class="flex flex-col">
         {
           eventPosts.map((post) => {
