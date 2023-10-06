@@ -9,8 +9,26 @@ import BlogLayout from "../layouts/BlogLayout.astro";
 import { getAllEventPosts } from "../sanity/api";
 import EventCard from "../components/EventCard.astro";
 import PostsZeroState from "../components/PostsZeroState.astro";
-
 const eventPosts = await getAllEventPosts();
+const today = new Date().toISOString().slice(0, 10);
+
+const transformDateToISO = (dateStr: any) => {
+  const [dayName, monthName, day, year] = dateStr.split(" ");
+  const monthIndex = new Date(`${monthName} 1, ${year}`).getMonth();
+  return `${year}-${String(monthIndex + 1).padStart(2, "0")}-${String(
+    day
+  ).padStart(2, "0")}`;
+};
+
+const upcomingEvents = eventPosts.filter((post) => {
+  const eventDateISO = transformDateToISO(post.date);
+  return eventDateISO > today;
+});
+
+const pastEvents = eventPosts.filter((post) => {
+  const eventDateISO = transformDateToISO(post.date);
+  return eventDateISO <= today;
+});
 ---
 
 <BlogLayout title="Cypher Queenz | Blog">
@@ -21,32 +39,16 @@ const eventPosts = await getAllEventPosts();
       <h2 class="text-2xl font-bold">Upcoming</h2>
       <div class="flex flex-col">
         {
-          !eventPosts.length ? (
-            <>
-              <PostsZeroState type="events" />
-            </>
+          !upcomingEvents.length ? (
+            <PostsZeroState type="events" />
           ) : (
-            eventPosts.map((post) => {
-              if (post.date > new Date().toISOString().slice(0, 10))
-                return (
-                  <div class="py-4">
-                    <PostsZeroState type="events" />
-                  </div>
-                );
-
-              return <EventCard post={post} />;
-            })
+            upcomingEvents.map((post) => <EventCard post={post} />)
           )
         }
       </div>
       <h2 class="text-xl font-bold">Past Events</h2>
       <div class="flex flex-col">
-        {
-          eventPosts.map((post) => {
-            if (post.date > new Date().toISOString().slice(0, 10))
-              return <EventCard post={post} />;
-          })
-        }
+        {pastEvents.map((post) => <EventCard post={post} />)}
       </div>
     </div>
   </main>
