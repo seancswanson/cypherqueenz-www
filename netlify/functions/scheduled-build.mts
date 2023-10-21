@@ -1,11 +1,20 @@
-import type { Config } from "@netlify/functions";
+import fetch from "node-fetch";
+import { schedule } from "@netlify/functions";
 
-export default async (req: Request) => {
-  const { next_run } = await req.json();
+const BUILD_HOOK =
+  "https://api.netlify.com/build_hooks/63c9837a0fd0356a2ff2bec9";
 
-  console.log("Received event! Next invocation at:", next_run);
-};
+// Schedules the handler function to run at Midnight every day
+const handler = schedule("0 0 * * *", async () => {
+  await fetch(BUILD_HOOK, {
+    method: "POST",
+  }).then((response) => {
+    console.log("Build hook response:", response);
+  });
 
-export const config: Config = {
-  schedule: "@hourly",
-};
+  return {
+    statusCode: 200,
+  };
+});
+
+export { handler };
