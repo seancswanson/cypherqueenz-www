@@ -39,7 +39,9 @@ export interface EventPost {
   _updatedAt: Date;
   blogAndEventImages: BlogAndEventImages;
   content: Content[];
-  date: string;
+  dateStart: string;
+  dateEnd: string;
+  breakdownOfEvents: string;
   entryFee: string;
   location: string;
   slug: Slug;
@@ -122,7 +124,7 @@ export async function getAllBlogSlugs(): Promise<Slug[]> {
 export async function getAllEventPosts(): Promise<EventPost[]> {
   const client = useSanityClient();
   const query =
-    "*[_type == 'event' && visibleBoolean == true]{title, slug, _createdAt, slug, time, date, location, entryFee, content[], blogAndEventImages-> }";
+    "*[_type == 'event' && visibleBoolean == true]{title, slug, _createdAt, slug, dateStart, dateEnd, breakdownOfEvents, location, entryFee, content[], blogAndEventImages-> }";
   const media = await client.fetch(query);
   return media.sort((a: any, b: any) => {
     return a._createdAt > b._createdAt ? 1 : -1;

@@ -5,7 +5,7 @@ import { urlForMedia } from "../sanity/urlForMedia";
 
 const { post } = Astro.props;
 
-const eventDate = new Date(post.date)
+const eventDate = new Date(post.dateStart)
   .toLocaleString("en-us", {
     year: "2-digit",
     month: "long",
@@ -13,6 +13,18 @@ const eventDate = new Date(post.date)
   })
   .replace(",", "")
   .split(" ");
+
+const eventTimeStart = new Date(post.dateStart).toLocaleTimeString("en-US", {
+  hour: "numeric",
+  minute: "numeric",
+  hour12: true,
+});
+
+const eventTimeEnd = new Date(post.dateEnd).toLocaleTimeString("en-US", {
+  hour: "numeric",
+  minute: "numeric",
+  hour12: true,
+});
 
 const originalImageUrl = urlForMedia(post.blogAndEventImages.imageFile).url();
 
@@ -72,7 +84,7 @@ const resizedUrlForGallery = originalImageUrl + "?w=400&fit=fill&fm=webp";
           <Emoji symbol="⏰" />
           Time:
         </span>
-        {post.time}
+        {eventTimeStart} - {eventTimeEnd}
       </p>
       <a
         href={`/events/${post.slug.current}`}
