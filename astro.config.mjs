@@ -13,7 +13,7 @@ import compress from "astro-compress";
 import sanity from "astro-sanity";
 
 export default defineConfig({
-  site: "https://cypherqueenz.com",
+  site: "https://cypherqueenz.com/",
   integrations: [
     image(),
     tailwind(),
