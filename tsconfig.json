@@ -2,6 +2,6 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "moduleResolution": "node",
-    "types": ["@astrojs/image/client", "facebook-js-sdk"]
+    "types": ["astro/client", "facebook-js-sdk"]
   }
 }
