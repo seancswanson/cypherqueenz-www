@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import { urlForMedia } from "../sanity/urlForMedia";
 // import props
 const { post } = Astro.props;
@@ -28,7 +28,7 @@ const resizedUrlForGallery = originalImageUrl + "?w=500&fit=fill&fm=webp";
         format="png"
         alt={"Blog Post Picture"}
         width="500"
-        aspectRatio="1:1"
+        height="500"
         class="gallery-image w-full h-full rounded object-cover object-center shadow-sm"
       />
     </div>

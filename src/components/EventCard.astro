@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import Emoji from "astro-emoji";
 import { urlForMedia } from "../sanity/urlForMedia";
 
@@ -54,7 +54,7 @@ const resizedUrlForGallery = originalImageUrl + "?w=400&fit=fill&fm=webp";
         format="png"
         alt={"Event Picture"}
         width="400"
-        aspectRatio="1:1"
+        height="400"
         class="gallery-image rounded border-2 object-cover object-center shadow-sm"
       />
     </div>

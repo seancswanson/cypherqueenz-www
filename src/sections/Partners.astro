@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import goodfootLogo from "../images/home/goodfoot-logo.webp";
 import zuluLogo from "../images/home/zulu-logo.webp";
 ---
@@ -7,13 +7,29 @@ import zuluLogo from "../images/home/zulu-logo.webp";
 <section class="m-auto w-full px-6 py-12 shadow-inner">
   <div class="m-auto max-w-4xl">
     <h1 class="mb-6 text-4xl font-extrabold drop-shadow-sm">Partners</h1>
-    <h2 class="mb-6 text-2xl drop-shadow-sm">Cypher Queenz is proud to partner with:</h2>
+    <h2 class="mb-6 text-2xl drop-shadow-sm">
+      Cypher Queenz is proud to partner with:
+    </h2>
     <div class="flex justify-evenly">
-      <a href="https://www.206zulu.org/" class="relative bottom-0 w-32 rounded-md border-2 border-gray-900 p-3 shadow-test transition-all duration-150 hover:bottom-2 sm:w-48">
-        <Image src={zuluLogo} alt="206 Zulu Logo" class="object-contain object-center h-full" />
+      <a
+        href="https://www.206zulu.org/"
+        class="relative bottom-0 w-32 rounded-md border-2 border-gray-900 p-3 shadow-test transition-all duration-150 hover:bottom-2 sm:w-48"
+      >
+        <Image
+          src={zuluLogo}
+          alt="206 Zulu Logo"
+          class="object-contain object-center h-full"
+        />
       </a>
-      <a href="https://www.thegoodfootarts.org/" class="relative bottom-0 w-32 rounded-md border-2 border-gray-900 p-3 shadow-test transition-all duration-150 hover:bottom-2 sm:w-48">
-        <Image src={goodfootLogo} alt="GoodFoot Collective Logo" class="invert object-contain h-full object-center" />
+      <a
+        href="https://www.thegoodfootarts.org/"
+        class="relative bottom-0 w-32 rounded-md border-2 border-gray-900 p-3 shadow-test transition-all duration-150 hover:bottom-2 sm:w-48"
+      >
+        <Image
+          src={goodfootLogo}
+          alt="GoodFoot Collective Logo"
+          class="invert object-contain h-full object-center"
+        />
       </a>
     </div>
   </div>

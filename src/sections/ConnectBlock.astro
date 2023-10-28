@@ -1,33 +1,70 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import portlandMap from "../images/home/portland-map.webp";
 import seattleMap from "../images/home/seattle-map.webp";
 ---
 
 <section class="flex flex-col justify-evenly shadow-inner">
   <div class="m-auto w-full max-w-4xl px-6 py-8">
-    <h1 class="text-3xl font-extrabold drop-shadow-sm sm:text-4xl">Catch us in your city! 🌏</h1>
-    <h2 class="mb-6 text-xl font-extrabold drop-shadow-sm sm:text-2xl">Currently in:</h2>
-    <div class="mb-8 flex flex-col items-center justify-evenly gap-4 sm:flex-row">
-      <a href="/" class="relative bottom-0 flex w-48 flex-col items-center rounded-md border-2 border-gray-900 bg-skin-base shadow-test transition-all duration-150 hover:bottom-2">
-        <Image src={seattleMap} alt="Seattle Map" class="border-b-2 border-gray-500" />
+    <h1 class="text-3xl font-extrabold drop-shadow-sm sm:text-4xl">
+      Catch us in your city! 🌏
+    </h1>
+    <h2 class="mb-6 text-xl font-extrabold drop-shadow-sm sm:text-2xl">
+      Currently in:
+    </h2>
+    <div
+      class="mb-8 flex flex-col items-center justify-evenly gap-4 sm:flex-row"
+    >
+      <a
+        href="/"
+        class="relative bottom-0 flex w-48 flex-col items-center rounded-md border-2 border-gray-900 bg-skin-base shadow-test transition-all duration-150 hover:bottom-2"
+      >
+        <Image
+          src={seattleMap}
+          alt="Seattle Map"
+          class="border-b-2 border-gray-500"
+        />
         <p class="p-3 text-lg">Seattle, WA</p>
       </a>
-      <a href="/" class="relative bottom-0 flex w-48 flex-col items-center rounded-md border-2 border-gray-900 bg-skin-base shadow-test transition-all duration-150 hover:bottom-2">
-        <Image src={portlandMap} alt="Portland Map" class="border-b-2 border-gray-500" />
+      <a
+        href="/"
+        class="relative bottom-0 flex w-48 flex-col items-center rounded-md border-2 border-gray-900 bg-skin-base shadow-test transition-all duration-150 hover:bottom-2"
+      >
+        <Image
+          src={portlandMap}
+          alt="Portland Map"
+          class="border-b-2 border-gray-500"
+        />
         <p class="border-black p-3 text-lg">Portland, OR</p>
       </a>
     </div>
-    <div class="mb-8 rounded-lg border border-slate-800 bg-skin-base p-2 shadow-test">
-      <h2 class="text-xl font-extrabold sm:text-2xl">+ Are you looking to connect with some bgirls in your city?</h2>
+    <div
+      class="mb-8 rounded-lg border border-slate-800 bg-skin-base p-2 shadow-test"
+    >
+      <h2 class="text-xl font-extrabold sm:text-2xl">
+        + Are you looking to connect with some bgirls in your city?
+      </h2>
       <p class="text-base sm:text-lg">
-        Just send us a message on Instagram and we'll do our best to connect you with talented dancers in your area. Even if we don't have a Cypher Queenz crew established in your city yet, we'll still do our best to make some introductions for you.
+        Just send us a message on Instagram and we'll do our best to connect you
+        with talented dancers in your area. Even if we don't have a Cypher
+        Queenz crew established in your city yet, we'll still do our best to
+        make some introductions for you.
       </p>
     </div>
-    <div class="mb-8 rounded-lg border border-slate-800 bg-skin-base p-2 shadow-test">
-      <h2 class="text-xl font-extrabold sm:text-2xl">+ Want to stay up to date on all things Cypher Queenz?</h2>
+    <div
+      class="mb-8 rounded-lg border border-slate-800 bg-skin-base p-2 shadow-test"
+    >
+      <h2 class="text-xl font-extrabold sm:text-2xl">
+        + Want to stay up to date on all things Cypher Queenz?
+      </h2>
       <p class="text-base sm:text-lg">
-        Be sure to add your name to our mailing list for newsletters and future updates. Don't miss out - <a href="/mailing-list" style="font-variant:small-caps;" class="text-3xl font-extrabold text-teal-600 underline">sign up now!</a>
+        Be sure to add your name to our mailing list for newsletters and future
+        updates. Don't miss out - <a
+          href="/mailing-list"
+          style="font-variant:small-caps;"
+          class="text-3xl font-extrabold text-teal-600 underline"
+          >sign up now!</a
+        >
       </p>
     </div>
   </div>

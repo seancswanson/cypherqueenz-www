@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
@@ -49,7 +49,6 @@ let selectedMedia;
                     format="png"
                     alt={mediaItem.title}
                     width="300"
-                    aspectRatio="3:2"
                     class="gallery-image mb-2 h-full rounded object-cover object-center"
                   />
                 </div>

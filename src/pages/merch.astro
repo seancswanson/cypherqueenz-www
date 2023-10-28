@@ -3,7 +3,7 @@ import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
 
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import merch from "../images/merch/merch.webp";
 ---
 
@@ -14,7 +14,11 @@ import merch from "../images/merch/merch.webp";
       <h1 class="mb-2 text-4xl font-extrabold">Merch</h1>
       <p class="italic">Under construction!</p>
       <div class="w-full rounded shadow-test shadow-skinShadow">
-        <Image src={merch} alt="Picture of dancer holding up a sweatshirt" class="h-full object-cover object-center" />
+        <Image
+          src={merch}
+          alt="Picture of dancer holding up a sweatshirt"
+          class="h-full object-cover object-center"
+        />
       </div>
     </div>
   </main>
