@@ -1,8 +1,6 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import Footer from "../../components/Footer.astro";
-import NavBar from "../../components/NavBar.astro";
 import PortableText from "../../components/PortableText.astro";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import { getAllBlogPosts } from "../../sanity/api";
@@ -27,7 +25,6 @@ const post = Astro.props;
 ---
 
 <BlogLayout title={post.title}>
-  <NavBar />
   <main
     class="m-auto block w-full max-w-4xl bg-white p-8 font-skinDisplay shadow"
   >
@@ -51,9 +48,9 @@ const post = Astro.props;
         src={urlForMedia(post.galleryImages.imageFile.asset._ref).url()}
         class="w-full rounded border-2 shadow-sm object-cover object-center mb-2"
         alt="logo"
-        aspectRatio="1:1"
         format="png"
         width="800"
+        height="800"
       />
       <p>{post.galleryImages.title}</p>
       <p class="italic">{post.galleryImages.caption}</p>
@@ -71,4 +68,3 @@ const post = Astro.props;
     />
   </main>
 </BlogLayout>
-<Footer />

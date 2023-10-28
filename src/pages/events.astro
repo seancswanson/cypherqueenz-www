@@ -1,10 +1,4 @@
 ---
-import { Image } from "@astrojs/image/components";
-import Emoji from "astro-emoji";
-import { urlForMedia } from "../sanity/urlForMedia";
-
-import Footer from "../components/Footer.astro";
-import NavBar from "../components/NavBar.astro";
 import BlogLayout from "../layouts/BlogLayout.astro";
 import { getAllEventPosts } from "../sanity/api";
 import EventCard from "../components/EventCard.astro";
@@ -30,7 +24,6 @@ const pastEvents = eventPosts
 ---
 
 <BlogLayout title="Cypher Queenz | Blog">
-  <NavBar />
   <main class="mx-auto mb-auto block w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
       <h1 class="mb-8 text-4xl font-extrabold">Events</h1>
@@ -50,5 +43,4 @@ const pastEvents = eventPosts
       </div>
     </div>
   </main>
-  <Footer />
 </BlogLayout>

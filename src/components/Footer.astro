@@ -1,36 +1,75 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import swansong from "../images/icons/swansong-thick-24.webp";
 ---
 
 <footer class="w-full bg-gray-900 text-white">
   <div class="m-auto max-w-4xl">
-    <div class="flex flex-col items-center justify-between gap-5 p-12 sm:flex-row sm:gap-0 sm:px-5">
+    <div
+      class="flex flex-col items-center justify-between gap-5 p-12 sm:flex-row sm:gap-0 sm:px-5"
+    >
       <a href="#" class="basis-1/3 tracking-tight"
         ><p class="text-xl font-extrabold">CypherQueenz</p>
-        <p>A Bgirl collective coming together to grow and leveling up the scene by highlighting the female voice in Hip Hop</p>
+        <p>
+          A Bgirl collective coming together to grow and leveling up the scene
+          by highlighting the female voice in Hip Hop
+        </p>
       </a>
       <div class="links flex gap-12">
         <section class="resources flex flex-col">
           <h2 class="text-sm font-extrabold tracking-tight">Resources</h2>
-          <a href="https://www.rainn.org/ThatsHarassment" class="text-sm tracking-tight text-teal-200 hover:text-white">RAINN - SA Resources</a>
-          <a href="https://www.dancedataproject.com/resources/sexual-assault-harassment-links-and-resources/#toggle-id-8" class="text-sm tracking-tight text-teal-200 hover:text-white">DanceDataProject - SA/Harassment Resources</a>
+          <a
+            href="https://www.rainn.org/ThatsHarassment"
+            class="text-sm tracking-tight text-teal-200 hover:text-white"
+            >RAINN - SA Resources</a
+          >
+          <a
+            href="https://www.dancedataproject.com/resources/sexual-assault-harassment-links-and-resources/#toggle-id-8"
+            class="text-sm tracking-tight text-teal-200 hover:text-white"
+            >DanceDataProject - SA/Harassment Resources</a
+          >
         </section>
         <section class="social flex flex-col gap-1 sm:items-start">
           <h2 class="text-sm font-extrabold tracking-tight">Connect With Us</h2>
-          <a href="https://www.instagram.com/cypherqueenz/?hl=en" class="text-sm tracking-tight text-teal-200 hover:text-white">Instagram</a>
-          <a href="https://www.facebook.com/profile.php?id=100067459671198" class="text-sm tracking-tight text-teal-200 hover:text-white">Facebook</a>
-          <a href="https://www.youtube.com/watch?v=bKIwJE20Dsk" class="text-sm tracking-tight text-teal-200 hover:text-white">YouTube</a>
+          <a
+            href="https://www.instagram.com/cypherqueenz/?hl=en"
+            class="text-sm tracking-tight text-teal-200 hover:text-white"
+            >Instagram</a
+          >
+          <a
+            href="https://www.facebook.com/profile.php?id=100067459671198"
+            class="text-sm tracking-tight text-teal-200 hover:text-white"
+            >Facebook</a
+          >
+          <a
+            href="https://www.youtube.com/watch?v=bKIwJE20Dsk"
+            class="text-sm tracking-tight text-teal-200 hover:text-white"
+            >YouTube</a
+          >
         </section>
       </div>
     </div>
     <hr class="opacity-50" />
     <div class="flex flex-col gap-2 py-4">
-      <a href="https://seancswanson.com" target="_blank" rel="noreferrer" class="p-2text-center m-auto block rounded font-skinMono text-xs italic text-white shadow">
+      <a
+        href="https://seancswanson.com"
+        target="_blank"
+        rel="noreferrer"
+        class="p-2text-center m-auto block rounded font-skinMono text-xs italic text-white shadow"
+      >
         <span class="inline-block">website by S.Swanson</span>
-        <Image src={swansong} alt="swanson digital arts logo" class="invert inline-block" />
+        <Image
+          src={swansong}
+          alt="swanson digital arts logo"
+          class="invert inline-block"
+        />
       </a>
-      <a href="https://www.chriskaku.com/" target="_blank" rel="noreferrer" class="p-2text-center m-auto block rounded font-skinMono text-xs italic text-white shadow">
+      <a
+        href="https://www.chriskaku.com/"
+        target="_blank"
+        rel="noreferrer"
+        class="p-2text-center m-auto block rounded font-skinMono text-xs italic text-white shadow"
+      >
         <span class="inline-block"> Logo Design by Chris Kaku</span>
       </a>
     </div>

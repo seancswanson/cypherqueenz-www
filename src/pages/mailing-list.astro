@@ -1,23 +1,31 @@
 ---
 import Emoji from "astro-emoji";
-import Footer from "../components/Footer.astro";
-import NavBar from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Cypher Queenz | Mailing List">
-  <NavBar />
   <main class="m-auto block h-full w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
-      <h1 class="mb-2 text-4xl">Stay up to date with Cypher Queenz!</h1>
-      <h2 class="mb-3 text-2xl">In the future we'll be adding blog posts, newsletters, events, and more as our organization grows and evolves.</h2>
+      <h1 class="mb-8 text-4xl font-extrabold">
+        Stay up to date with Cypher Queenz!
+      </h1>
+      <h2 class="mb-3 text-2xl">
+        In the future we'll be adding blog posts, newsletters, events, and more
+        as our organization grows and evolves.
+      </h2>
       <h3 class="text-lg">
-        Also be sure to follow us on <a href="https://www.instagram.com/cypherqueenz/?hl=en" class="font-extrabold">Instagram</a> and <a href="https://m.facebook.com/Cypher-Queenz-111665977110803/" class="font-extrabold">Facebook</a>! <Emoji
-          symbol="😄"
-        />
+        Also be sure to follow us on <a
+          href="https://www.instagram.com/cypherqueenz/?hl=en"
+          class="font-extrabold text-teal-600 underline">Instagram</a
+        > and <a
+          href="https://m.facebook.com/Cypher-Queenz-111665977110803/"
+          class="font-extrabold text-teal-600 underline">Facebook</a
+        >! <Emoji symbol="😄" />
       </h3>
     </div>
-    <iframe src="https://commotion.page/embed/wzgy30qcv1VspWvoG91N" frameborder="0" class="m-auto mb-4 h-screen w-full"></iframe>
+    <iframe
+      src="https://commotion.page/embed/wzgy30qcv1VspWvoG91N"
+      frameborder="0"
+      class="m-auto mb-4 h-screen w-full"></iframe>
   </main>
-  <Footer />
 </Layout>

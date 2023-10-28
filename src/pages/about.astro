@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
@@ -20,7 +20,7 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
   }
 
   .value {
-    @apply mb-12 basis-1/3 border border-black p-1 shadow-sm;
+    @apply mb-12 basis-1/3 border-2 border-black p-1 shadow-sm;
   }
 
   .value-title {
@@ -35,13 +35,20 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
   }
 </style>
 <Layout title="Cypher Queenz | About">
-  <NavBar />
   <main class="m-auto block w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
       <h1 class="mb-2 text-4xl font-extrabold">About Us</h1>
-      <Image src={logo} class="object-contain w-64 sm:w-80 object-center drop-shadow-xl m-auto mb-10" alt="Cypher Queenz Logo" />
+      <Image
+        src={logo}
+        class="object-contain w-64 sm:w-80 object-center drop-shadow-xl m-auto mb-10"
+        alt="Cypher Queenz Logo"
+      />
 
-      <ul class="nav nav-tabs mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row" id="tabs-tabFill" role="tablist">
+      <ul
+        class="nav nav-tabs mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
+        id="tabs-tabFill"
+        role="tablist"
+      >
         <li class="nav-item flex-auto text-center" role="presentation">
           <a
             href="#tabs-missionFill"
@@ -80,22 +87,54 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
         </li>
       </ul>
       <div class="tab-content" id="tabs-tabContentFill">
-        <div class="tab-pane active show fade" id="tabs-missionFill" role="tabpanel" aria-labelledby="tabs-mission-tabFill">
-          <p class="text-2xl">To create a space for Bgirls to learn, session, cypher and build community elevating women in the Seattle Hip Hop breakin scene.</p>
+        <div
+          class="tab-pane show active fade"
+          id="tabs-missionFill"
+          role="tabpanel"
+          aria-labelledby="tabs-mission-tabFill"
+        >
+          <p class="text-2xl">
+            To create a space for Bgirls to learn, session, cypher and build
+            community elevating women in the Seattle Hip Hop breakin scene.
+          </p>
         </div>
-        <div class="tab-pane fade" id="tabs-visionFill" role="tabpanel" aria-labelledby="tabs-vision-tabFill">
-          <p class="text-2xl">Empower and uplift women in the Hip Hop breakin scene for a healthier, safe and balanced environment that will benefit all communities.</p>
+        <div
+          class="tab-pane fade"
+          id="tabs-visionFill"
+          role="tabpanel"
+          aria-labelledby="tabs-vision-tabFill"
+        >
+          <p class="text-2xl">
+            Empower and uplift women in the Hip Hop breakin scene for a
+            healthier, safe and balanced environment that will benefit all
+            communities.
+          </p>
         </div>
-        <div class="tab-pane fade" id="tabs-historyFill" role="tabpanel" aria-labelledby="tabs-history-tabFill">
+        <div
+          class="tab-pane fade"
+          id="tabs-historyFill"
+          role="tabpanel"
+          aria-labelledby="tabs-history-tabFill"
+        >
           <p class="mb-4 text-2xl">
-            Since 2001 three Bgirls, Naj, Bean and Lee dived into the breakin' culture that quickly became a huge part of their expression, growth and purpose. Over the years there was a growing desire to create more space for other Bgirls that was
-            not intimidating and celebrated women. Their strong connection as women was a main factor in encouraging each other to continue their passion in the breakin' scene. They asked themselves, "would more Bgirls start and stick around if we
-            did more for them? Yes!"
+            Since 2001 three Bgirls, Naj, Bean and Lee dived into the breakin'
+            culture that quickly became a huge part of their expression, growth
+            and purpose. Over the years there was a growing desire to create
+            more space for other Bgirls that was not intimidating and celebrated
+            women. Their strong connection as women was a main factor in
+            encouraging each other to continue their passion in the breakin'
+            scene. They asked themselves, "would more Bgirls start and stick
+            around if we did more for them? Yes!"
           </p>
 
           <p class="text-2xl">
-            CYPHER Queenz began in 2019 after many years of seeing a need for more community for Bgirls. We give props to all the Bgirls who have been holding it down for a long time, but have observed many women briefly coming into the scene and
-            then quickly leaving because of lack of support. There is an explosion of talented Bgirls all over the world now and there is so much more to come. In Seattle, we want to provide that space for them.
+            CYPHER Queenz began in 2019 after many years of seeing a need for
+            more community for Bgirls. We give props to all the Bgirls who have
+            been holding it down for a long time, but have observed many women
+            briefly coming into the scene and then quickly leaving because of
+            lack of support. There is an explosion of talented Bgirls all over
+            the world now and there is so much more to come. In Seattle, we want
+            to provide that space for them.
           </p>
         </div>
       </div>
@@ -103,34 +142,62 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
       <section>
         <h2 class="mb-8 text-3xl font-extrabold">VALUES</h2>
 
-        <div class="value-container flex-wrap justify-evenly gap-1 gap-y-0 sm:flex">
+        <div
+          class="value-container flex-wrap justify-evenly gap-[2px] gap-y-0 sm:flex"
+        >
           <div class="value">
-            <h3 class="value-title">Beginner friendly – no experience needed</h3>
-            <p class="value-text">We teach and support women just getting started from day one.</p>
+            <h3 class="value-title">
+              Beginner friendly – no experience needed
+            </h3>
+            <p class="value-text">
+              We teach and support women just getting started from day one.
+            </p>
           </div>
           <div class="value">
             <h3 class="value-title">Honoring the roots</h3>
-            <p class="value-text">We want to pay respect and spread knowledge honoring the roots of Hip Hop from the Black and Brown community, particularly highlighting women in this history.</p>
+            <p class="value-text">
+              We want to pay respect and spread knowledge honoring the roots of
+              Hip Hop from the Black and Brown community, particularly
+              highlighting women in this history.
+            </p>
           </div>
           <div class="value">
             <h3 class="value-title">Inclusivity</h3>
-            <p class="value-text">We value being an inclusive welcoming environment for all regardless of gender and sexual identity, race and ethnicity, economic and faith backgrounds.</p>
+            <p class="value-text">
+              We value being an inclusive welcoming environment for all
+              regardless of gender and sexual identity, race and ethnicity,
+              economic and faith backgrounds.
+            </p>
           </div>
           <div class="value">
             <h3 class="value-title">Community driven</h3>
-            <p class="value-text">We are volunteer run where all profits and donations go back into improving Cypher Queens events for the community.</p>
+            <p class="value-text">
+              We are volunteer run where all profits and donations go back into
+              improving Cypher Queens events for the community.
+            </p>
           </div>
           <div class="value">
             <h3 class="value-title">Toxic free behavior</h3>
-            <p class="value-text">We do not tolerate behavior that minimizes and abuses others for individual gains, rather we focus on unity through building community.</p>
+            <p class="value-text">
+              We do not tolerate behavior that minimizes and abuses others for
+              individual gains, rather we focus on unity through building
+              community.
+            </p>
           </div>
           <div class="value">
             <h3 class="value-title">Creative expression</h3>
-            <p class="value-text">We value art forms for expression beyond bgirling that enhance women and the Hip Hop community.</p>
+            <p class="value-text">
+              We value art forms for expression beyond bgirling that enhance
+              women and the Hip Hop community.
+            </p>
           </div>
           <div class="value">
             <h3 class="value-title">Empowerment focused</h3>
-            <p class="value-text">We want to create an environment that strengthens and empowers individuals into a mature focus of using gains to help the most vulnerable in society.</p>
+            <p class="value-text">
+              We want to create an environment that strengthens and empowers
+              individuals into a mature focus of using gains to help the most
+              vulnerable in society.
+            </p>
           </div>
         </div>
       </section>
@@ -139,21 +206,36 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
       <section>
         <h2 class="mb-4 text-3xl font-extrabold">No Excuses</h2>
         <div class="mb-8 flex justify-evenly">
-          <Image src={noExcuses} class="w-32 h-32 rounded-lg shadow-test" alt="no excuses logo" />
-          <Image src={goodfootLogo} alt="GoodFoot Collective Logo" class="w-32 h-32 invert p-2 rounded-lg shadow-test object-contain object-center" />
+          <a href="https://www.thegoodfootarts.org/about">
+            <Image
+              src={noExcuses}
+              class="relative w-32 h-32 rounded-lg shadow-app transition-all duration-150 hover:bottom-2 bottom-0"
+              alt="no excuses logo"
+            />
+          </a>
+          <a href="https://www.thegoodfootarts.org/">
+            <Image
+              src={goodfootLogo}
+              alt="GoodFoot Collective Logo"
+              class="relative w-32 h-32 invert p-2 rounded-lg shadow-app object-contain object-center transition-all duration-150 hover:bottom-2 bottom-0"
+            />
+          </a>
         </div>
         <p class="mb-4 text-xl">
-          Cypher Queenz is partnered with The Good Foot Arts Collective to participate in the NO Excuses campaign and how we can collectively provide a safe space for advocacy, education and empowerment to the scene concerning issues that have been
-          most impacted by bgirls.
+          Cypher Queenz is partnered with The Good Foot Arts Collective to
+          participate in the NO Excuses campaign and how we can collectively
+          provide a safe space for advocacy, education and empowerment to the
+          scene concerning issues that have been most impacted by bgirls.
         </p>
         <p class="mb-4 text-xl">
-          The Good Foot Arts Collective “NO Excuses” campaign advocates for safety and empowers youth to build an environment of NO tolerance for violence, sexual misconduct, toxic behavior or abuse in BIPOC youth communities and in the hip hop,
-          street dance community.
+          The Good Foot Arts Collective “NO Excuses” campaign advocates for
+          safety and empowers youth to build an environment of NO tolerance for
+          violence, sexual misconduct, toxic behavior or abuse in BIPOC youth
+          communities and in the hip hop, street dance community.
         </p>
       </section>
     </div>
   </main>
-  <Footer />
 </Layout>
 
 <script>
