@@ -1,3 +1,4 @@
+import { Image } from "astro:assets";
 import type { PortableTextBlock } from "@portabletext/types";
 
 import { portableTextToHtml } from "astro-sanity";
@@ -22,7 +23,7 @@ const customComponents = {
             <div class="w-3/4 mx-auto mb-6">
             <Image src="${urlForMedia(
               value
-            ).url()}" width="400" class="rounded shadow w-full h-full object-cover object-center" />
+            ).url()}" width="400" height="400" alt="blog photo" class="rounded shadow w-full h-full object-cover object-center" />
             </div>`;
     },
   },

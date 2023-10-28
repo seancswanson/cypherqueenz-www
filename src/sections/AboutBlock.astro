@@ -6,7 +6,7 @@ import rainbowBgFlipped from "../images/shared/rainbow-bg-bw-flipped.webp";
 ---
 
 <div
-  class="relative block w-full bg-cover bg-center bg-no-repeat shadow shadow-test"
+  class="relative block w-full bg-cover bg-center bg-no-repeat shadow shadow-app"
 >
   <Image
     src={rainbowBgFlipped}
@@ -21,7 +21,7 @@ import rainbowBgFlipped from "../images/shared/rainbow-bg-bw-flipped.webp";
       <div
         class="mb-12 flex flex-col justify-evenly gap-12 sm:flex-row sm:gap-2"
       >
-        <div class="flex-1 rounded p-1 shadow-test">
+        <div class="flex-1 rounded p-1 shadow-app">
           <p class="rounded bg-skin-base p-4 text-xl">
             ... after many years of seeing a need for more community for Bgirls.
             We give props to all the Bgirls who have been holding it down for a
@@ -42,7 +42,7 @@ import rainbowBgFlipped from "../images/shared/rainbow-bg-bw-flipped.webp";
       </div>
       <a
         href="/about"
-        class="relative bottom-0 m-4 flex flex-col items-center justify-evenly rounded-full border border-gray-900 bg-skin-base p-5 px-6 text-center text-2xl shadow-test transition-all duration-150 hover:bottom-2 sm:flex-row"
+        class="relative bottom-0 m-4 flex flex-col items-center justify-evenly rounded-full border border-gray-900 bg-skin-base p-5 px-6 text-center text-2xl shadow-app transition-all duration-150 hover:bottom-2 sm:flex-row"
       >
         <span>
           Read more about our
@@ -56,7 +56,13 @@ import rainbowBgFlipped from "../images/shared/rainbow-bg-bw-flipped.webp";
             >values</span
           >
         </span>
-        <Image src={rightArrow} class="w-12 h-full" alt="Right arrow icon" />
+        <Image
+          src={rightArrow}
+          width="48"
+          height="48"
+          class="w-12 h-full"
+          alt="Right arrow icon"
+        />
       </a>
     </div>
   </div>

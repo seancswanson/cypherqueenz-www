@@ -47,8 +47,9 @@ let selectedMedia;
                     data-title={mediaItem.title || ""}
                     data-originalurl={originalImageUrl}
                     format="png"
-                    alt={mediaItem.title}
+                    alt={mediaItem.title || "Gallery Image"}
                     width="300"
+                    height="300"
                     class="gallery-image mb-2 h-full rounded object-cover object-center"
                   />
                 </div>
