@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import { urlForMedia } from "../sanity/urlForMedia";
-// import props
 const { post } = Astro.props;
 const postDate = new Date(post._createdAt).toLocaleString("en-us", {
   year: "2-digit",
@@ -13,7 +12,7 @@ const originalImageUrl = urlForMedia(post.galleryImages.imageFile).url();
 const resizedUrlForGallery = originalImageUrl + "?w=500&fit=fill&fm=webp";
 ---
 
-<article class="w-full max-w-xl rounded-lg bg-white p-4 shadow sm:w-[48%]">
+<article class="w-full max-w-xl rounded-lg border bg-white p-4 sm:w-[48%]">
   <a
     href={`/blog/${post.slug.current}`}
     class="flex h-full flex-col gap-4"
@@ -48,6 +47,10 @@ const resizedUrlForGallery = originalImageUrl + "?w=500&fit=fill&fm=webp";
     </p>
 
     <!-- Read More -->
-    <p class="mt-auto justify-self-end text-sm underline">Read More</p>
+    <p
+      class="mt-auto justify-self-end text-sm font-extrabold text-teal-600 underline"
+    >
+      Read More
+    </p>
   </a>
 </article>

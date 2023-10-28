@@ -1,6 +1,8 @@
 ---
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 import { SEO } from "astro-seo";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
 
 export interface Props {
   title: string;
@@ -12,10 +14,16 @@ const { title } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <SEO title="Cypher Queenz | Events" description="Cypher Queenz is a Bgirl collective coming together to grow and leveling up the scene by highlighting the female voice in Hip Hop" charset="UTF-8" />
+    <SEO
+      title="Cypher Queenz | Events"
+      description="Cypher Queenz is a Bgirl collective coming together to grow and leveling up the scene by highlighting the female voice in Hip Hop"
+      charset="UTF-8"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;800&family=Space+Mono:ital@1&display=swap" />
+    <GoogleFontsOptimizer
+      url="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;800&family=Space+Mono:ital@1&display=swap"
+    />
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
@@ -33,9 +41,15 @@ const { title } = Astro.props;
         });
       };
     </script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/all.js"></script>
-
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/all.js"
+    ></script>
+    <NavBar />
     <slot />
+    <Footer />
     <style is:global>
       :root {
         --font-family-skin-display: "Anybody";

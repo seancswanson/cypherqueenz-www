@@ -1,14 +1,10 @@
 ---
-import Footer from "../components/Footer.astro";
-import NavBar from "../components/NavBar.astro";
-import Layout from "../layouts/Layout.astro";
-
 import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
 import merch from "../images/merch/merch.webp";
 ---
 
 <Layout title="Cypher Queenz | Merch">
-  <NavBar />
   <main class="m-auto block h-full w-full max-w-4xl font-skinDisplay">
     <div class="p-8">
       <h1 class="mb-2 text-4xl font-extrabold">Merch</h1>
@@ -22,5 +18,4 @@ import merch from "../images/merch/merch.webp";
       </div>
     </div>
   </main>
-  <Footer />
 </Layout>
