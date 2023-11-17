@@ -15,12 +15,14 @@ export async function getStaticPaths() {
       year: "numeric",
       month: "long",
       day: "numeric",
+      timeZone: "America/Los_Angeles",
     });
     const eventDate = new Date(post.dateStart)
       .toLocaleString("en-us", {
         year: "2-digit",
         month: "short",
         day: "numeric",
+        timeZone: "America/Los_Angeles",
       })
       .replace(",", "")
       .split(" ");
@@ -30,6 +32,7 @@ export async function getStaticPaths() {
         hour: "numeric",
         minute: "numeric",
         hour12: true,
+        timeZone: "America/Los_Angeles",
       }
     );
 
@@ -37,6 +40,7 @@ export async function getStaticPaths() {
       hour: "numeric",
       minute: "numeric",
       hour12: true,
+      timeZone: "America/Los_Angeles",
     });
     return {
       params: { slug: post.slug.current },

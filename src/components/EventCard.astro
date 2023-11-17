@@ -10,6 +10,7 @@ const eventDate = new Date(post.dateStart)
     year: "2-digit",
     month: "long",
     day: "numeric",
+    timeZone: "America/Los_Angeles",
   })
   .replace(",", "")
   .split(" ");
@@ -18,12 +19,14 @@ const eventTimeStart = new Date(post.dateStart).toLocaleTimeString("en-US", {
   hour: "numeric",
   minute: "numeric",
   hour12: true,
+  timeZone: "America/Los_Angeles",
 });
 
 const eventTimeEnd = new Date(post.dateEnd).toLocaleTimeString("en-US", {
   hour: "numeric",
   minute: "numeric",
   hour12: true,
+  timeZone: "America/Los_Angeles",
 });
 
 const originalImageUrl = urlForMedia(post.blogAndEventImages.imageFile).url();
