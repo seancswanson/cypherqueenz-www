@@ -22,26 +22,55 @@ const { title } = Astro.props;
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <GoogleFontsOptimizer
-      url="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;800&family=Space+Mono:ital@1&display=swap"
-    />
+    <GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;800" />
     <meta name="generator" content={Astro.generator} />
     <title>{title ? title : "Cypher Queenz | Bgirl Organization"}</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
     <ViewTransitions />
   </head>
-  <body class="flex h-screen flex-col bg-skinPattern font-skinDisplay">
+  <body class="flex flex-col min-h-screen  text-black">
     <NavBar />
-    <slot />
+    <div class="flex-grow max-w-[1440px] w-full mx-auto border-l-2 border-r-2 border-black">
+      <slot />
+    </div>
     <Footer />
     <style is:global>
       :root {
-        --font-family-skin-display: "Anybody";
-        --color-bg-base: #f7fafc;
+        --font-family-skin-display: "SlowScript";
+        --color-bg-base: #ffffff;
         --color-bg-accent: #f4f0e6;
         --color-shadow: 135 103 123;
-        --bg-image-skin-pattern: url("https://www.transparenttextures.com/patterns/brilliant.png");
-        --bg-image-skin-pattern-size: 3px;
+      }
+
+      @font-face {
+        font-family: "Combine";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/fonts/Combine.otf") format("opentype");
+      }
+      @font-face {
+        font-family: "SlowScript";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/fonts/SlowScript-One.otf") format("opentype");
+      }
+      @font-face {
+        font-family: "Squarevetica";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("/fonts/Squarevetica-Regular.otf") format("opentype");
+      }
+
+      html {
+        font-family: 'Noto Sans', sans-serif;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
       }
     </style>
     <script async src="//www.instagram.com/embed.js"></script>

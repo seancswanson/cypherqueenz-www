@@ -1,77 +1,68 @@
 ---
 import { Image } from "astro:assets";
 import Emoji from "astro-emoji";
-import heroGroup from "../images/shared/group-cutout.webp";
-import rainbowBg from "../images/shared/rainbow-bg.webp";
+import heroPoster from "../images/home/hero-poster.png";
 import heroVideo from "../video/cypher-queenz-video-compressed.mp4";
 ---
 
-<div class={`shadow-app bg-cover bg-center relative`}>
-  <Image
-    src={rainbowBg}
-    class="-z-10 opacity-[75] absolute w-full h-full object-cover object-center"
-    alt="logo"
-  />
-  <div class="px-6 py-12">
-    <section class="m-auto mb-3 max-w-4xl border-black">
-      <Image
-        src={heroGroup}
-        class="w-3/4 sm:w-3/5 m-auto cypher-queenz-logo object-contain object-center"
-        alt="logo"
-      />
-    </section>
-    <section class="m-auto mb-16 flex max-w-4xl flex-col gap-4 sm:flex-row">
-      <div class="flex flex-1 flex-col rounded-lg p-1 shadow-app">
+<div class="bg-cover bg-center">
+  <div class="pb-2">
+    <section
+      class="m-auto flex flex-col-reverse p-2 sm:p-0 md:flex-row-reverse border-b-2 border-black"
+    >
+      <div class="flex flex-1 flex-col rounded-lg p-1">
         <h1
-          class="bottom rounded-lg rounded-br-none rounded-bl-none bg-skin-base p-2 text-2xl font-extrabold underline sm:text-4xl"
+          class="bottom bg-skin-base p-2 text-2xl font-extrabold underline sm:text-6xl"
         >
           @CypherQueenz
         </h1>
-        <h2
-          class="h-full rounded-lg rounded-tr-none rounded-tl-none bg-skin-base p-2 text-xl sm:text-3xl"
-        >
+        <h2 class="h-full bg-skin-base p-2 text-xl sm:text-6xl">
           A Bgirl collective coming together to grow and leveling up the scene
           by highlighting the female voice in Hip Hop
         </h2>
       </div>
-      <div class="basis-1/2 rounded-lg shadow-app">
+      <div class="basis-1/2">
         <video
           autoplay
           playsinline
           muted
           loop
+          poster={heroPoster.src}
           id="myVideo"
-          class="h-full max-h-[200] w-full rounded-lg object-cover object-center p-1"
+          class="h-full w-full object-cover object-center"
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
       </div>
     </section>
+
     <section
-      class="m-auto flex max-w-4xl flex-col rounded-xl border border-gray-900 bg-skin-base p-5 px-6 text-center shadow-app"
+      class="m-auto flex flex-col bg-skin-base p-4 text-center"
     >
-      <p class="mb-4 text-xl">
+      <p class="mb-4 text-5xl">
         We offer <b>free monthly workshops/cypher sessions</b> and <b
           >supportive community</b
         > for experience dancers and those just getting started <b
           >from day one.</b
         >
       </p>
-      <p class="underl m-auto mb-4 w-52 text-xl underline">
+      <p class="m-auto mb-4 text-3xl underline">
         Find us online <Emoji symbol="👇" />
       </p>
-      <div class="flex justify-center gap-8 text-xl font-extrabold">
+      <div class="flex justify-center gap-8 text-2xl font-extrabold">
         <a
           href="https://www.instagram.com/cypherqueenz/?hl=en"
-          class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-black"
+          class="flex h-24 w-24 items-center justify-center rounded-full border-2 border-black"
           >IG</a
         >
         <a
           href="https://m.facebook.com/Cypher-Queenz-111665977110803/"
-          class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-black"
+          class="flex h-24 w-24 items-center justify-center rounded-full border-2 border-black"
           >FB</a
         >
       </div>
     </section>
   </div>
 </div>
+
+<style></style>

@@ -1,11 +1,20 @@
 ---
 import { Image } from "astro:assets";
+import heroGroup from "../images/shared/group-cutout.webp";
+
 import portlandMap from "../images/home/portland-map.webp";
 import seattleMap from "../images/home/seattle-map.webp";
 ---
 
 <section class="flex flex-col justify-evenly shadow-inner">
-  <div class="m-auto w-full max-w-4xl px-6 py-8">
+  <section class="m-auto mb-3">
+    <Image
+      src={heroGroup}
+      class="w-3/4 sm:w-3/5 m-auto cypher-queenz-logo object-contain object-center"
+      alt="logo"
+    />
+  </section>
+  <div class="m-auto w-full">
     <h1 class="text-3xl font-extrabold drop-shadow-sm sm:text-4xl">
       Catch us in your city! 🌏
     </h1>

@@ -9,7 +9,7 @@ module.exports = {
       fontFamily: {
         skinDisplay: "var(--font-family-skin-display), serif",
         skinMono:
-          "'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
+          "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
       },
       backgroundColor: {
         skin: {

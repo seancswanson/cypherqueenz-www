@@ -2,100 +2,78 @@
 import Emoji from "astro-emoji";
 
 const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/events", label: "Events" },
+  { href: "/media", label: "Media" },
+  { href: "/connect", label: "Connect With Us" },
+];
 ---
 
-<header class="w-full bg-gray-900">
-  <nav class="m-auto flex max-w-4xl flex-wrap items-center justify-between p-6">
-    <div class="mr-6 flex flex-shrink-0 items-center text-white">
-      <a href="/" class="text-xl font-extrabold tracking-tight">CypherQueenz</a>
-    </div>
-    <div class="block sm:hidden">
-      <button
-        id="hamburger"
-        class="flex items-center rounded border border-teal-400 px-3 py-2 text-teal-200 hover:border-white hover:text-white"
-      >
-        <svg
-          class="h-3 w-3 fill-current"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-          ><title>Menu</title><path
-            d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg
-        >
+<header class="text-black border-b-2 border-black">
+  <nav class="max-w-[1440px] mx-auto flex flex-wrap items-stretch justify-between border-r-2 border-black border-l-2">
+    <div class="flex items-center justify-between w-full lg:w-auto relative min-h-[52px]">
+      <a href="/" class="text-6xl absolute font-skinDisplay pl-2 font-bold tracking-tighter top-[-15px] hover:text-gray-700 transition-colors">CypherQueenz</a>
+      
+      <button id="hamburger" class="lg:hidden ml-auto border-2 border-black p-2 mr-2 hover:bg-black hover:text-beige transition-colors self-center">
+        <span class="sr-only">Menu</span>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
       </button>
     </div>
-    <div
-      id="navMenuContainer"
-      class="hidden w-full gap-4 sm:flex sm:w-auto sm:items-center"
-    >
-      <div id="navMenuLinks" class="text-sm sm:flex-grow">
-        <a
-          href="/about"
-          class={`${
-            currentPath === "/about"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          >About</a
-        >
-        <a
-          href="/blog"
-          class={`${
-            currentPath === "/blog"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          >Blog</a
-        >
-        <a
-          href="/events"
-          class={`${
-            currentPath === "/events"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          >Events</a
-        >
-        <a
-          href="/gallery"
-          class={`${
-            currentPath === "/gallery"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          >Gallery</a
-        >
-        <a
-          href="/merch"
-          class={`${
-            currentPath === "/merch"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 border-b-transparent mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          ><Emoji symbol="🛒" /></a
-        >
-      </div>
-      <div>
-        <a
-          href="/mailing-list"
-          class="mt-4 inline-block rounded border border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-black sm:mt-0"
-          >Join Mailing List</a
-        >
-      </div>
+    
+    <div id="navMenuContainer" class="hidden w-full lg:flex lg:w-auto lg:items-stretch mt-4 lg:mt-0">
+      <ul class="flex flex-col lg:flex-row w-full lg:w-auto">
+        {navItems.map((item, index) => (
+          <li class={`nav-item hover:scale-105 flex items-stretch ${index !== 0 ? 'lg:border-l-2' : ''} ${index !== navItems.length - 1 ? 'border-b-2 lg:border-b-0' : ''} lg:border-r-2 border-black`}>
+            <a
+              href={item.href}
+              class={`text-xl font-bold transition-colors px-4 py-2 lg:py-0 flex items-center w-full ${
+                currentPath === item.href ? "underline" : ""
+              }`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </nav>
 </header>
 
-<script>
-  const setHamburgerListener = () => {
-    const hamburger = document.getElementById("hamburger");
-    const navMenuContainer = document.getElementById("navMenuContainer");
-    hamburger?.addEventListener("click", () => {
-      navMenuContainer?.classList.toggle("hidden");
-    });
-  };
+<style>
+  @media (max-width: 1023px) {
+    #navMenuContainer {
+      border-top: 2px solid black;
+    }
+    
+    .nav-item:last-child {
+      border-bottom: none;
+    }
+  }
 
-  // Runs on initial navigation
-  setHamburgerListener();
-  // Runs on view transitions navigation
-  document.addEventListener("astro:after-swap", setHamburgerListener);
+  @media (min-width: 1024px) {
+    .nav-item {
+      border-right-width: 0;
+    }
+
+
+    .nav-item:first-child {
+      border-left-width: 2px;
+    }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const navMenuContainer = document.getElementById("navMenuContainer");
+
+  if (hamburger && navMenuContainer) {
+    hamburger.addEventListener("click", () => {
+      navMenuContainer.classList.toggle("hidden");
+    });
+  }
 </script>

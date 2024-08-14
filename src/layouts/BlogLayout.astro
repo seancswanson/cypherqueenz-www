@@ -29,7 +29,7 @@ const { title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class="flex h-screen flex-col bg-skinPattern font-skinDisplay">
+  <body class="flex h-screen flex-col  font-skinDisplay">
     <div id="fb-root"></div>
     <script>
       declare const window: any;
@@ -53,12 +53,7 @@ const { title } = Astro.props;
     <Footer />
     <style is:global>
       :root {
-        --font-family-skin-display: "Anybody";
-        --color-bg-base: #f7fafc;
-        --color-bg-accent: #f4f0e6;
-        --color-shadow: 135 103 123;
-        --bg-image-skin-pattern: url("https://www.transparenttextures.com/patterns/brilliant.png");
-        --bg-image-skin-pattern-size: 3px;
+
       }
     </style>
   </body>

@@ -1,6 +1,4 @@
 ---
-import Footer from "../components/Footer.astro";
-import NavBar from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
 import AboutBlock from "../sections/AboutBlock.astro";
 import ConnectBlock from "../sections/ConnectBlock.astro";
@@ -9,10 +7,31 @@ import Partners from "../sections/Partners.astro";
 ---
 
 <Layout>
-  <main class="m-auto block w-full font-skinDisplay">
-    <HeroBlock />
-    <ConnectBlock />
-    <AboutBlock />
-    <Partners />
+  <main class="flex flex-col text-black">
+    <div class="border-b-2 border-black">
+      <HeroBlock />
+    </div>
+        <div class="border-b-2 border-black">
+
+      <ConnectBlock />
+      </div>
+          <div class="border-b-2 border-black">
+
+      <AboutBlock />
+      </div>
+          <div class="border-b-2 border-black">
+
+      <Partners />
+      </div>
   </main>
 </Layout>
+
+<style>
+  :root {
+    --color-beige: #FFF;  /* Light beige color */
+  }
+  
+  main {
+    background-color: var(--color-beige);
+  }
+</style>
