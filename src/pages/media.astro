@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import Emoji from "astro-emoji";
 
 import { getAllMedia } from "../sanity/api";
 import { urlForMedia } from "../sanity/urlForMedia";
@@ -10,11 +11,17 @@ const media = await getAllMedia();
 
 <Layout title="Cypher Queenz | Media">
   <main
-    class="m-auto w-full max-w-[1440px] border-l-2 border-r-2 border-[#800000] bg-white pb-32"
+    class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] shadow-sm bg-white"
   >
-    <div class="h-full p-8">
-      <h1 class="mb-8 text-4xl font-extrabold">Media Gallery</h1>
-      <h2 class="mb-4">Follow us on Instagram for the latest media:</h2>
+    <div class="flex flex-col gap-4 p-8">
+      <h1 class="text-4xl font-extrabold lowercase">Media</h1>
+      <p class="text-2xl sm:text-3xl">
+        Follow us on <a
+          href="https://www.instagram.com/cypherqueenz/?hl=en"
+          class="w-max border-b-4 border-[#800000]"
+          ><Emoji symbol="🔗" /> instagram</a
+        > for the latest media.
+      </p>
       <div class="flex items-center justify-center mb-4 align-middle">
         <blockquote
           class="max-w-2xl mx-auto rounded-sm instagram-media shadow-app"
@@ -149,8 +156,6 @@ const media = await getAllMedia();
           </div>
         </blockquote>
       </div>
-
-      <h2 class="mb-4">Featured Media:</h2>
       <div
         class="hidden w-full m-auto my-10 rounded selected-image-container sm:w-3/4"
       >
@@ -174,8 +179,8 @@ const media = await getAllMedia();
               originalImageUrl + "?w=300&fit=fill&fm=webp";
 
             return (
-              <button class="w-64 h-40">
-                <div class="h-full border border-[#800000] rounded shadow">
+              <button class="">
+                <div class="h-full rounded-sm border-2 border-[#800000] shadow">
                   <Image
                     src={resizedUrlForGallery}
                     data-title={mediaItem.title || ""}
@@ -184,7 +189,7 @@ const media = await getAllMedia();
                     alt={mediaItem.title || "Gallery Image"}
                     width="300"
                     height="300"
-                    class="object-cover object-center h-full mb-2 rounded gallery-image"
+                    class="object-cover object-center h-full mb-2 gallery-image"
                   />
                 </div>
               </button>
@@ -218,7 +223,7 @@ const media = await getAllMedia();
         selectedImageContainer.classList.toggle("hidden");
       }
       window.scrollTo({
-        top: selectedImageContainer.offsetTop,
+        top: selectedImageContainer.offsetTop - 800,
         left: 0,
         behavior: "smooth",
       });

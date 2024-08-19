@@ -7,50 +7,35 @@ const postDate = new Date(post._createdAt).toLocaleString("en-us", {
   month: "short",
   day: "numeric",
 });
-
 const originalImageUrl = urlForMedia(post.galleryImages.imageFile).url();
-const resizedUrlForGallery = originalImageUrl + "?w=500&fit=fill&fm=webp";
+const resizedUrlForGallery = originalImageUrl + "?w=640&h=360&fit=crop&fm=webp";
 ---
-
-<article class="w-full max-w-xl rounded-lg border bg-white p-4 sm:w-[48%]">
+<article class="w-full lg:w-[25%] p-2 bg-white border-2 border-[#800000] rounded-sm">
   <a
     href={`/blog/${post.slug.current}`}
     class="flex flex-col h-full gap-4"
     aria-label={`Read blog post ${post.title}`}
   >
-    <!-- Image -->
-    <div class="flex justify-center">
+    <div class="w-full pb-[56.25%] relative">
       <Image
-        data-title={"Blog Post Picture" || ""}
         src={resizedUrlForGallery}
         data-originalurl={originalImageUrl}
-        format="png"
-        alt={"Blog Post Picture"}
-        width="500"
-        height="500"
-        class="object-cover object-center w-full h-full rounded shadow-sm gallery-image"
+        alt={post.title || "Blog Post Picture"}
+        width={640}
+        height={360}
+        class="absolute inset-0 object-cover w-full h-full rounded shadow-sm"
       />
     </div>
-
-    <!-- Title and Arrow -->
     <div class="flex flex-col justify-start gap-2">
-      <h2 class="text-xl">{post.title}</h2>
+      <h2 class="text-xl font-bold">{post.title}</h2>
       <span class="text-xs italic">Posted {postDate}</span>
       <hr />
     </div>
-
-    <!-- Date -->
-
-    <!-- Excerpt -->
-    <p class="w-full text" style="line-break:anywhere">
+    <p class="w-full text">
       {post.excerpt}
     </p>
-
-    <!-- Read More -->
-    <p
-      class="mt-auto text-sm font-extrabold text-teal-600 underline justify-self-end"
-    >
-      Read More
+    <p class="mt-auto w-max justify-self-end border-[#800000] font-bold py-2 px-2 border-2">
+      Read More →
     </p>
   </a>
 </article>

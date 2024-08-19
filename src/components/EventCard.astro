@@ -4,7 +4,6 @@ import Emoji from "astro-emoji";
 import { urlForMedia } from "../sanity/urlForMedia";
 
 const { post } = Astro.props;
-
 const eventDate = new Date(post.dateStart)
   .toLocaleString("en-us", {
     year: "2-digit",
@@ -14,87 +13,61 @@ const eventDate = new Date(post.dateStart)
   })
   .replace(",", "")
   .split(" ");
-
 const eventTimeStart = new Date(post.dateStart).toLocaleTimeString("en-US", {
   hour: "numeric",
   minute: "numeric",
   hour12: true,
   timeZone: "America/Los_Angeles",
 });
-
 const eventTimeEnd = new Date(post.dateEnd).toLocaleTimeString("en-US", {
   hour: "numeric",
   minute: "numeric",
   hour12: true,
   timeZone: "America/Los_Angeles",
 });
-
 const originalImageUrl = urlForMedia(post.blogAndEventImages.imageFile).url();
-
-const resizedUrlForGallery = originalImageUrl + "?w=400&fit=fill&fm=webp";
+const resizedUrlForGallery = originalImageUrl + "?w=400&h=400&fit=crop&fm=webp";
 ---
-
-<article
-  class="flex flex-col w-full gap-2 p-6 my-4 bg-white border rounded-lg sm:flex-row sm:justify-between sm:gap-5"
->
-  <div class="w-full left sm:w-1/2">
-    <!-- Event Date -->
-    <div
-      class="flex items-center gap-2 px-4 mb-4 text-white bg-gray-800 rounded"
-    >
-      <p class="py-2 text-xl font-bold uppercase">
-        {eventDate[0]}{" "}
-        {eventDate[1]} '{eventDate[2]}
-      </p>
-    </div>
-
-    <!-- Image -->
-    <div class="flex justify-center w-full">
-      <Image
-        src={resizedUrlForGallery}
-        data-title={"Event Picture" || ""}
-        data-originalurl={originalImageUrl}
-        format="png"
-        alt={"Event Picture"}
-        width="400"
-        height="400"
-        class="object-cover object-center border-2 rounded shadow-sm gallery-image"
-      />
+<article class="basis-[25%] bg-white border-2 border-[#800000] rounded-sm">
+  <div class="relative">
+    <Image
+      src={resizedUrlForGallery}
+      alt={post.title || "Event Picture"}
+      width={400}
+      height={400}
+      class="object-cover w-full h-64"
+    />
+    <div class="absolute top-0 left-0 px-4 py-2 text-xl font-thin font-bold tracking-tighter text-black uppercase bg-yellow-400 border-b-4 border-r-4 border-black">
+      {eventDate[0]}&nbsp; {eventDate[1]} '{eventDate[2]}
     </div>
   </div>
-
-  <!-- Title -->
-  <div class="w-full right sm:w-1/2">
-    <h2 class="w-full text-2xl font-bold">{post.title}</h2>
-    <!-- Details -->
-    <div class="flex flex-col w-full gap-2 mt-4">
-      <p class="text-lg uppercase">
-        <span class="font-extrabold">
-          <Emoji symbol="📍" />
-          Location:
-        </span>
+  
+  <div class="p-6">
+    <h2 class="mb-4 text-3xl font-black text-black">{post.title}</h2>
+    
+    <div class="space-y-3">
+      <p class="flex items-center text-lg">
+        <span class="mr-2 text-2xl"><Emoji symbol="📍" /></span>
+        <span class="mr-2 font-bold">Location:</span>
         {post.location}
       </p>
-      <p class="text-lg uppercase">
-        <span class="font-extrabold">
-          <Emoji symbol="💰" />
-          Cost:
-        </span>
+      <p class="flex items-center text-lg">
+        <span class="mr-2 text-2xl"><Emoji symbol="💰" /></span>
+        <span class="mr-2 font-bold">Cost:</span>
         {post.entryFee}
       </p>
-      <p class="text-lg uppercase">
-        <span class="font-extrabold">
-          <Emoji symbol="⏰" />
-          Time:
-        </span>
+      <p class="flex items-center text-lg">
+        <span class="mr-2 text-2xl"><Emoji symbol="⏰" /></span>
+        <span class="mr-2 font-bold">Time:</span>
         {eventTimeStart} - {eventTimeEnd}
       </p>
-      <a
-        href={`/events/${post.slug.current}`}
-        class="font-extrabold text-teal-600 underline"
-      >
-        Learn More
-      </a>
     </div>
+    
+    <a
+      href={`/events/${post.slug.current}`}
+      class="inline-block mt-6 border-[#800000] font-bold py-2 px-2 border-2"
+    >
+      Learn More  →
+    </a>
   </div>
 </article>
