@@ -2,11 +2,11 @@
 import { Image } from "astro:assets";
 import Emoji from "astro-emoji";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import EventsLayout from "../../layouts/EventsLayout.astro";
 
 import PortableText from "../../components/PortableText.astro";
 import { getAllEventPosts } from "../../sanity/api";
 import { urlForMedia } from "../../sanity/urlForMedia";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const posts = await getAllEventPosts();
@@ -52,10 +52,8 @@ export async function getStaticPaths() {
 const post = Astro.props;
 ---
 
-<EventsLayout title={post.title}>
-  <main
-    class="m-auto block w-full max-w-4xl bg-white p-8 font-skinDisplay shadow"
-  >
+<Layout title={post.title}>
+  <main class="m-auto block w-full max-w-[1440px] bg-white p-8 shadow">
     <Breadcrumbs
       breadcrumbData={{
         parentPath: "/events",
@@ -71,10 +69,10 @@ const post = Astro.props;
         {post.author ? "/ Author: " + post.author : ""}
       </p>
     </div>
-    <div class="m-auto mb-12 w-1/2">
+    <div class="w-1/2 m-auto mb-12">
       <Image
         src={urlForMedia(post.blogAndEventImages.imageFile.asset._ref).url()}
-        class="w-full rounded border-2 shadow-sm object-cover object-center mb-2"
+        class="object-cover object-center w-full mb-2 border-2 rounded shadow-sm"
         alt="logo"
         format="png"
         width="800"
@@ -83,9 +81,9 @@ const post = Astro.props;
       <p>{post.blogAndEventImages.title}</p>
       <p class="italic">{post.blogAndEventImages.caption}</p>
     </div>
-    <div class="flex flex-col items-center justify-evenly gap-2 sm:flex-row">
+    <div class="flex flex-col items-center gap-2 justify-evenly sm:flex-row">
       <div
-        class="mx-auto mb-3 flex flex-col items-center justify-around self-start rounded border border-black px-8 py-2 sm:mx-[initial] sm:my-auto"
+        class="mx-auto mb-3 flex flex-col items-center justify-around self-start rounded border border-[#800000] px-8 py-2 sm:mx-[initial] sm:my-auto"
       >
         <p class="text-2xl font-extrabold uppercase">{post.eventDate[0]}</p>
         <p class="text-4xl font-extrabold">{post.eventDate[1]}</p>
@@ -116,7 +114,7 @@ const post = Astro.props;
       </div>
     </div>
     <hr class="mb-8" />
-    <div class="mb-24 flex flex-col px-8">
+    <div class="flex flex-col px-8 mb-24">
       <PortableText portableText={post.content} />
     </div>
     <hr class="mb-4" />
@@ -128,4 +126,4 @@ const post = Astro.props;
       }}
     />
   </main>
-</EventsLayout>
+</Layout>

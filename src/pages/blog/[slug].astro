@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import PortableText from "../../components/PortableText.astro";
-import BlogLayout from "../../layouts/BlogLayout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { getAllBlogPosts } from "../../sanity/api";
 import { urlForMedia } from "../../sanity/urlForMedia";
 
@@ -24,10 +24,8 @@ export async function getStaticPaths() {
 const post = Astro.props;
 ---
 
-<BlogLayout title={post.title}>
-  <main
-    class="m-auto block w-full max-w-4xl bg-white p-8 font-skinDisplay shadow"
-  >
+<Layout title={post.title}>
+  <main class="m-auto block w-full max-w-[1440px] bg-white p-8 shadow">
     <Breadcrumbs
       breadcrumbData={{
         parentPath: "/blog",
@@ -43,10 +41,10 @@ const post = Astro.props;
         {post.author ? "/ Author: " + post.author : ""}
       </p>
     </div>
-    <div class="m-auto mb-12 w-1/2">
+    <div class="w-1/2 m-auto mb-12">
       <Image
         src={urlForMedia(post.galleryImages.imageFile.asset._ref).url()}
-        class="w-full rounded border-2 shadow-sm object-cover object-center mb-2"
+        class="object-cover object-center w-full mb-2 border-2 rounded shadow-sm"
         alt="logo"
         format="png"
         width="800"
@@ -55,7 +53,7 @@ const post = Astro.props;
       <p>{post.galleryImages.title}</p>
       <p class="italic">{post.galleryImages.caption}</p>
     </div>
-    <div class="mb-24 flex flex-col">
+    <div class="flex flex-col mb-24">
       <PortableText portableText={post.content} />
     </div>
     <hr class="mb-4" />
@@ -67,4 +65,4 @@ const post = Astro.props;
       }}
     />
   </main>
-</BlogLayout>
+</Layout>

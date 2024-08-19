@@ -35,12 +35,12 @@ const resizedUrlForGallery = originalImageUrl + "?w=400&fit=fill&fm=webp";
 ---
 
 <article
-  class="my-4 flex w-full flex-col gap-2 rounded-lg border bg-white p-6 sm:flex-row sm:justify-between sm:gap-5"
+  class="flex flex-col w-full gap-2 p-6 my-4 bg-white border rounded-lg sm:flex-row sm:justify-between sm:gap-5"
 >
-  <div class="left w-full sm:w-1/2">
+  <div class="w-full left sm:w-1/2">
     <!-- Event Date -->
     <div
-      class="mb-4 flex items-center gap-2 rounded bg-gray-800 px-4 text-white"
+      class="flex items-center gap-2 px-4 mb-4 text-white bg-gray-800 rounded"
     >
       <p class="py-2 text-xl font-bold uppercase">
         {eventDate[0]}{" "}
@@ -49,7 +49,7 @@ const resizedUrlForGallery = originalImageUrl + "?w=400&fit=fill&fm=webp";
     </div>
 
     <!-- Image -->
-    <div class="flex w-full justify-center">
+    <div class="flex justify-center w-full">
       <Image
         src={resizedUrlForGallery}
         data-title={"Event Picture" || ""}
@@ -58,16 +58,16 @@ const resizedUrlForGallery = originalImageUrl + "?w=400&fit=fill&fm=webp";
         alt={"Event Picture"}
         width="400"
         height="400"
-        class="gallery-image rounded border-2 object-cover object-center shadow-sm"
+        class="object-cover object-center border-2 rounded shadow-sm gallery-image"
       />
     </div>
   </div>
 
   <!-- Title -->
-  <div class="right w-full sm:w-1/2">
+  <div class="w-full right sm:w-1/2">
     <h2 class="w-full text-2xl font-bold">{post.title}</h2>
     <!-- Details -->
-    <div class="mt-4 flex w-full flex-col gap-2">
+    <div class="flex flex-col w-full gap-2 mt-4">
       <p class="text-lg uppercase">
         <span class="font-extrabold">
           <Emoji symbol="📍" />

@@ -1,5 +1,4 @@
 ---
-import Emoji from "astro-emoji";
 
 const currentPath = Astro.url.pathname;
 
@@ -12,33 +11,67 @@ const navItems = [
 ];
 ---
 
-<header class="text-black border-b-2 border-black">
-  <nav class="max-w-[1440px] mx-auto flex flex-wrap items-stretch justify-between border-r-2 border-black border-l-2">
-    <div class="flex items-center justify-between w-full lg:w-auto relative min-h-[52px]">
-      <a href="/" class="text-6xl absolute font-skinDisplay pl-2 font-bold tracking-tighter top-[-15px] hover:text-gray-700 transition-colors">CypherQueenz</a>
-      
-      <button id="hamburger" class="lg:hidden ml-auto border-2 border-black p-2 mr-2 hover:bg-black hover:text-beige transition-colors self-center">
+<header class="border-b-2 border-[#800000] sticky-top">
+  <nav
+    class="mx-auto flex max-w-[1440px] flex-wrap items-stretch justify-between border-r-2 border-l-2 border-[#800000] bg-white"
+  >
+    <div
+      class="relative flex min-h-[60px] w-full items-center justify-between lg:w-auto"
+    >
+      <a
+        href="/"
+        class="absolute pl-2 text-5xl tracking-tighter transition-colors w-max"
+        >CYPHER<span class="font-[100]">Queenz</span></a
+      >
+
+      <button
+        id="hamburger"
+        class="self-center p-2 ml-auto mr-2 transition-colors border-2 border-[#800000] hover:text-beige hover:bg-[#800000] lg:hidden"
+      >
         <span class="sr-only">Menu</span>
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
       </button>
     </div>
-    
-    <div id="navMenuContainer" class="hidden w-full lg:flex lg:w-auto lg:items-stretch mt-4 lg:mt-0">
-      <ul class="flex flex-col lg:flex-row w-full lg:w-auto">
-        {navItems.map((item, index) => (
-          <li class={`nav-item hover:scale-105 flex items-stretch ${index !== 0 ? 'lg:border-l-2' : ''} ${index !== navItems.length - 1 ? 'border-b-2 lg:border-b-0' : ''} lg:border-r-2 border-black`}>
-            <a
-              href={item.href}
-              class={`text-xl font-bold transition-colors px-4 py-2 lg:py-0 flex items-center w-full ${
-                currentPath === item.href ? "underline" : ""
-              }`}
+
+    <div
+      id="navMenuContainer"
+      class="hidden w-full uppercase lg:mt-0 lg:flex lg:w-auto lg:items-stretch"
+    >
+      <ul class="flex flex-col w-full lg:w-auto lg:flex-row">
+        {
+          navItems.map((item, index) => (
+            <li
+              class={`nav-item flex items-stretch ${
+                index !== 0 ? "lg:border-l-2" : ""
+              } ${
+                index !== navItems.length - 1 ? "border-b-2 lg:border-b-0" : ""
+              } border-[#800000] lg:border-r-2`}
             >
-              {item.label}
-            </a>
-          </li>
-        ))}
+              <a
+                href={item.href}
+                class={`flex w-full items-center border-b-4 px-4 py-2 text-xl font-[100] tracking-tighter  hover:border-[#800000]  lg:py-0 ${
+                  currentPath === item.href
+                    ? "border-b-4 border-[#800000]"
+                    : "border-transparent"
+                }`}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </nav>
@@ -47,9 +80,9 @@ const navItems = [
 <style>
   @media (max-width: 1023px) {
     #navMenuContainer {
-      border-top: 2px solid black;
+      border-top: 2px solid #800000;
     }
-    
+
     .nav-item:last-child {
       border-bottom: none;
     }
@@ -59,7 +92,6 @@ const navItems = [
     .nav-item {
       border-right-width: 0;
     }
-
 
     .nav-item:first-child {
       border-left-width: 2px;

@@ -1,11 +1,7 @@
 ---
 import { Image } from "astro:assets";
-
-import Footer from "../components/Footer.astro";
-import NavBar from "../components/NavBar.astro";
 import logo from "../images/shared/logo.webp";
 import Layout from "../layouts/Layout.astro";
-
 import noExcuses from "../images/about/no_excuses.webp";
 import goodfootLogo from "../images/home/goodfoot-logo.webp";
 ---
@@ -20,7 +16,7 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
   }
 
   .value {
-    @apply mb-12 basis-1/3 border-2 border-black p-1 shadow-sm;
+    @apply mb-12 basis-1/3 border-2 border-[#800000] p-1 shadow-sm;
   }
 
   .value-title {
@@ -35,24 +31,25 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
   }
 </style>
 <Layout title="Cypher Queenz | About">
-  <main class="m-auto block w-full max-w-4xl">
-    <div class="p-8">
+  <main class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] bg-white">
+    <section class="p-8" 
+    >
       <h1 class="mb-2 text-4xl font-extrabold">About Us</h1>
       <Image
         src={logo}
-        class="object-contain w-64 sm:w-80 object-center drop-shadow-xl m-auto mb-10"
+        class="object-contain object-center w-64 m-auto mb-10 sm:w-80 drop-shadow-xl"
         alt="Cypher Queenz Logo"
       />
 
       <ul
-        class="nav nav-tabs mb-4 flex list-none flex-col flex-wrap border-b-0 pl-0 md:flex-row"
+        class="flex flex-col flex-wrap pl-0 mb-4 list-none border-b-0 nav nav-tabs md:flex-row"
         id="tabs-tabFill"
         role="tablist"
       >
-        <li class="nav-item flex-auto text-center" role="presentation">
+        <li class="flex-auto text-center nav-item" role="presentation">
           <a
             href="#tabs-missionFill"
-            class="active nav-link my-2 block w-full border-0 border-x-0 border-t-0 border-b-4 border-transparent px-6 py-3 text-xl font-semibold uppercase leading-tight transition-all hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="block w-full px-6 py-3 my-2 text-xl font-semibold leading-tight uppercase transition-all border-0 border-t-0 border-b-4 border-transparent active nav-link border-x-0 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
             id="tabs-mission-tabFill"
             data-bs-toggle="pill"
             data-bs-target="#tabs-missionFill"
@@ -61,10 +58,10 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
             aria-selected="true">Mission</a
           >
         </li>
-        <li class="nav-item flex-auto text-center" role="presentation">
+        <li class="flex-auto text-center nav-item" role="presentation">
           <a
             href="#tabs-visionFill"
-            class="nav-link my-2 block w-full border-0 border-x-0 border-t-0 border-b-4 border-transparent px-6 py-3 text-xl font-semibold uppercase leading-tight transition-all hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="block w-full px-6 py-3 my-2 text-xl font-semibold leading-tight uppercase transition-all border-0 border-t-0 border-b-4 border-transparent nav-link border-x-0 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
             id="tabs-vision-tabFill"
             data-bs-toggle="pill"
             data-bs-target="#tabs-visionFill"
@@ -73,10 +70,10 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
             aria-selected="false">Vision</a
           >
         </li>
-        <li class="nav-item flex-auto text-center" role="presentation">
+        <li class="flex-auto text-center nav-item" role="presentation">
           <a
             href="#tabs-historyFill"
-            class="nav-link my-2 block w-full border-0 border-x-0 border-t-0 border-b-4 border-transparent px-6 py-3 text-xl font-semibold uppercase leading-tight transition-all hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="block w-full px-6 py-3 my-2 text-xl font-semibold leading-tight uppercase transition-all border-0 border-t-0 border-b-4 border-transparent nav-link border-x-0 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
             id="tabs-history-tabFill"
             data-bs-toggle="pill"
             data-bs-target="#tabs-historyFill"
@@ -205,11 +202,11 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
 
       <section>
         <h2 class="mb-4 text-3xl font-extrabold">No Excuses</h2>
-        <div class="mb-8 flex justify-evenly">
+        <div class="flex mb-8 justify-evenly">
           <a href="https://www.thegoodfootarts.org/about">
             <Image
               src={noExcuses}
-              class="relative w-32 h-32 rounded-lg shadow-app transition-all duration-150 hover:bottom-2 bottom-0"
+              class="relative bottom-0 w-32 h-32 transition-all duration-150 rounded-lg shadow-app hover:bottom-2"
               alt="no excuses logo"
             />
           </a>
@@ -217,7 +214,7 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
             <Image
               src={goodfootLogo}
               alt="GoodFoot Collective Logo"
-              class="relative w-32 h-32 invert p-2 rounded-lg shadow-app object-contain object-center transition-all duration-150 hover:bottom-2 bottom-0"
+              class="relative bottom-0 object-contain object-center w-32 h-32 p-2 transition-all duration-150 rounded-lg invert shadow-app hover:bottom-2"
             />
           </a>
         </div>
@@ -234,7 +231,7 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
           communities and in the hip hop, street dance community.
         </p>
       </section>
-    </div>
+    </section>
   </main>
 </Layout>
 

@@ -23,20 +23,20 @@ const customComponents = {
             <div class="w-3/4 mx-auto mb-6">
             <Image src="${urlForMedia(
               value
-            ).url()}" width="400" height="400" alt="blog photo" class="rounded shadow w-full h-full object-cover object-center" />
+            ).url()}" width="400" height="400" alt="blog photo" class="object-cover object-center w-full h-full rounded shadow" />
             </div>`;
     },
   },
   block: {
     h1: ({ value }: any) => {
-      return `<h2 class="text-3xl mb-6">${value.children[0].text}</h2>`;
+      return `<h2 class="mb-6 text-3xl">${value.children[0].text}</h2>`;
     },
     h2: ({ value }: any) =>
-      `<h3 class="text-xl mb-6">${value.children[0].text}</h3>`,
+      `<h3 class="mb-6 text-xl">${value.children[0].text}</h3>`,
     h3: ({ value }: any) =>
-      `<h4 class="text-lg mb-6">${value.children[0].text}</h4>`,
+      `<h4 class="mb-6 text-lg">${value.children[0].text}</h4>`,
     blockquote: ({ value }: any) =>
-      `<blockquote class=" border-l-2 border-gray-300 pl-2 text-xl italic font-semibold text-gray-900 mb-6">${value.children[0].text}</blockquote>`,
+      `<blockquote class="pl-2 mb-6 text-xl italic font-semibold text-gray-900 border-l-2 border-gray-300 ">${value.children[0].text}</blockquote>`,
     normal: ({ value }: any) => {
       // switch case for different types of blocks
       return `<p class="self-start ${

@@ -22,18 +22,40 @@ const { title } = Astro.props;
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;800" />
+    <GoogleFontsOptimizer
+      url="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;800"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title ? title : "Cypher Queenz | Bgirl Organization"}</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
     <ViewTransitions />
   </head>
-  <body class="flex flex-col min-h-screen  text-black">
+  <body class="flex flex-col min-h-screen text-black">
+    <div id="fb-root"></div>
+    <script>
+      declare const window: any;
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "549851657070188",
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: "v15.0",
+        });
+      };
+    </script>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/all.js"
+    ></script>
+    <div class="grain-overlay"></div>
+    <div class="concrete-overlay"></div>
     <NavBar />
-    <div class="flex-grow max-w-[1440px] w-full mx-auto border-l-2 border-r-2 border-black">
-      <slot />
-    </div>
+    <slot />
     <Footer />
+    <ViewTransitions />
+
     <style is:global>
       :root {
         --font-family-skin-display: "SlowScript";
@@ -42,35 +64,46 @@ const { title } = Astro.props;
         --color-shadow: 135 103 123;
       }
 
-      @font-face {
-        font-family: "Combine";
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url("/fonts/Combine.otf") format("opentype");
-      }
-      @font-face {
-        font-family: "SlowScript";
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url("/fonts/SlowScript-One.otf") format("opentype");
-      }
-      @font-face {
-        font-family: "Squarevetica";
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: url("/fonts/Squarevetica-Regular.otf") format("opentype");
-      }
-
       html {
-        font-family: 'Noto Sans', sans-serif;
+        font-family: sans-serif;
         font-synthesis: none;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         -webkit-text-size-adjust: 100%;
+      }
+
+      .grain-overlay {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background-image: url(/grain-uniform.png);
+        background-repeat: repeat;
+        background-size: 150px;
+        opacity: 0.1;
+        z-index: 999;
+      }
+
+      .concrete-overlay {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background-image: url(/concrete-texture.webp);
+        background-repeat: repeat;
+        background-size: 150px;
+        opacity: 1;
+        z-index: -1;
+      }
+      body {
+        background-size: 0px 0px;
+        background-image: linear-gradient(to right, grey 1px, transparent 1px),
+          linear-gradient(to bottom, grey 1px, transparent 1px);
       }
     </style>
     <script async src="//www.instagram.com/embed.js"></script>

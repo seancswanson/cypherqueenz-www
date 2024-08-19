@@ -17,13 +17,6 @@ module.exports = {
           accent: "var(--color-bg-accent)",
         },
       },
-      backgroundImage: {
-        skinPattern: "var(--bg-image-skin-pattern)",
-        rainbow: "url('./public/rainbow-bg.webp')",
-      },
-      backgroundSize: {
-        skinPattern: "var(--bg-image-skin-pattern-size)",
-      },
       minHeight: {
         50: "50px",
         160: "160px",

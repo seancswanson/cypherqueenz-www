@@ -1,25 +1,23 @@
 ---
 import { Image } from "astro:assets";
-
-import Footer from "../components/Footer.astro";
-import NavBar from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
 
 import { getAllMedia } from "../sanity/api";
 import { urlForMedia } from "../sanity/urlForMedia";
 
 const media = await getAllMedia();
-let selectedMedia;
 ---
 
-<Layout title="Cypher Queenz | Gallery">
-  <main class="m-auto block w-full max-w-4xl pb-32 font-skinDisplay">
+<Layout title="Cypher Queenz | Media">
+  <main
+    class="m-auto w-full max-w-[1440px] border-l-2 border-r-2 border-[#800000] bg-white pb-32"
+  >
     <div class="h-full p-8">
       <h1 class="mb-8 text-4xl font-extrabold">Media Gallery</h1>
       <h2 class="mb-4">Follow us on Instagram for the latest media:</h2>
-      <div class="mb-4 flex items-center justify-center align-middle">
+      <div class="flex items-center justify-center mb-4 align-middle">
         <blockquote
-          class="instagram-media mx-auto max-w-2xl rounded-sm shadow-app"
+          class="max-w-2xl mx-auto rounded-sm instagram-media shadow-app"
           data-instgrm-permalink="https://www.instagram.com/cypherqueenz/?utm_source=ig_embed&utm_campaign=loading"
           data-instgrm-version="14"
           style="background:#FFF; min-width:326px; padding:0; width:99.375%;"
@@ -154,7 +152,7 @@ let selectedMedia;
 
       <h2 class="mb-4">Featured Media:</h2>
       <div
-        class="selected-image-container m-auto my-10 hidden w-full rounded sm:w-3/4"
+        class="hidden w-full m-auto my-10 rounded selected-image-container sm:w-3/4"
       >
         <Image
           src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png"
@@ -162,13 +160,13 @@ let selectedMedia;
           alt="Empty"
           width="1"
           height="1"
-          class="m-auto border rounded border-black gallery-image-selected h-full w-full object-center"
+          class="object-center w-full h-full m-auto border border-[#800000] rounded gallery-image-selected"
         />
         <div class="image-data-container">
           <h2 class="title"></h2>
         </div>
       </div>
-      <section class="m-auto flex w-full flex-wrap justify-center gap-4">
+      <section class="flex flex-wrap justify-center w-full gap-4 m-auto">
         {
           media.map((mediaItem: any) => {
             const originalImageUrl = urlForMedia(mediaItem.imageFile).url();
@@ -176,8 +174,8 @@ let selectedMedia;
               originalImageUrl + "?w=300&fit=fill&fm=webp";
 
             return (
-              <button class="h-40 w-64">
-                <div class="h-full rounded border border-black shadow">
+              <button class="w-64 h-40">
+                <div class="h-full border border-[#800000] rounded shadow">
                   <Image
                     src={resizedUrlForGallery}
                     data-title={mediaItem.title || ""}
@@ -186,7 +184,7 @@ let selectedMedia;
                     alt={mediaItem.title || "Gallery Image"}
                     width="300"
                     height="300"
-                    class="gallery-image mb-2 h-full rounded object-cover object-center"
+                    class="object-cover object-center h-full mb-2 rounded gallery-image"
                   />
                 </div>
               </button>

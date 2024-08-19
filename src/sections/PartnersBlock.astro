@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import footworkPicture from "../images/home/cypher-queenz-footwork-pop.png";
+import goodfootLogo from "../images/home/goodfoot-logo.webp";
+import zuluLogo from "../images/home/zulu-logo.webp";
+import noExcuses from "../images/about/no_excuses.webp";
+
+---
+
+<section class="flex flex-col-reverse md:flex-row">
+  <div class=" basis-1/3 flex-col gap-4 border-[#800000]" id="footwork-image">
+    <Image
+      src={footworkPicture}
+      class="object-contain object-center w-full h-full"
+      alt="group photo"
+    />
+  </div>
+  <div class="flex flex-col basis-2/3 border-[#800000] gap-4 p-8">
+    <h2 class="text-3xl font-bold lowercase sm:text-5xl">Our Partners</h2>
+    <h3 class="text-2xl">
+      CYPHERQueenz is proud to partner with:
+    </h3>
+    <div class="flex justify-between gap-2">
+      <a
+        href="https://www.206zulu.org/"
+        class="relative bottom-0 w-32 p-3 transition-all duration-150  hover:scale-[1.01] sm:w-48"
+      >
+        <Image
+          src={zuluLogo}
+          alt="206 Zulu Logo"
+          class="object-contain object-center h-full"
+        />
+      </a>
+      <a
+        href="https://www.thegoodfootarts.org/"
+        class="relative bottom-0 w-32 p-3 transition-all duration-150  hover:scale-[1.01] sm:w-48"
+      >
+        <Image
+          src={goodfootLogo}
+          alt="GoodFoot Collective Logo"
+          class="object-contain object-center h-full invert"
+        />
+      </a>
+      <a href="https://www.thegoodfootarts.org/about">
+        <Image
+          src={noExcuses}
+          class="relative bottom-0 w-32 h-full p-3 transition-all duration-150  hover:scale-[1.01] sm:w-48"
+
+          alt="no excuses logo"
+        />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  #footwork-image {
+    background-image: url('/src/images/home/cypher-queenz-footwork-pop-blur.png');
+    background-position: center;
+    background-size: 400%;
+  }
+</style>
