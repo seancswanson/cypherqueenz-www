@@ -26,6 +26,9 @@ const { title } = Astro.props;
     <title>{title ? title : "Cypher Queenz | Bgirl Organization"}</title>
     <link rel="sitemap" href="/sitemap-index.xml" />
     <ViewTransitions />
+    <!-- Preload background images -->
+    <link rel="preload" as="image" href="/grain-uniform.png" />
+    <link rel="preload" as="image" href="/concrete-texture-sm.webp" />
   </head>
   <body class="flex flex-col min-h-screen text-black">
     <div id="fb-root"></div>
@@ -51,15 +54,8 @@ const { title } = Astro.props;
     <NavBar />
     <slot />
     <Footer />
-    <ViewTransitions />
 
     <style is:global>
-      :root {
-        --color-bg-base: #ffffff;
-        --color-bg-accent: #f4f0e6;
-        --color-shadow: 135 103 123;
-      }
-
       html {
         font-family: sans-serif;
         font-synthesis: none;
