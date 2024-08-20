@@ -7,12 +7,12 @@ import { promisify } from "util";
 
 // src/account.ts
 var getAccountObject = (idHeader) => ({
-  id: idHeader ?? ""
+  id: idHeader ?? "",
 });
 
 // src/deploy.ts
 var getDeploybject = (idHeader) => ({
-  id: idHeader ?? ""
+  id: idHeader ?? "",
 });
 
 // src/geo.ts
@@ -22,7 +22,9 @@ var parseGeoHeader = (geoHeader) => {
     return {};
   }
   try {
-    const geoData = JSON.parse(Buffer.from(geoHeader, "base64").toString("utf-8"));
+    const geoData = JSON.parse(
+      Buffer.from(geoHeader, "base64").toString("utf-8")
+    );
     return geoData;
   } catch {
     return {};
@@ -87,9 +89,8 @@ function lexer(str, lenient = false) {
   let i = 0;
   while (i < str.length) {
     const char = str[i];
-    const ErrorOrInvalid = function(msg) {
-      if (!lenient)
-        throw new TypeError(msg);
+    const ErrorOrInvalid = function (msg) {
+      if (!lenient) throw new TypeError(msg);
       tokens.push({ type: "INVALID_CHAR", index: i, value: str[i++] });
     };
     if (char === "*") {
@@ -117,7 +118,10 @@ function lexer(str, lenient = false) {
       let j = i + 1;
       while (j < str.length) {
         const code = str.substr(j, 1);
-        if (j === i + 1 && regexIdentifierStart.test(code) || j !== i + 1 && regexIdentifierPart.test(code)) {
+        if (
+          (j === i + 1 && regexIdentifierStart.test(code)) ||
+          (j !== i + 1 && regexIdentifierPart.test(code))
+        ) {
           name += str[j++];
           continue;
         }
@@ -197,23 +201,21 @@ function parse(str, options = {}) {
   let path = "";
   let nameSet = /* @__PURE__ */ new Set();
   const tryConsume = (type) => {
-    if (i < tokens.length && tokens[i].type === type)
-      return tokens[i++].value;
+    if (i < tokens.length && tokens[i].type === type) return tokens[i++].value;
   };
   const tryConsumeModifier = () => {
     return tryConsume("OTHER_MODIFIER") ?? tryConsume("ASTERISK");
   };
   const mustConsume = (type) => {
     const value = tryConsume(type);
-    if (value !== void 0)
-      return value;
+    if (value !== void 0) return value;
     const { type: nextType, index } = tokens[i];
     throw new TypeError(`Unexpected ${nextType} at ${index}, expected ${type}`);
   };
   const consumeText = () => {
     let result2 = "";
     let value;
-    while (value = tryConsume("CHAR") ?? tryConsume("ESCAPED_CHAR")) {
+    while ((value = tryConsume("CHAR") ?? tryConsume("ESCAPED_CHAR"))) {
       result2 += value;
     }
     return result2;
@@ -230,18 +232,26 @@ function parse(str, options = {}) {
     if (!pendingFixedValue.length) {
       return;
     }
-    result.push(new Part(
-      3,
-      "",
-      "",
-      encodePart(pendingFixedValue),
-      "",
-      3
-      /* kNone */
-    ));
+    result.push(
+      new Part(
+        3,
+        "",
+        "",
+        encodePart(pendingFixedValue),
+        "",
+        3
+        /* kNone */
+      )
+    );
     pendingFixedValue = "";
   };
-  const addPart = (prefix, nameToken, regexOrWildcardToken, suffix, modifierToken) => {
+  const addPart = (
+    prefix,
+    nameToken,
+    regexOrWildcardToken,
+    suffix,
+    modifierToken
+  ) => {
     let modifier = 3;
     switch (modifierToken) {
       case "?":
@@ -292,7 +302,16 @@ function parse(str, options = {}) {
       throw new TypeError(`Duplicate name '${name}'.`);
     }
     nameSet.add(name);
-    result.push(new Part(type, name, encodePart(prefix), regexValue, encodePart(suffix), modifier));
+    result.push(
+      new Part(
+        type,
+        name,
+        encodePart(prefix),
+        regexValue,
+        encodePart(suffix),
+        modifier
+      )
+    );
   };
   while (i < tokens.length) {
     const charToken = tryConsume("CHAR");
@@ -371,18 +390,17 @@ function partsToRegexp(parts, names, options = {}) {
       if (part.modifier === 3) {
         result += escapeString(part.value);
       } else {
-        result += `(?:${escapeString(part.value)})${modifierToString(part.modifier)}`;
+        result += `(?:${escapeString(part.value)})${modifierToString(
+          part.modifier
+        )}`;
       }
       continue;
     }
-    if (names)
-      names.push(part.name);
+    if (names) names.push(part.name);
     const segmentWildcardRegex = `[^${escapeString(options.delimiter)}]+?`;
     let regexValue = part.value;
-    if (part.type === 1)
-      regexValue = segmentWildcardRegex;
-    else if (part.type === 0)
-      regexValue = kFullWildcardRegex;
+    if (part.type === 1) regexValue = segmentWildcardRegex;
+    else if (part.type === 0) regexValue = kFullWildcardRegex;
     if (!part.prefix.length && !part.suffix.length) {
       if (part.modifier === 3 || part.modifier === 1) {
         result += `(${regexValue})${modifierToString(part.modifier)}`;
@@ -392,7 +410,9 @@ function partsToRegexp(parts, names, options = {}) {
       continue;
     }
     if (part.modifier === 3 || part.modifier === 1) {
-      result += `(?:${escapeString(part.prefix)}(${regexValue})${escapeString(part.suffix)})`;
+      result += `(?:${escapeString(part.prefix)}(${regexValue})${escapeString(
+        part.suffix
+      )})`;
       result += modifierToString(part.modifier);
       continue;
     }
@@ -437,19 +457,19 @@ var DEFAULT_OPTIONS = {
   delimiter: "",
   prefixes: "",
   sensitive: true,
-  strict: true
+  strict: true,
 };
 var HOSTNAME_OPTIONS = {
   delimiter: ".",
   prefixes: "",
   sensitive: true,
-  strict: true
+  strict: true,
 };
 var PATHNAME_OPTIONS = {
   delimiter: "/",
   prefixes: "/",
   sensitive: true,
-  strict: true
+  strict: true,
 };
 function isAbsolutePathname(pathname, isPattern) {
   if (!pathname.length) {
@@ -493,14 +513,7 @@ function treatAsIPv6Hostname(value) {
   }
   return false;
 }
-var SPECIAL_SCHEMES = [
-  "ftp",
-  "file",
-  "http",
-  "https",
-  "ws",
-  "wss"
-];
+var SPECIAL_SCHEMES = ["ftp", "file", "http", "https", "ws", "wss"];
 function isSpecialScheme(protocol_regexp) {
   if (!protocol_regexp) {
     return true;
@@ -608,8 +621,7 @@ function protocolEncodeCallback(input) {
   if (input === "") {
     return input;
   }
-  if (/^[-+.A-Za-z0-9]*$/.test(input))
-    return input.toLowerCase();
+  if (/^[-+.A-Za-z0-9]*$/.test(input)) return input.toLowerCase();
   throw new TypeError(`Invalid protocol '${input}'.`);
 }
 function usernameEncodeCallback(input) {
@@ -719,7 +731,11 @@ var Parser = class {
       /*lenient=*/
       true
     );
-    for (; this.tokenIndex < this.tokenList.length; this.tokenIndex += this.tokenIncrement) {
+    for (
+      ;
+      this.tokenIndex < this.tokenList.length;
+      this.tokenIndex += this.tokenIncrement
+    ) {
       this.tokenIncrement = 1;
       if (this.tokenList[this.tokenIndex].type === "END") {
         if (this.state === 0) {
@@ -811,7 +827,11 @@ var Parser = class {
               3
               /* USERNAME */
             );
-          } else if (this.isPathnameStart() || this.isSearchPrefix() || this.isHashPrefix()) {
+          } else if (
+            this.isPathnameStart() ||
+            this.isSearchPrefix() ||
+            this.isHashPrefix()
+          ) {
             this.rewindAndSetState(
               5
               /* HOSTNAME */
@@ -986,13 +1006,21 @@ var Parser = class {
   }
   isNonSpecialPatternChar(index, value) {
     const token = this.safeToken(index);
-    return token.value === value && (token.type === "CHAR" || token.type === "ESCAPED_CHAR" || token.type === "INVALID_CHAR");
+    return (
+      token.value === value &&
+      (token.type === "CHAR" ||
+        token.type === "ESCAPED_CHAR" ||
+        token.type === "INVALID_CHAR")
+    );
   }
   isProtocolSuffix() {
     return this.isNonSpecialPatternChar(this.tokenIndex, ":");
   }
   nextIsAuthoritySlashes() {
-    return this.isNonSpecialPatternChar(this.tokenIndex + 1, "/") && this.isNonSpecialPatternChar(this.tokenIndex + 2, "/");
+    return (
+      this.isNonSpecialPatternChar(this.tokenIndex + 1, "/") &&
+      this.isNonSpecialPatternChar(this.tokenIndex + 2, "/")
+    );
   }
   isIdentityTerminator() {
     return this.isNonSpecialPatternChar(this.tokenIndex, "@");
@@ -1014,7 +1042,12 @@ var Parser = class {
       return false;
     }
     const previousToken = this.safeToken(this.tokenIndex - 1);
-    return previousToken.type !== "NAME" && previousToken.type !== "REGEX" && previousToken.type !== "CLOSE" && previousToken.type !== "ASTERISK";
+    return (
+      previousToken.type !== "NAME" &&
+      previousToken.type !== "REGEX" &&
+      previousToken.type !== "CLOSE" &&
+      previousToken.type !== "ASTERISK"
+    );
   }
   isHashPrefix() {
     return this.isNonSpecialPatternChar(this.tokenIndex, "#");
@@ -1057,7 +1090,7 @@ var COMPONENTS = [
   "port",
   "pathname",
   "search",
-  "hash"
+  "hash",
 ];
 var DEFAULT_PATTERN = "*";
 function extractValues(url, baseURL) {
@@ -1073,7 +1106,7 @@ function extractValues(url, baseURL) {
     port: o.port,
     pathname: o.pathname,
     search: o.search !== "" ? o.search.substring(1, o.search.length) : void 0,
-    hash: o.hash !== "" ? o.hash.substring(1, o.hash.length) : void 0
+    hash: o.hash !== "" ? o.hash.substring(1, o.hash.length) : void 0,
   };
 }
 function processBaseURLString(input, isPattern) {
@@ -1087,14 +1120,23 @@ function applyInit(o, init, isPattern) {
   if (typeof init.baseURL === "string") {
     try {
       baseURL = new URL(init.baseURL);
-      o.protocol = processBaseURLString(baseURL.protocol.substring(0, baseURL.protocol.length - 1), isPattern);
+      o.protocol = processBaseURLString(
+        baseURL.protocol.substring(0, baseURL.protocol.length - 1),
+        isPattern
+      );
       o.username = processBaseURLString(baseURL.username, isPattern);
       o.password = processBaseURLString(baseURL.password, isPattern);
       o.hostname = processBaseURLString(baseURL.hostname, isPattern);
       o.port = processBaseURLString(baseURL.port, isPattern);
       o.pathname = processBaseURLString(baseURL.pathname, isPattern);
-      o.search = processBaseURLString(baseURL.search.substring(1, baseURL.search.length), isPattern);
-      o.hash = processBaseURLString(baseURL.hash.substring(1, baseURL.hash.length), isPattern);
+      o.search = processBaseURLString(
+        baseURL.search.substring(1, baseURL.search.length),
+        isPattern
+      );
+      o.hash = processBaseURLString(
+        baseURL.hash.substring(1, baseURL.hash.length),
+        isPattern
+      );
     } catch {
       throw new TypeError(`invalid baseURL '${init.baseURL}'.`);
     }
@@ -1119,7 +1161,11 @@ function applyInit(o, init, isPattern) {
     if (baseURL && !isAbsolutePathname(o.pathname, isPattern)) {
       const slashIndex = baseURL.pathname.lastIndexOf("/");
       if (slashIndex >= 0) {
-        o.pathname = processBaseURLString(baseURL.pathname.substring(0, slashIndex + 1), isPattern) + o.pathname;
+        o.pathname =
+          processBaseURLString(
+            baseURL.pathname.substring(0, slashIndex + 1),
+            isPattern
+          ) + o.pathname;
       }
     }
     o.pathname = canonicalizePathname(o.pathname, o.protocol, isPattern);
@@ -1157,14 +1203,27 @@ function partsToPattern(parts, options) {
         result += escapePatternString(part.value);
         continue;
       }
-      result += `{${escapePatternString(part.value)}}${modifierToString(part.modifier)}`;
+      result += `{${escapePatternString(part.value)}}${modifierToString(
+        part.modifier
+      )}`;
       continue;
     }
     const customName = part.hasCustomName();
-    let needsGrouping = !!part.suffix.length || !!part.prefix.length && (part.prefix.length !== 1 || !options.prefixes.includes(part.prefix));
+    let needsGrouping =
+      !!part.suffix.length ||
+      (!!part.prefix.length &&
+        (part.prefix.length !== 1 || !options.prefixes.includes(part.prefix)));
     const lastPart = i > 0 ? parts[i - 1] : null;
     const nextPart = i < parts.length - 1 ? parts[i + 1] : null;
-    if (!needsGrouping && customName && part.type === 1 && part.modifier === 3 && nextPart && !nextPart.prefix.length && !nextPart.suffix.length) {
+    if (
+      !needsGrouping &&
+      customName &&
+      part.type === 1 &&
+      part.modifier === 3 &&
+      nextPart &&
+      !nextPart.prefix.length &&
+      !nextPart.suffix.length
+    ) {
       if (nextPart.type === 3) {
         const code = nextPart.value.length > 0 ? nextPart.value[0] : "";
         needsGrouping = regexIdentifierPart2.test(code);
@@ -1172,7 +1231,12 @@ function partsToPattern(parts, options) {
         needsGrouping = !nextPart.hasCustomName();
       }
     }
-    if (!needsGrouping && !part.prefix.length && lastPart && lastPart.type === 3) {
+    if (
+      !needsGrouping &&
+      !part.prefix.length &&
+      lastPart &&
+      lastPart.type === 3
+    ) {
       const code = lastPart.value[lastPart.value.length - 1];
       needsGrouping = options.prefixes.includes(code);
     }
@@ -1190,7 +1254,14 @@ function partsToPattern(parts, options) {
         result += `(${segmentWildcardRegex})`;
       }
     } else if (part.type === 0) {
-      if (!customName && (!lastPart || lastPart.type === 3 || lastPart.modifier !== 3 || needsGrouping || part.prefix !== "")) {
+      if (
+        !customName &&
+        (!lastPart ||
+          lastPart.type === 3 ||
+          lastPart.modifier !== 3 ||
+          needsGrouping ||
+          part.prefix !== "")
+      ) {
         result += "*";
       } else {
         result += `(${kFullWildcardRegex2})`;
@@ -1229,12 +1300,16 @@ var URLPattern = class {
         parser.parse();
         init = parser.result;
         if (baseURL === void 0 && typeof init.protocol !== "string") {
-          throw new TypeError(`A base URL must be provided for a relative constructor string.`);
+          throw new TypeError(
+            `A base URL must be provided for a relative constructor string.`
+          );
         }
         init.baseURL = baseURL;
       } else {
         if (!init || typeof init !== "object") {
-          throw new TypeError(`parameter 1 is not of type 'string' and cannot convert to dictionary.`);
+          throw new TypeError(
+            `parameter 1 is not of type 'string' and cannot convert to dictionary.`
+          );
         }
         if (baseURL) {
           throw new TypeError(`parameter 1 is not of type 'string'.`);
@@ -1252,7 +1327,7 @@ var URLPattern = class {
         hostname: DEFAULT_PATTERN,
         port: DEFAULT_PATTERN,
         search: DEFAULT_PATTERN,
-        hash: DEFAULT_PATTERN
+        hash: DEFAULT_PATTERN,
       };
       this.pattern = applyInit(defaults, init, true);
       if (defaultPortForProtocol(this.pattern.protocol) === this.pattern.port) {
@@ -1260,8 +1335,7 @@ var URLPattern = class {
       }
       let component;
       for (component of COMPONENTS) {
-        if (!(component in this.pattern))
-          continue;
+        if (!(component in this.pattern)) continue;
         const options2 = {};
         const pattern = this.pattern[component];
         this.names[component] = [];
@@ -1316,9 +1390,14 @@ var URLPattern = class {
             this.names[component],
             options2
           );
-          this.component_pattern[component] = partsToPattern(this.parts[component], options2);
+          this.component_pattern[component] = partsToPattern(
+            this.parts[component],
+            options2
+          );
         } catch (err) {
-          throw new TypeError(`invalid ${component} pattern '${this.pattern[component]}'.`);
+          throw new TypeError(
+            `invalid ${component} pattern '${this.pattern[component]}'.`
+          );
         }
       }
     } catch (err) {
@@ -1334,7 +1413,7 @@ var URLPattern = class {
       hostname: "",
       port: "",
       search: "",
-      hash: ""
+      hash: "",
     };
     if (typeof input !== "string" && baseURL) {
       throw new TypeError(`parameter 1 is not of type 'string'.`);
@@ -1368,7 +1447,7 @@ var URLPattern = class {
       hostname: "",
       port: "",
       search: "",
-      hash: ""
+      hash: "",
     };
     if (typeof input !== "string" && baseURL) {
       throw new TypeError(`parameter 1 is not of type 'string'.`);
@@ -1406,7 +1485,7 @@ var URLPattern = class {
       }
       result[component] = {
         input: values[component] ?? "",
-        groups
+        groups,
       };
     }
     return result;
@@ -1414,12 +1493,9 @@ var URLPattern = class {
   static compareComponent(component, left, right) {
     const comparePart = (left2, right2) => {
       for (let attr of ["type", "modifier", "prefix", "value", "suffix"]) {
-        if (left2[attr] < right2[attr])
-          return -1;
-        else if (left2[attr] === right2[attr])
-          continue;
-        else
-          return 1;
+        if (left2[attr] < right2[attr]) return -1;
+        else if (left2[attr] === right2[attr]) continue;
+        else return 1;
       }
       return 0;
     };
@@ -1445,21 +1521,32 @@ var URLPattern = class {
       let i = 0;
       for (; i < Math.min(left2.length, right2.length); ++i) {
         let result = comparePart(left2[i], right2[i]);
-        if (result)
-          return result;
+        if (result) return result;
       }
       if (left2.length === right2.length) {
         return 0;
       }
-      return comparePart(left2[i] ?? emptyFixedPart, right2[i] ?? emptyFixedPart);
+      return comparePart(
+        left2[i] ?? emptyFixedPart,
+        right2[i] ?? emptyFixedPart
+      );
     };
-    if (!left.component_pattern[component] && !right.component_pattern[component]) {
+    if (
+      !left.component_pattern[component] &&
+      !right.component_pattern[component]
+    ) {
       return 0;
     }
-    if (left.component_pattern[component] && !right.component_pattern[component]) {
+    if (
+      left.component_pattern[component] &&
+      !right.component_pattern[component]
+    ) {
       return comparePartList(left.parts[component], [wildcardOnlyPart]);
     }
-    if (!left.component_pattern[component] && right.component_pattern[component]) {
+    if (
+      !left.component_pattern[component] &&
+      right.component_pattern[component]
+    ) {
       return comparePartList([wildcardOnlyPart], right.parts[component]);
     }
     return comparePartList(left.parts[component], right.parts[component]);
@@ -1503,7 +1590,8 @@ var getPathParameters = (path, url) => {
   }
   const trimmedURL = url.endsWith("/") ? url.slice(0, -1) : url;
   const matcher = new URLPattern(path, trimmedURL);
-  const match = (_a = matcher.exec(trimmedURL)) == null ? void 0 : _a.pathname.groups;
+  const match =
+    (_a = matcher.exec(trimmedURL)) == null ? void 0 : _a.pathname.groups;
   if (!match) {
     return {};
   }
@@ -1513,7 +1601,7 @@ var getPathParameters = (path, url) => {
     }
     return {
       ...acc,
-      [key]: value
+      [key]: value,
     };
   }, {});
   return parameters;
@@ -1522,10 +1610,8 @@ var getPathParameters = (path, url) => {
 // src/request.ts
 import { Buffer as Buffer2 } from "buffer";
 var requestRoute = Symbol("Request route");
-var BaseRequest = typeof Request === "undefined" ? class {
-} : Request;
-var NetlifyRequest = class extends BaseRequest {
-};
+var BaseRequest = typeof Request === "undefined" ? class {} : Request;
+var NetlifyRequest = class extends BaseRequest {};
 requestRoute;
 var buildRequestBody = (body, isBase64Encoded) => {
   if (body === null || body === void 0 || body === "") {
@@ -1543,7 +1629,7 @@ var getRequestId = (requestIdHeader) => requestIdHeader ?? "";
 // src/server.ts
 import { env } from "process";
 var getServerObject = () => ({
-  region: env.AWS_REGION
+  region: env.AWS_REGION,
 });
 
 // src/site.ts
@@ -1551,7 +1637,7 @@ import { env as env2 } from "process";
 var getSiteObject = () => ({
   id: env2.SITE_ID,
   name: env2.SITE_NAME,
-  url: env2.URL
+  url: env2.URL,
 });
 
 // src/context.ts
@@ -1559,8 +1645,8 @@ var json = (input) => {
   const data = JSON.stringify(input);
   return new Response(data, {
     headers: {
-      "content-type": "application/json"
-    }
+      "content-type": "application/json",
+    },
   });
 };
 var getContext = (req, cookies) => {
@@ -1579,7 +1665,9 @@ var getContext = (req, cookies) => {
     json,
     log: console.log,
     next: () => {
-      throw new Error("`context.next` is not implemented for serverless functions");
+      throw new Error(
+        "`context.next` is not implemented for serverless functions"
+      );
     },
     params,
     requestId: getRequestId(req.headers.get(NFRequestID)),
@@ -1588,7 +1676,7 @@ var getContext = (req, cookies) => {
       return rewrite(url);
     },
     server: getServerObject(),
-    site: getSiteObject()
+    site: getSiteObject(),
   };
   return context;
 };
@@ -1622,8 +1710,23 @@ function toIMF(date) {
   const s = dtPad(date.getUTCSeconds().toString());
   const y = date.getUTCFullYear();
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${days[date.getUTCDay()]}, ${d} ${months[date.getUTCMonth()]} ${y} ${h}:${min}:${s} GMT`;
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  return `${days[date.getUTCDay()]}, ${d} ${
+    months[date.getUTCMonth()]
+  } ${y} ${h}:${min}:${s} GMT`;
 }
 
 // node_modules/@netlify/node-cookies/dist/http/cookies.js
@@ -1651,7 +1754,10 @@ function toString(cookie) {
     out.push("HttpOnly");
   }
   if (typeof cookie.maxAge === "number" && Number.isInteger(cookie.maxAge)) {
-    assert(cookie.maxAge >= 0, "Max-Age must be an integer superior or equal to 0");
+    assert(
+      cookie.maxAge >= 0,
+      "Max-Age must be an integer superior or equal to 0"
+    );
     out.push(`Max-Age=${cookie.maxAge}`);
   }
   if (cookie.domain) {
@@ -1667,7 +1773,9 @@ function toString(cookie) {
   }
   if (cookie.expires) {
     const { expires } = cookie;
-    const dateString = toIMF(typeof expires === "number" ? new Date(expires) : expires);
+    const dateString = toIMF(
+      typeof expires === "number" ? new Date(expires) : expires
+    );
     out.push(`Expires=${dateString}`);
   }
   if (cookie.unparsed) {
@@ -1686,21 +1794,37 @@ function validatePath(path) {
   }
   for (let i = 0; i < path.length; i++) {
     const c = path.charAt(i);
-    if (c < String.fromCharCode(32) || c > String.fromCharCode(126) || c == ";") {
+    if (
+      c < String.fromCharCode(32) ||
+      c > String.fromCharCode(126) ||
+      c == ";"
+    ) {
       throw new Error(`${path}: Invalid cookie path char '${c}'`);
     }
   }
 }
 function validateValue(name, value) {
-  if (value == null || name == null)
-    return;
+  if (value == null || name == null) return;
   for (let i = 0; i < value.length; i++) {
     const c = value.charAt(i);
-    if (c < String.fromCharCode(33) || c == String.fromCharCode(34) || c == String.fromCharCode(44) || c == String.fromCharCode(59) || c == String.fromCharCode(92) || c == String.fromCharCode(127)) {
-      throw new Error(`RFC2616 cookie '${name}' cannot contain character '${c}'`);
+    if (
+      c < String.fromCharCode(33) ||
+      c == String.fromCharCode(34) ||
+      c == String.fromCharCode(44) ||
+      c == String.fromCharCode(59) ||
+      c == String.fromCharCode(92) ||
+      c == String.fromCharCode(127)
+    ) {
+      throw new Error(
+        `RFC2616 cookie '${name}' cannot contain character '${c}'`
+      );
     }
     if (c > String.fromCharCode(128)) {
-      throw new Error(`RFC2616 cookie '${name}' can only have US-ASCII chars as value${c.charCodeAt(0).toString(16)}`);
+      throw new Error(
+        `RFC2616 cookie '${name}' can only have US-ASCII chars as value${c
+          .charCodeAt(0)
+          .toString(16)}`
+      );
     }
   }
 }
@@ -1736,7 +1860,13 @@ function setCookie(headers, cookie) {
   }
 }
 function deleteCookie(headers, name, attributes) {
-  setCookie(headers, Object.assign({ name, value: "", expires: /* @__PURE__ */ new Date(0) }, attributes));
+  setCookie(
+    headers,
+    Object.assign(
+      { name, value: "", expires: /* @__PURE__ */ new Date(0) },
+      attributes
+    )
+  );
 }
 
 // src/cookie_store.ts
@@ -1751,7 +1881,7 @@ var CookieStore = class {
         case "delete":
           deleteCookie(response.headers, op.options.name, {
             domain: op.options.domain,
-            path: op.options.path
+            path: op.options.path,
           });
           break;
         case "set":
@@ -1763,12 +1893,12 @@ var CookieStore = class {
   }
   delete(input) {
     const defaultOptions = {
-      path: "/"
+      path: "/",
     };
     const options = typeof input === "string" ? { name: input } : input;
     this.ops.push({
       options: { ...defaultOptions, ...options },
-      type: "delete"
+      type: "delete",
     });
   }
   get(name) {
@@ -1778,14 +1908,16 @@ var CookieStore = class {
     return {
       delete: this.delete.bind(this),
       get: this.get.bind(this),
-      set: this.set.bind(this)
+      set: this.set.bind(this),
     };
   }
   set(key, value) {
     let cookie;
     if (typeof key === "string") {
       if (typeof value !== "string") {
-        throw new TypeError(`You must provide the cookie value as a string to 'cookies.set'`);
+        throw new TypeError(
+          `You must provide the cookie value as a string to 'cookies.set'`
+        );
       }
       cookie = { name: key, value };
     } else {
@@ -1802,8 +1934,22 @@ var PURGE_API_TOKEN_VARIABLE = "NETLIFY_PURGE_API_TOKEN";
 var NETLIFY_BLOBS_CONTEXT_VARIABLE = "NETLIFY_BLOBS_CONTEXT";
 var setEnvironmentContext = (headers, lambdaContext) => {
   var _a, _b, _c, _d;
-  const purgeAPIToken = (_b = (_a = lambdaContext == null ? void 0 : lambdaContext.clientContext) == null ? void 0 : _a.custom) == null ? void 0 : _b.purge_api_token;
-  const blobContext = (_d = (_c = lambdaContext == null ? void 0 : lambdaContext.clientContext) == null ? void 0 : _c.custom) == null ? void 0 : _d.blobs;
+  const purgeAPIToken =
+    (_b =
+      (_a = lambdaContext == null ? void 0 : lambdaContext.clientContext) ==
+      null
+        ? void 0
+        : _a.custom) == null
+      ? void 0
+      : _b.purge_api_token;
+  const blobContext =
+    (_d =
+      (_c = lambdaContext == null ? void 0 : lambdaContext.clientContext) ==
+      null
+        ? void 0
+        : _c.custom) == null
+      ? void 0
+      : _d.blobs;
   if (typeof blobContext === "string" && blobContext !== "") {
     try {
       const rawData = Buffer3.from(blobContext, "base64").toString("utf8");
@@ -1815,11 +1961,14 @@ var setEnvironmentContext = (headers, lambdaContext) => {
           edgeURL: data.url,
           token: data.token,
           siteID,
-          deployID
+          deployID,
         })
       ).toString("base64");
     } catch (error) {
-      console.error("An internal error occurred while setting up Netlify Blobs:", error);
+      console.error(
+        "An internal error occurred while setting up Netlify Blobs:",
+        error
+      );
     }
   }
   if (typeof purgeAPIToken === "string" && purgeAPIToken !== "") {
@@ -1829,45 +1978,60 @@ var setEnvironmentContext = (headers, lambdaContext) => {
 
 // src/api.ts
 var pipeline = promisify(pipelineCb);
-var getLambdaHandler = (func) => awslambda.streamifyResponse(async (event, responseStream, lambdaContext) => {
-  const { body: rawBody, httpMethod: method, isBase64Encoded, headers: headersObject, rawUrl, route } = event;
-  const headers = fromEventHeaders(headersObject);
-  const body = buildRequestBody(rawBody, isBase64Encoded);
-  const req = new NetlifyRequest(rawUrl, {
-    body,
-    headers,
-    method
-  });
-  setEnvironmentContext(headers, lambdaContext);
-  if (route) {
-    req[requestRoute] = route;
-  }
-  const cookies = new CookieStore(req);
-  const context = getContext(req, cookies);
-  const res = await func.default(req, context);
-  if (res instanceof Response) {
-    cookies.apply(res);
-    const responseMetadata = {
-      headers: toObject(res.headers),
-      statusCode: res.status
-    };
-    const responseBody = awslambda.HttpResponseStream.from(responseStream, responseMetadata);
-    if (res.body === null) {
-      responseBody.write("");
+var getLambdaHandler = (func) =>
+  awslambda.streamifyResponse(async (event, responseStream, lambdaContext) => {
+    const {
+      body: rawBody,
+      httpMethod: method,
+      isBase64Encoded,
+      headers: headersObject,
+      rawUrl,
+      route,
+    } = event;
+    const headers = fromEventHeaders(headersObject);
+    const body = buildRequestBody(rawBody, isBase64Encoded);
+    const req = new NetlifyRequest(rawUrl, {
+      body,
+      headers,
+      method,
+    });
+    setEnvironmentContext(headers, lambdaContext);
+    if (route) {
+      req[requestRoute] = route;
+    }
+    const cookies = new CookieStore(req);
+    const context = getContext(req, cookies);
+    const res = await func.default(req, context);
+    if (res instanceof Response) {
+      cookies.apply(res);
+      const responseMetadata = {
+        headers: toObject(res.headers),
+        statusCode: res.status,
+      };
+      const responseBody = awslambda.HttpResponseStream.from(
+        responseStream,
+        responseMetadata
+      );
+      if (res.body === null) {
+        responseBody.write("");
+        responseBody.end();
+        return;
+      }
+      const stream = Readable.fromWeb(res.body);
+      await pipeline(stream, responseBody);
+      return;
+    }
+    if (res === void 0) {
+      const responseBody = awslambda.HttpResponseStream.from(responseStream, {
+        statusCode: 204,
+      });
       responseBody.end();
       return;
     }
-    const stream = Readable.fromWeb(res.body);
-    await pipeline(stream, responseBody);
-    return;
-  }
-  if (res === void 0) {
-    const responseBody = awslambda.HttpResponseStream.from(responseStream, { statusCode: 204 });
-    responseBody.end();
-    return;
-  }
-  throw new Error(`Function returned an unsupported value. Accepted types are 'Response' or 'undefined'`);
-});
+    throw new Error(
+      `Function returned an unsupported value. Accepted types are 'Response' or 'undefined'`
+    );
+  });
 
 // src/globals.ts
 import process2 from "process";
@@ -1880,22 +2044,19 @@ var env3 = {
   set: (key, value) => {
     process2.env[key] = value;
   },
-  toObject: () => Object.entries(process2.env).reduce((acc, [key, value]) => {
-    if (value === void 0) {
-      return acc;
-    }
-    return {
-      ...acc,
-      [key]: value
-    };
-  }, {})
+  toObject: () =>
+    Object.entries(process2.env).reduce((acc, [key, value]) => {
+      if (value === void 0) {
+        return acc;
+      }
+      return {
+        ...acc,
+        [key]: value,
+      };
+    }, {}),
 };
 var getNetlifyGlobal = () => ({ env: env3 });
 
 // src/index.ts
 var getPath = () => fileURLToPath(import.meta.url);
-export {
-  getLambdaHandler,
-  getNetlifyGlobal,
-  getPath
-};
+export { getLambdaHandler, getNetlifyGlobal, getPath };

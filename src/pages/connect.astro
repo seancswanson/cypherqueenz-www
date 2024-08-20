@@ -1,0 +1,161 @@
+---
+import Emoji from "astro-emoji";
+import { Image } from "astro:assets";
+import logo from "../images/shared/logo.webp";
+import Layout from "../layouts/Layout.astro";
+import portlandMap from "../images/home/portland-map.webp";
+import seattleMap from "../images/home/seattle-map.webp";
+---
+
+<Layout title="Cypher Queenz | Connec t">
+  <main
+    class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] bg-white shadow-sm"
+  >
+    <section class="flex flex-col">
+      <div class="border-b-2 border-[#800000] p-4 md:p-8">
+        <h1 class="mb-2 text-4xl font-extrabold lowercase">
+          Connect with CYPHERQueenz
+        </h1>
+        <div class="flex flex-col-reverse gap-4 lg:flex-row">
+          <div class="flex flex-col gap-4 basis-1/2">
+            <p class="text-2xl sm:text-3xl">
+              Join the movement and be part of a vibrant community that
+              celebrates the female voice in Hip Hop!
+            </p>
+          </div>
+          <div class="m-auto max-w-[300px] basis-1/2">
+            <Image
+              src={logo}
+              class="object-contain object-center drop-shadow-xl"
+              alt="Cypher Queenz Logo"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4 border-b-2 border-[#800000] p-4 md:p-8">
+        <h2 class="text-3xl font-bold lowercase sm:text-4xl">How to Connect</h2>
+        <p class="text-2xl sm:text-3xl">
+          We offer <strong>free monthly workshops and cypher sessions</strong> for
+          dancers of all levels, from beginners to pros.
+        </p>
+      </div>
+
+      <section
+        class="flex flex-col gap-4 border-b-2 border-[#800000] p-4 md:p-8 lg:flex-row"
+        id="locations"
+      >
+        <div class="flex flex-col gap-4 basis-2/3">
+          <h2 class="text-3xl font-bold lowercase sm:text-4xl">
+            where we're at
+          </h2>
+          <p class="text-2xl sm:text-3xl">
+            Are you looking to connect with some bgirls in your city?
+          </p>
+          <p class="text-2xl sm:text-3xl">
+            Just send us a message on <a
+              href="https://www.instagram.com/cypherqueenz/?hl=en"
+              class="w-max border-b-4 border-[#facc15]"
+              ><Emoji symbol="🔗" /> instagram</a
+            > and we'll do our best to connect you with talented dancers in your
+            area.
+          </p>
+          <p class="text-2xl sm:text-3xl">
+            Even if we don't have a CYPHERQueenz crew established in your city
+            yet, we'll still do our best to make some introductions for you.
+          </p>
+        </div>
+        <div class="flex items-start justify-around gap-2 basis-1/3">
+          <a
+            href="/"
+            class="relative bottom-0 w-max border-2 border-[#800000] sm:w-48"
+          >
+            <Image
+              src={seattleMap}
+              alt="Seattle Map"
+              class="border-b-2 border-[#800000]"
+            />
+            <p class="p-3 text-lg bg-white">Seattle, WA</p>
+          </a>
+          <a
+            href="/"
+            class="relative bottom-0 w-max border-2 border-[#800000] sm:w-48"
+          >
+            <Image
+              src={portlandMap}
+              alt="Portland Map"
+              class="border-b-2 border-[#800000]"
+            />
+            <p class="border-[#800000] p-3 text-lg bg-white">Portland, OR</p>
+          </a>
+        </div>
+      </section>
+
+      <div class="flex flex-col gap-4 border-b-2 border-[#800000] p-4 md:p-8">
+        <h2 class="text-3xl font-bold lowercase sm:text-4xl">
+          Stay in the Loop
+        </h2>
+        <p class="text-2xl sm:text-3xl">
+          Follow us on <a
+            href="https://www.instagram.com/cypherqueenz/?hl=en"
+            class="w-max border-b-4 border-[#facc15]"
+            ><Emoji symbol="🔗" /> instagram</a
+          > and <a
+            href="https://www.facebook.com/cypherqueenz"
+            class="w-max border-b-4 border-[#facc15]"
+            ><Emoji symbol="🔗" /> facebook</a
+          >.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-4 border-b-2 border-[#800000] p-4 md:p-8">
+        <h2 class="text-3xl font-bold lowercase sm:text-4xl">
+          Partner with Us
+        </h2>
+        <p class="text-2xl sm:text-3xl">
+          CYPHERQueenz is proud to collaborate with organizations that share our
+          vision. Interested in partnering? <a
+            href="mailto:info@cypherqueenz.com"
+            class="w-max border-b-4 border-[#facc15]"
+            ><Emoji symbol="🔗" /> Get in touch</a
+          >!
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-4 p-4 md:p-8" id="support">
+        <h2 class="text-3xl font-bold lowercase sm:text-4xl">
+          Support Our Mission
+        </h2>
+        <p class="text-2xl sm:text-3xl">
+          Love what we do? Help us keep the cypher going strong:
+        </p>
+        <ul class="text-xl list-disc list-inside sm:text-2xl">
+          <li>
+            <a
+              href="https://www.cypherqueenz.com/donate"
+              class="ml-2 w-max border-2 border-[#800000] bg-[#facc15] p-2"
+              >Donate</a
+            ><br />
+            <span class="block p-2"
+              >*Please add "CYPHERQueenz" to the comment box when donating,
+              thank you!</span
+            >
+            <li>Volunteer</li>
+            <li>Spread the word</li>
+          </li>
+        </ul>
+
+        <iframe
+          src="https://commotion.page/embed/wzgy30qcv1VspWvoG91N"
+          frameborder="0"
+          class="w-full h-screen p-4 m-auto mb-4 md:p-8"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <style>
+    #locations {
+      background: linear-gradient(-30deg, rgba(128, 0, 0, 0.1) 0%, white);
+    }
+  </style>
+</Layout>

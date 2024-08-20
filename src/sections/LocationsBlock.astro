@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+
+import portlandMap from "../images/home/portland-map.webp";
+import seattleMap from "../images/home/seattle-map.webp";
+---
+
+<section class="flex flex-col p-4 gap-4 md:p-8 lg:flex-row" id="locations">
+  <div class="flex basis-2/3 flex-col gap-4 border-[#800000]">
+    <h2 class="text-3xl font-bold lowercase sm:text-5xl">where we're at</h2>
+    <p class="text-2xl sm:text-3xl">
+      Are you looking to connect with some bgirls in your city?
+    </p>
+    <p class="text-2xl sm:text-3xl">
+      Even if we don't have a CYPHERQueenz crew established in your city yet,
+      we'll still do our best to make some introductions for you.
+    </p>
+    <p class="text-2xl sm:text-3xl">
+      <a href="/about" class="flex flex-row text-lg gap-2 md:text-xl">
+        <span class="border-b-4 border-[#facc15]">Connect with Us</span>
+        →
+      </a>
+    </p>
+  </div>
+  <div class="flex items-start justify-around gap-2 basis-1/3">
+    <a
+      href="/"
+      class="relative bottom-0 w-max border-2 border-[#800000] sm:w-48"
+    >
+      <Image
+        src={seattleMap}
+        alt="Seattle Map"
+        class="border-b-2 border-[#800000]"
+      />
+      <p class="p-3 text-lg bg-white">Seattle, WA</p>
+    </a>
+    <a
+      href="/"
+      class="relative bottom-0 w-max border-2 border-[#800000] sm:w-48"
+    >
+      <Image
+        src={portlandMap}
+        alt="Portland Map"
+        class="border-b-2 border-[#800000]"
+      />
+      <p class="border-[#800000] p-3 text-lg bg-white">Portland, OR</p>
+    </a>
+  </div>
+</section>
+
+<style>
+  #locations {
+    background: linear-gradient(-30deg, rgba(128, 0, 0, 0.1) 0%, white);
+  }
+</style>

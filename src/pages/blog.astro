@@ -8,9 +8,11 @@ const blogPosts = await getAllBlogPosts();
 ---
 
 <Layout title="Cypher Queenz | Blog">
-  <main class="mx-auto mb-auto block w-full max-w-4xl font-skinDisplay">
-    <div class="p-8">
-      <h1 class="mb-8 text-4xl font-extrabold">Blog</h1>
+  <main
+    class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] bg-white shadow-sm"
+  >
+    <section class="flex flex-col p-8 gap-4">
+      <h1 class="text-4xl font-extrabold lowercase">Blog</h1>
       <div class="flex flex-col flex-wrap gap-4 sm:flex-row">
         {
           !blogPosts.length ? (
@@ -24,6 +26,6 @@ const blogPosts = await getAllBlogPosts();
           )
         }
       </div>
-    </div>
+    </section>
   </main>
 </Layout>

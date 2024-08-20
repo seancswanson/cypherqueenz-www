@@ -1,101 +1,125 @@
 ---
-import Emoji from "astro-emoji";
-
 const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/events", label: "Events" },
+  { href: "/media", label: "Media" },
+  { href: "/connect", label: "Connect With Us" },
+];
 ---
 
-<header class="w-full bg-gray-900">
-  <nav class="m-auto flex max-w-4xl flex-wrap items-center justify-between p-6">
-    <div class="mr-6 flex flex-shrink-0 items-center text-white">
-      <a href="/" class="text-xl font-extrabold tracking-tight">CypherQueenz</a>
-    </div>
-    <div class="block sm:hidden">
+<header class="sticky-top border-b-2 border-[#800000]">
+  <nav
+    class="mx-auto flex max-w-[1440px] flex-wrap items-stretch justify-between border-r-2 border-l-2 border-[#800000] bg-white"
+  >
+    <div
+      class="relative flex min-h-[60px] w-full items-center justify-between lg:w-auto"
+    >
+      <a
+        href="/"
+        class="pl-2 text-4xl font-normal tracking-tighter w-max md:text-5xl"
+        >CYPHER<span class="font-[100]">Queenz</span></a
+      >
+
       <button
         id="hamburger"
-        class="flex items-center rounded border border-teal-400 px-3 py-2 text-teal-200 hover:border-white hover:text-white"
+        class="ml-auto mr-2 self-center border-2 border-[#800000] p-2 transition-colors hover:bg-[#facc15] lg:hidden"
       >
+        <span class="sr-only">Menu</span>
         <svg
-          class="h-3 w-3 fill-current"
-          viewBox="0 0 20 20"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
-          ><title>Menu</title><path
-            d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg
         >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
       </button>
     </div>
+
     <div
       id="navMenuContainer"
-      class="hidden w-full gap-4 sm:flex sm:w-auto sm:items-center"
+      class="hidden w-full uppercase lg:mt-0 lg:flex lg:w-auto lg:items-stretch"
     >
-      <div id="navMenuLinks" class="text-sm sm:flex-grow">
-        <a
-          href="/about"
-          class={`${
-            currentPath === "/about"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          >About</a
-        >
-        <a
-          href="/blog"
-          class={`${
-            currentPath === "/blog"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          >Blog</a
-        >
-        <a
-          href="/events"
-          class={`${
-            currentPath === "/events"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          >Events</a
-        >
-        <a
-          href="/gallery"
-          class={`${
-            currentPath === "/gallery"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          >Gallery</a
-        >
-        <a
-          href="/merch"
-          class={`${
-            currentPath === "/merch"
-              ? "underline-offset-2 underline sm:border-b-[1.5px] sm:no-underline"
-              : "border-transparent border-b-[1.5px]"
-          } hover:border-b-slate-600 border-b-transparent mt-4 mr-4 block text-teal-200 hover:text-white sm:mt-0 sm:inline-block`}
-          ><Emoji symbol="🛒" /></a
-        >
-      </div>
-      <div>
-        <a
-          href="/mailing-list"
-          class="mt-4 inline-block rounded border border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-black sm:mt-0"
-          >Join Mailing List</a
-        >
-      </div>
+      <ul class="flex flex-col w-full lg:w-auto lg:flex-row">
+        {
+          navItems.map((item, index) => (
+            <li
+              class={`nav-item flex items-stretch ${
+                index !== 0 ? "lg:border-l-2" : ""
+              } ${
+                index !== navItems.length - 1 ? "border-b-2 lg:border-b-0" : ""
+              } border-[#800000] lg:border-r-2`}
+            >
+              <a
+                href={item.href}
+                class={`flex w-full items-center border-b-4 px-4 py-2 text-xl font-[100] tracking-tighter  hover:border-[#facc15]  lg:py-0 ${
+                  currentPath === item.href
+                    ? "border-b-4 border-[#facc15]"
+                    : "border-transparent"
+                }`}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </nav>
 </header>
 
-<script>
-  const setHamburgerListener = () => {
+<style>
+  @media (max-width: 1023px) {
+    #navMenuContainer {
+      border-top: 2px solid #800000;
+    }
+
+    .nav-item:last-child {
+      border-bottom: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nav-item {
+      border-right-width: 0;
+    }
+
+    .nav-item:first-child {
+      border-left-width: 2px;
+    }
+  }
+</style>
+
+<script is:inline data-astro-rerun>
+  function init() {
     const hamburger = document.getElementById("hamburger");
     const navMenuContainer = document.getElementById("navMenuContainer");
-    hamburger?.addEventListener("click", () => {
-      navMenuContainer?.classList.toggle("hidden");
-    });
-  };
 
-  // Runs on initial navigation
-  setHamburgerListener();
-  // Runs on view transitions navigation
-  document.addEventListener("astro:after-swap", setHamburgerListener);
+    if (hamburger && navMenuContainer) {
+      hamburger.addEventListener("click", () => {
+        navMenuContainer.classList.toggle("hidden");
+      });
+    }
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        hamburger.destroy();
+        hamburger.removeEventListener(click);
+      },
+      { once: true }
+    );
+  }
+  // Initialize on first load
+  init();
+
+  // Re-initialize after swapping pages
+  document.addEventListener("astro:after-swap", init);
 </script>

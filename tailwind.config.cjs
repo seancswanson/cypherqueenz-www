@@ -9,20 +9,13 @@ module.exports = {
       fontFamily: {
         skinDisplay: "var(--font-family-skin-display), serif",
         skinMono:
-          "'Space Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
+          "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
       },
       backgroundColor: {
         skin: {
           base: "var(--color-bg-base)",
           accent: "var(--color-bg-accent)",
         },
-      },
-      backgroundImage: {
-        skinPattern: "var(--bg-image-skin-pattern)",
-        rainbow: "url('./public/rainbow-bg.webp')",
-      },
-      backgroundSize: {
-        skinPattern: "var(--bg-image-skin-pattern-size)",
       },
       minHeight: {
         50: "50px",

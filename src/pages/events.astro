@@ -1,8 +1,9 @@
 ---
-import BlogLayout from "../layouts/BlogLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import { getAllEventPosts } from "../sanity/api";
 import EventCard from "../components/EventCard.astro";
 import PostsZeroState from "../components/PostsZeroState.astro";
+import { SEO } from "astro-seo";
 const eventPosts = await getAllEventPosts();
 const today = new Date().getTime();
 
@@ -23,12 +24,16 @@ const pastEvents = eventPosts
   });
 ---
 
-<BlogLayout title="Cypher Queenz | Blog">
-  <main class="mx-auto mb-auto block w-full max-w-4xl font-skinDisplay">
-    <div class="p-8">
-      <h1 class="mb-8 text-4xl font-extrabold">Events</h1>
-      <h2 class="mb-4 text-2xl font-bold">Upcoming</h2>
-      <div class="mb-6 flex flex-col">
+<Layout title="Cypher Queenz | Events">
+  <main
+    class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] bg-white shadow-sm"
+  >
+    <div class="flex flex-col">
+      <h1 class="px-8 pt-8 mb-4 text-4xl font-extrabold lowercase">Events</h1>
+      <h2 class="px-8 text-2xl font-bold">Upcoming</h2>
+      <div
+        class="flex flex-col justify-center gap-4 border-b-2 border-[#800000] p-8 pb-16 md:flex-row md:flex-wrap"
+      >
         {
           !upcomingEvents.length ? (
             <PostsZeroState type="events" />
@@ -37,10 +42,12 @@ const pastEvents = eventPosts
           )
         }
       </div>
-      <h2 class="mb-4 text-xl font-bold">Past Events</h2>
-      <div class="flex flex-col">
+      <h2 class="px-8 pt-8 text-2xl font-bold">Past Events</h2>
+      <div
+        class="flex flex-col justify-center p-8 mb-6 gap-4 md:flex-row md:flex-wrap"
+      >
         {pastEvents.map((post) => <EventCard post={post} />)}
       </div>
     </div>
   </main>
-</BlogLayout>
+</Layout>

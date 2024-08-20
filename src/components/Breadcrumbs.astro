@@ -17,13 +17,13 @@ const { breadcrumbData } = Astro.props;
     });
   });
 </script>
-<div class="mb-2 flex items-center justify-between text-xs">
+<div class="flex items-center justify-between mb-2 text-sm">
   <div class="flex gap-2">
     <a href={`${breadcrumbData.parentPath}`} class="underline"
       >All {`${breadcrumbData.parentPath === "/blog" ? "Posts" : "Events"}`}</a
     > → <span>{breadcrumbData.slug}</span>
   </div>
-  <div class="social-links flex gap-2">
+  <div class="flex gap-2 social-links">
     <a
       href="https://twitter.com/share?ref_src=twsrc%5Etfw"
       class="twitter-share-button"
@@ -35,7 +35,7 @@ const { breadcrumbData } = Astro.props;
         src={twitterIcon}
         alt="twitter share icon"
         width="24"
-        class="object-center object-cover h-full"
+        class="object-cover object-center h-full"
       /></a
     >
     <div>
@@ -43,7 +43,7 @@ const { breadcrumbData } = Astro.props;
         src={facebookIcon}
         alt="facebook share icon"
         width="24"
-        class="fb object-center object-cover h-full"
+        class="object-cover object-center h-full fb"
       />
     </div>
   </div>

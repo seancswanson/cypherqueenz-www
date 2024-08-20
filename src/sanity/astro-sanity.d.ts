@@ -1,1 +1,1 @@
-declare module 'astro-sanity';
+declare module "astro-sanity";
