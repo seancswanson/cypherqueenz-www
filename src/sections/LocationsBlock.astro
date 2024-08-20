@@ -1,27 +1,25 @@
 ---
 import { Image } from "astro:assets";
-import Emoji from "astro-emoji";
 
 import portlandMap from "../images/home/portland-map.webp";
 import seattleMap from "../images/home/seattle-map.webp";
 ---
 
-<section class="flex flex-col p-4 gamd:p-8 md:p-8 md:gap-4 lg:flex-row" id="locations">
+<section class="flex flex-col gap-4 p-4 md:p-8 lg:flex-row" id="locations">
   <div class="flex basis-2/3 flex-col gap-4 border-[#800000]">
     <h2 class="text-3xl font-bold lowercase sm:text-5xl">where we're at</h2>
     <p class="text-2xl sm:text-3xl">
       Are you looking to connect with some bgirls in your city?
     </p>
     <p class="text-2xl sm:text-3xl">
-      Just send us a message on <a
-        href="https://www.instagram.com/cypherqueenz/?hl=en"
-        class="w-max border-b-4 border-[#800000]"
-        ><Emoji symbol="🔗" /> instagram</a
-      > and we'll do our best to connect you with talented dancers in your area.
-    </p>
-    <p class="text-2xl sm:text-3xl">
       Even if we don't have a CYPHERQueenz crew established in your city yet,
       we'll still do our best to make some introductions for you.
+    </p>
+    <p class="text-2xl sm:text-3xl">
+      <a href="/about" class="flex flex-row gap-2 text-lg md:text-xl">
+        <span class="border-b-4 border-[#facc15]">Connect with Us</span>
+        →
+      </a>
     </p>
   </div>
   <div class="flex items-start justify-around gap-2 basis-1/3">
@@ -52,10 +50,6 @@ import seattleMap from "../images/home/seattle-map.webp";
 
 <style>
   #locations {
-    background: linear-gradient(
-      -30deg,
-      rgba(128, 0, 0, 0.1) 0%,
-  white
-    );
+    background: linear-gradient(-30deg, rgba(128, 0, 0, 0.1) 0%, white);
   }
 </style>

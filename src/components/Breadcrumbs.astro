@@ -17,7 +17,7 @@ const { breadcrumbData } = Astro.props;
     });
   });
 </script>
-<div class="flex items-center justify-between mb-2 text-xs">
+<div class="flex items-center justify-between mb-2 text-sm">
   <div class="flex gap-2">
     <a href={`${breadcrumbData.parentPath}`} class="underline"
       >All {`${breadcrumbData.parentPath === "/blog" ? "Posts" : "Events"}`}</a

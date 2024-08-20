@@ -135,7 +135,7 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
           </p>
         </div>
       </div>
-      <section class="p-8">
+      <section class="p-4 md:p-8">
         <h2 class="mb-4 text-4xl font-extrabold lowercase">Our Values</h2>
         <div
           class="value-container"
@@ -196,13 +196,13 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
           </div>
         </div>
       </section>
-      <section>
-        <h2 class="mb-4 text-3xl font-extrabold">No Excuses</h2>
+      <section class="p-4 md:p-8">
+          <h2 class="mb-2 text-4xl font-extrabold lowercase">No Excuses</h2>
         <div class="flex mb-8 justify-evenly">
           <a href="https://www.thegoodfootarts.org/about">
             <Image
               src={noExcuses}
-              class="relative bottom-0 w-32 h-32 transition-all duration-150 rounded-lg shadow-app hover:bottom-2"
+              class="relative bottom-0 w-32 h-32 transition-all duration-150 hover:bottom-2"
               alt="no excuses logo"
             />
           </a>
@@ -210,17 +210,17 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
             <Image
               src={goodfootLogo}
               alt="GoodFoot Collective Logo"
-              class="relative bottom-0 object-contain object-center w-32 h-32 p-2 transition-all duration-150 rounded-lg invert shadow-app hover:bottom-2"
+              class="relative bottom-0 object-contain object-center w-32 h-32 p-2 transition-all duration-150 invert hover:bottom-2"
             />
           </a>
         </div>
-        <p class="mb-4 text-xl">
+        <p class="mb-6 text-2xl sm:text-3xl">
           Cypher Queenz is partnered with The Good Foot Arts Collective to
           participate in the NO Excuses campaign and how we can collectively
           provide a safe space for advocacy, education and empowerment to the
           scene concerning issues that have been most impacted by bgirls.
         </p>
-        <p class="mb-4 text-xl">
+        <p class="text-2xl sm:text-3xl">
           The Good Foot Arts Collective “NO Excuses” campaign advocates for
           safety and empowers youth to build an environment of NO tolerance for
           violence, sexual misconduct, toxic behavior or abuse in BIPOC youth
@@ -237,19 +237,22 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
 
 <style>
   .nav-tabs .nav-link.active {
-    @apply border-b-[#800000] text-black active:border-4;
+    @apply border-b-[#FACC15] text-black active:border-2 font-bold;
+  }
+  .nav-tabs .nav-link {
+    @apply  text-black active:border-2 font-bold;
   }
 
   .tab-content {
-    @apply px-4;
+    @apply px-8 md:px-12;
   }
 
   .value {
-    @apply lg:basis-1/5 basis-1/4 border-2 border-[#800000] text-black  rounded-sm;
+    @apply lg:basis-1/5 basis-1/3 border-2 border-[#800000] text-black  rounded-sm;
   }
 
   .value-container {
-    @apply flex flex-col gap-4 sm:flex-wrap sm:flex-row justify-center;
+    @apply flex flex-col gap-4 sm:flex-wrap sm:flex-row justify-evenly;
   }
 
   .value-title {

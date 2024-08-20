@@ -1,5 +1,4 @@
 ---
-
 const currentPath = Astro.url.pathname;
 
 const navItems = [
@@ -11,7 +10,7 @@ const navItems = [
 ];
 ---
 
-<header class="border-b-2 border-[#800000] sticky-top">
+<header class="sticky-top border-b-2 border-[#800000]">
   <nav
     class="mx-auto flex max-w-[1440px] flex-wrap items-stretch justify-between border-r-2 border-l-2 border-[#800000] bg-white"
   >
@@ -20,13 +19,13 @@ const navItems = [
     >
       <a
         href="/"
-        class="absolute pl-2 text-5xl tracking-tighter transition-colors w-max"
+        class="absolute pl-2 text-4xl font-normal tracking-tighter transition-colors w-max md:text-5xl"
         >CYPHER<span class="font-[100]">Queenz</span></a
       >
 
       <button
         id="hamburger"
-        class="self-center p-2 ml-auto mr-2 transition-colors border-2 border-[#800000] hover:text-beige hover:bg-[#800000] lg:hidden"
+        class="ml-auto mr-2 self-center border-2 border-[#800000] p-2 transition-colors hover:bg-[#facc15] lg:hidden"
       >
         <span class="sr-only">Menu</span>
         <svg
@@ -61,9 +60,9 @@ const navItems = [
             >
               <a
                 href={item.href}
-                class={`flex w-full items-center border-b-4 px-4 py-2 text-xl font-[100] tracking-tighter  hover:border-[#800000]  lg:py-0 ${
+                class={`flex w-full items-center border-b-4 px-4 py-2 text-xl font-[100] tracking-tighter  hover:border-[#facc15]  lg:py-0 ${
                   currentPath === item.href
-                    ? "border-b-4 border-[#800000]"
+                    ? "border-b-4 border-[#facc15]"
                     : "border-transparent"
                 }`}
               >
@@ -99,13 +98,28 @@ const navItems = [
   }
 </style>
 
-<script>
-  const hamburger = document.getElementById("hamburger");
-  const navMenuContainer = document.getElementById("navMenuContainer");
+<script is:inline data-astro-rerun>
+  function init() {
+    const hamburger = document.getElementById("hamburger");
+    const navMenuContainer = document.getElementById("navMenuContainer");
 
-  if (hamburger && navMenuContainer) {
-    hamburger.addEventListener("click", () => {
-      navMenuContainer.classList.toggle("hidden");
-    });
+    if (hamburger && navMenuContainer) {
+      hamburger.addEventListener("click", () => {
+        navMenuContainer.classList.toggle("hidden");
+      });
+    }
+    document.addEventListener(
+      "astro:before-swap",
+      () => {
+        hamburger.destroy()
+        hamburger.removeEventListener(click)
+      },
+      { once: true }
+    );
   }
+  // Initialize on first load
+init()
+
+// Re-initialize after swapping pages
+document.addEventListener("astro:after-swap", init)
 </script>

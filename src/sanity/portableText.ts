@@ -39,7 +39,7 @@ const customComponents = {
       `<blockquote class="pl-2 mb-6 text-xl italic font-semibold text-gray-900 border-l-2 border-gray-300 ">${value.children[0].text}</blockquote>`,
     normal: ({ value }: any) => {
       // switch case for different types of blocks
-      return `<p class="self-start ${
+      return `<p class="self-start text-lg ${
         checkBlockForMarks(["strong"], value.children[0].marks)
           ? "font-extrabold "
           : ""
