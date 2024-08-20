@@ -4,13 +4,13 @@ import { Image } from "astro:assets";
 import logo from "../images/shared/logo.webp";
 ---
 
-<section class="flex flex-col p-4 gamd:p-8 md:p-8">
-  <h2 class="text-3xl font-bold text-center lowercase sm:text-5xl">
+<section class="gamd:p-8 flex flex-col p-4 md:p-8">
+  <h2 class="text-center text-3xl font-bold lowercase sm:text-5xl">
     Want to stay up to date on all things CypherQueenz?
   </h2>
   <div class="flex flex-col items-center justify-center gap-4">
     <Image src={logo} alt="cypherqueenz logo" class="w-48 m-auto lg:m-0" />
-    <div class="flex flex-col text-center gap-4">
+    <div class="flex flex-col gap-4 text-center">
       <p class="text-2xl sm:text-3xl">
         Follow us on <a
           href="https://www.instagram.com/cypherqueenz/?hl=en"
@@ -23,10 +23,10 @@ import logo from "../images/shared/logo.webp";
         >.
       </p>
       <p class="sm:text-xl">
-        For all other inquiries click <a
-          href="/connect"
+        For all other inquiries don't hesitate to <a
+          href="mailto:cypherqueenz206@gmail.com"
           class="w-max border-b-4 border-[#FACC15]"
-          ><Emoji symbol="🔗" /> here</a
+          ><Emoji symbol="📧" /> reach out to us.</a
         >
       </p>
     </div>

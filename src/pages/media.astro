@@ -15,7 +15,7 @@ const media = await getAllMedia();
   >
     <div class="flex flex-col gap-4 p-8">
       <h1 class="text-4xl font-extrabold lowercase">Media</h1>
-      <div class="flex flex-wrap justify-center gap-4 ">
+      <div class="flex flex-wrap justify-center gap-4">
         <p class="mr-auto text-2xl sm:text-3xl lg:basis-1/2">
           Follow us on <a
             href="https://www.instagram.com/cypherqueenz/?hl=en"
@@ -27,9 +27,9 @@ const media = await getAllMedia();
             ><Emoji symbol="🔗" /> facebook</a
           > for the latest media.
         </p>
-        <div class="flex items-center mx-auto mb-4 justify-self-center">
+        <div class="mx-auto mb-4 flex items-center justify-self-center">
           <blockquote
-            class="max-w-xl rounded-sm shadow-sm instagram-media"
+            class="instagram-media max-w-xl rounded-sm shadow-sm"
             data-instgrm-permalink="https://www.instagram.com/cypherqueenz/?utm_source=ig_embed&utm_campaign=loading"
             data-instgrm-version="14"
             style="background:#FFF; min-width:326px; padding:0; width:90.375%;"
@@ -146,15 +146,15 @@ const media = await getAllMedia();
                   </div>
                 </div></a
               ><p
-                style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"
+                style="  font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"
               >
                 <a
                   href="https://www.instagram.com/cypherqueenz/?utm_source=ig_embed&utm_campaign=loading"
-                  style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
+                  style="  font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
                   target="_blank">Cypher Queenz 👑</a
                 > (@<a
                   href="https://www.instagram.com/cypherqueenz/?utm_source=ig_embed&utm_campaign=loading"
-                  style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
+                  style="  font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;"
                   target="_blank">cypherqueenz</a
                 >) • Instagram photos and videos
               </p>
@@ -163,7 +163,7 @@ const media = await getAllMedia();
         </div>
       </div>
       <div
-        class="hidden w-full m-auto my-10 rounded selected-image-container sm:w-3/4"
+        class="selected-image-container m-auto my-10 hidden w-full rounded sm:w-3/4"
       >
         <Image
           src="https://upload.wikimedia.org/wikipedia/commons/c/ca/1x1.png"
@@ -177,7 +177,7 @@ const media = await getAllMedia();
           <h2 class="title"></h2>
         </div>
       </div>
-      <section class="flex flex-wrap justify-center w-full gap-4 m-auto">
+      <section class="m-auto flex w-full flex-wrap justify-center gap-4">
         {
           media.map((mediaItem: any) => {
             const originalImageUrl = urlForMedia(mediaItem.imageFile).url();
@@ -195,7 +195,7 @@ const media = await getAllMedia();
                     alt={mediaItem.title || "Gallery Image"}
                     width="300"
                     height="300"
-                    class="object-cover object-center h-full mb-2 gallery-image"
+                    class="gallery-image mb-2 h-full object-cover object-center"
                   />
                 </div>
               </button>
