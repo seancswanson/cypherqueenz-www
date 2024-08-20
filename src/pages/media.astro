@@ -13,7 +13,7 @@ const media = await getAllMedia();
   <main
     class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] bg-white shadow-sm"
   >
-    <div class="flex flex-col gap-4 p-8">
+    <div class="flex flex-col p-8 gap-4">
       <h1 class="text-4xl font-extrabold lowercase">Media</h1>
       <div class="flex flex-wrap justify-between gap-4">
         <p class="text-2xl sm:text-3xl lg:basis-1/2">
@@ -177,7 +177,7 @@ const media = await getAllMedia();
           <h2 class="title"></h2>
         </div>
       </div>
-      <section class="flex flex-wrap justify-center w-full gap-4 m-auto">
+      <section class="flex flex-wrap justify-center w-full m-auto gap-4">
         {
           media.map((mediaItem: any) => {
             const originalImageUrl = urlForMedia(mediaItem.imageFile).url();

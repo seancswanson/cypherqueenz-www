@@ -111,15 +111,15 @@ const navItems = [
     document.addEventListener(
       "astro:before-swap",
       () => {
-        hamburger.destroy()
-        hamburger.removeEventListener(click)
+        hamburger.destroy();
+        hamburger.removeEventListener(click);
       },
       { once: true }
     );
   }
   // Initialize on first load
-init()
+  init();
 
-// Re-initialize after swapping pages
-document.addEventListener("astro:after-swap", init)
+  // Re-initialize after swapping pages
+  document.addEventListener("astro:after-swap", init);
 </script>

@@ -25,7 +25,9 @@ const post = Astro.props;
 ---
 
 <Layout title={post.title}>
-  <main class="m-auto block w-full max-w-[1440px] bg-white md:p-8 p-4 shadow border-l-2 border-r-2 border-[#800000] shadow-sm">
+  <main
+    class="m-auto block w-full max-w-[1440px] border-l-2 border-r-2 border-[#800000] bg-white p-4 shadow shadow-sm md:p-8"
+  >
     <Breadcrumbs
       breadcrumbData={{
         parentPath: "/blog",

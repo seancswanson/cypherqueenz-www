@@ -8,9 +8,9 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
 
 <Layout title="Cypher Queenz | About">
   <main
-    class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] shadow-sm bg-white"
+    class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] bg-white shadow-sm"
   >
-    <section class="flex flex-col gap-8">
+    <section class="flex flex-col">
       <div class="p-4 md:p-8">
         <h1 class="mb-2 text-4xl font-extrabold lowercase">About Us</h1>
         <div class="flex flex-col-reverse gap-4 lg:flex-row">
@@ -20,36 +20,35 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
               more community for Bgirls.
             </p>
             <p class="text-2xl sm:text-3xl">
-              We give props to all the Bgirls who have been holding it down for a
-              long time, but have observed many women briefly coming into the
+              We give props to all the Bgirls who have been holding it down for
+              a long time, but have observed many women briefly coming into the
               scene and then quickly leaving because of lack of support.
             </p>
             <p class="text-2xl sm:text-3xl">
-              There is an explosion of talented Bgirls all over the world now and
-              there is so much more to come. In Seattle, we want to provide that
-              space for them.
+              There is an explosion of talented Bgirls all over the world now
+              and there is so much more to come. In Seattle, we want to provide
+              that space for them.
             </p>
           </div>
-          <div class="max-w-[300px] basis-1/2 m-auto">
+          <div class="m-auto max-w-[300px] basis-1/2">
             <Image
               src={logo}
               class="object-contain object-center drop-shadow-xl"
               alt="Cypher Queenz Logo"
             />
           </div>
-          </div>
-        
+        </div>
       </div>
 
       <ul
-        class="flex flex-col flex-wrap list-none border-b-2 border-t-2 border-[#800000] nav nav-tabs md:flex-row items-stretch"
+        class="nav nav-tabs flex list-none flex-col flex-wrap items-stretch border-b-2 border-t-2 border-[#800000] md:flex-row"
         id="tabs-tabFill"
         role="tablist"
       >
         <li class="flex-auto text-center nav-item" role="presentation">
           <a
             href="#tabs-missionFill"
-            class="block w-full py-4 text-xl uppercase transition-all border-0 border-t-0 border-b-4 border-transparent leading-tighter active nav-link border-x-0 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="block w-full py-4 text-xl uppercase border-0 border-t-0 border-b-4 border-transparent transition-all leading-tighter active nav-link border-x-0 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
             id="tabs-mission-tabFill"
             data-bs-toggle="pill"
             data-bs-target="#tabs-missionFill"
@@ -61,7 +60,7 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
         <li class="flex-auto text-center nav-item" role="presentation">
           <a
             href="#tabs-visionFill"
-            class="block w-full py-4 text-xl uppercase transition-all border-0 border-t-0 border-b-4 border-transparent leading-tighter nav-link border-x-0 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="block w-full py-4 text-xl uppercase border-0 border-t-0 border-b-4 border-transparent transition-all leading-tighter nav-link border-x-0 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
             id="tabs-vision-tabFill"
             data-bs-toggle="pill"
             data-bs-target="#tabs-visionFill"
@@ -73,7 +72,7 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
         <li class="flex-auto text-center nav-item" role="presentation">
           <a
             href="#tabs-historyFill"
-            class="block w-full py-4 text-xl uppercase transition-all border-0 border-t-0 border-b-4 border-transparent leading-tighter nav-link border-x-0 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
+            class="block w-full py-4 text-xl uppercase border-0 border-t-0 border-b-4 border-transparent transition-all leading-tighter nav-link border-x-0 hover:border-transparent hover:bg-gray-100 focus:border-transparent"
             id="tabs-history-tabFill"
             data-bs-toggle="pill"
             data-bs-target="#tabs-historyFill"
@@ -135,11 +134,9 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
           </p>
         </div>
       </div>
-      <section class="p-4 md:p-8">
+      <section class="border-b-2 border-[#800000] p-4 md:p-8">
         <h2 class="mb-4 text-4xl font-extrabold lowercase">Our Values</h2>
-        <div
-          class="value-container"
-        >
+        <div class="value-container">
           <div class="value">
             <h3 class="value-title">
               Beginner friendly – no experience needed
@@ -197,7 +194,7 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
         </div>
       </section>
       <section class="p-4 md:p-8">
-          <h2 class="mb-2 text-4xl font-extrabold lowercase">No Excuses</h2>
+        <h2 class="mb-2 text-4xl font-extrabold lowercase">No Excuses</h2>
         <div class="flex mb-8 justify-evenly">
           <a href="https://www.thegoodfootarts.org/about">
             <Image
@@ -237,26 +234,26 @@ import goodfootLogo from "../images/home/goodfoot-logo.webp";
 
 <style>
   .nav-tabs .nav-link.active {
-    @apply border-b-[#FACC15] text-black active:border-2 font-bold;
+    @apply border-b-[#FACC15] font-bold text-black active:border-2;
   }
   .nav-tabs .nav-link {
-    @apply  text-black active:border-2 font-bold;
+    @apply font-bold text-black active:border-2;
   }
 
   .tab-content {
-    @apply px-8 md:px-12;
+    @apply border-b-2 border-[#800000] px-8 py-8 md:px-12;
   }
 
   .value {
-    @apply lg:basis-1/5 basis-1/3 border-2 border-[#800000] text-black  rounded-sm;
+    @apply basis-1/3 rounded-sm border-2 border-[#800000] text-black  lg:basis-1/5;
   }
 
   .value-container {
-    @apply flex flex-col gap-4 sm:flex-wrap sm:flex-row justify-evenly;
+    @apply flex flex-col justify-evenly gap-4 sm:flex-row sm:flex-wrap;
   }
 
   .value-title {
-    @apply text-2xl p-2 font-bold ;
+    @apply p-2 text-2xl font-bold;
   }
 
   .value-text {
