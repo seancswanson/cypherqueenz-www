@@ -10,6 +10,8 @@ import compress from "astro-compress";
 
 import sanity from "astro-sanity";
 
+import partytown from '@astrojs/partytown'
+
 export default defineConfig({
   site: "https://cypherqueenz.com/",
   integrations: [
