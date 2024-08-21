@@ -22,6 +22,11 @@ export default defineConfig({
       apiVersion: "2021-03-25",
       useCdn: true,
     }),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
     compress(),
   ],
 });
