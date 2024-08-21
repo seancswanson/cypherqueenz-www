@@ -15,6 +15,21 @@ const { title } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5SFWN9195X"
+    ></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-5SFWN9195X");
+    </script>
     <SEO
       title={title ? title : "Cypher Queenz | Bgirl Organization"}
       description="Cypher Queenz is a Bgirl collective coming together to grow and leveling up the scene by highlighting the female voice in Hip Hop"
