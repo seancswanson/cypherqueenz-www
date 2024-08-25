@@ -7,7 +7,7 @@ import portlandMap from "../images/home/portland-map.webp";
 import seattleMap from "../images/home/seattle-map.webp";
 ---
 
-<Layout title="Cypher Queenz | Connec t">
+<Layout title="Cypher Queenz | Connect">
   <main
     class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] bg-white shadow-sm"
   >
@@ -22,6 +22,22 @@ import seattleMap from "../images/home/seattle-map.webp";
               Join the movement and be part of a vibrant community that
               celebrates the female voice in Hip Hop!
             </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#social-links"
+                class="w-max bg-[#facc15] p-2 text-xl">Follow Us</a
+              >
+              <a
+                href="#support"
+                class="w-max bg-[#800000] p-2 text-xl text-white"
+                >Donate Now</a
+              >
+              <a
+                href="#locations"
+                class="w-max border-2 border-[#800000] p-2 text-xl"
+                >Find Us</a
+              >
+            </div>
           </div>
           <div class="m-auto max-w-[300px] basis-1/2">
             <Image
@@ -40,7 +56,6 @@ import seattleMap from "../images/home/seattle-map.webp";
           dancers of all levels, from beginners to pros.
         </p>
       </div>
-
       <section
         class="flex flex-col gap-4 border-b-2 border-[#800000] p-4 md:p-8 lg:flex-row"
         id="locations"
@@ -90,8 +105,10 @@ import seattleMap from "../images/home/seattle-map.webp";
           </a>
         </div>
       </section>
-
-      <div class="flex flex-col gap-4 border-b-2 border-[#800000] p-4 md:p-8">
+      <div
+        class="flex flex-col gap-4 border-b-2 border-[#800000] p-4 md:p-8"
+        id="social-links"
+      >
         <h2 class="text-3xl font-bold lowercase sm:text-4xl">
           Stay in the Loop
         </h2>
@@ -114,7 +131,10 @@ import seattleMap from "../images/home/seattle-map.webp";
         </h2>
         <p class="text-2xl sm:text-3xl">
           CYPHERQueenz is proud to collaborate with organizations that share our
-          vision. Interested in partnering? <a
+          vision.
+        </p>
+        <p class="text-2xl sm:text-3xl">
+          Interested in partnering? <a
             href="mailto:cypherqueenz206@gmail.com"
             class="w-max border-b-4 border-[#facc15]"
             ><Emoji symbol="🔗" /> Get in touch</a
