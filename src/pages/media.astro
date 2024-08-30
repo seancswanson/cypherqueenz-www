@@ -206,42 +206,53 @@ const media = await getAllMedia();
     </div>
   </main>
 </Layout>
-<script>
-  // Find all buttons with the `alert` class on the page.
-  const galleryImages: NodeListOf<HTMLImageElement> =
-    document.querySelectorAll(".gallery-image");
-  const selectedImage = document.querySelector(
-    ".gallery-image-selected"
-  ) as HTMLImageElement;
-  const selectedImageContainer = document.querySelector(
-    ".selected-image-container"
-  ) as HTMLDivElement;
-  const selectedImageTitleEl = document.querySelector(
-    ".title"
-  ) as HTMLHeadingElement;
-  // Handle clicks on each button.
-  galleryImages.forEach((img) => {
-    img.addEventListener("click", (e) => {
-      if (!(e.target instanceof HTMLImageElement)) {
-        return;
-      }
-      if (selectedImageContainer.classList.contains("hidden")) {
-        selectedImageContainer.classList.toggle("hidden");
-      }
-      window.scrollTo({
-        top: selectedImageContainer.offsetTop - 800,
-        left: 0,
-        behavior: "smooth",
-      });
+<script is:inline  define:vars={{ rerunOnChange: true }}>
+function initializeGallery() {
+    // Find all images with the `gallery-image` class on the page.
+    const galleryImages = document.querySelectorAll(".gallery-image");
+    const selectedImage = document.querySelector(".gallery-image-selected");
+    const selectedImageContainer = document.querySelector(".selected-image-container");
+    const selectedImageTitleEl = document.querySelector(".title");
 
-      const selectedImageOriginalImageUrl = e.target.dataset.originalurl
-        ? e.target.dataset.originalurl
-        : "";
-      const selectedImageTitle = e.target.dataset.title
-        ? e.target.dataset.title
-        : "";
-      selectedImage.src = selectedImageOriginalImageUrl;
-      selectedImageTitleEl.textContent = selectedImageTitle;
+    // Handle clicks on each image.
+    galleryImages.forEach((img) => {
+      img.addEventListener("click", (e) => {
+        const target = e.target;
+        if (!(target instanceof HTMLImageElement)) {
+          return;
+        }
+
+        if (selectedImageContainer && selectedImageContainer.classList.contains("hidden")) {
+          selectedImageContainer.classList.toggle("hidden");
+        }
+
+        if (selectedImageContainer) {
+          window.scrollTo({
+            top: selectedImageContainer.offsetTop - 800,
+            left: 0,
+            behavior: "smooth",
+          });
+        }
+
+        const selectedImageOriginalImageUrl = target.dataset.originalurl || "";
+        const selectedImageTitle = target.dataset.title || "";
+
+        if (selectedImage instanceof HTMLImageElement) {
+          selectedImage.src = selectedImageOriginalImageUrl;
+        }
+
+        if (selectedImageTitleEl) {
+          selectedImageTitleEl.textContent = selectedImageTitle;
+        }
+      });
     });
-  });
+  }
+
+  // Run the initialization function
+  initializeGallery();
+
+  // Re-run the initialization when the page changes
+  if (rerunOnChange) {
+    document.addEventListener('astro:page-load', initializeGallery);
+  }
 </script>
