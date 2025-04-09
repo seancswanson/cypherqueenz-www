@@ -4,70 +4,90 @@ import swansong from "../images/icons/swansong-thick-24.webp";
 import logo from "../images/shared/logo.webp";
 ---
 
-<footer class="w-full border-t-2 border-[#800000] bg-white">
+<footer class="w-full border-t-2 border-[#800000] bg-white py-6">
   <div
-    class="m-auto flex max-w-[1440px] flex-col gap-4 border-l-2 border-r-2 border-[#800000] shadow-sm"
+    class="m-auto flex max-w-[1440px] flex-col gap-6 px-4 sm:px-6 md:gap-8"
   >
-    <div class="flex flex-col items-start p-4 gap-4 md:p-8 lg:flex-row">
-      <div class="gap-4 basis-1/2">
-        <a
-          href="/"
-          class="text-4xl font-normal tracking-tighter w-max md:text-5xl"
-          >CYPHER<span class="font-[100]">Queenz</span></a
-        >
-        <p class="text-2xl">
-          A Bgirl collective coming together to grow and leveling up the scene
-          by highlighting the female voice in Hip Hop
-        </p>
-        <Image src={logo} alt="cypherqueenz logo" class="w-1/4 m-auto lg:m-0" />
+    <!-- Main footer content -->
+    <div class="flex flex-col items-start gap-6 md:gap-8 lg:flex-row">
+      <!-- Logo and description section -->
+      <div class="w-full space-y-4 lg:w-1/2">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:gap-4 lg:flex-col lg:items-start">
+          <div class="flex flex-col space-y-2">
+            <a
+              href="/"
+              class="text-2xl font-bold tracking-tighter w-max md:text-3xl"
+              >CYPHER<span class="font-[100]">Queenz</span></a
+            >
+            <p class="max-w-xs text-sm sm:text-base">
+              A Bgirl collective coming together to grow and leveling up the scene
+              by highlighting the female voice in Hip Hop
+            </p>
+          </div>
+          <div class="mt-4 flex justify-center sm:mt-0 lg:mt-4 lg:justify-start">
+            <Image 
+              src={logo} 
+              alt="cypherqueenz logo" 
+              class="w-24 sm:w-28 md:w-32 lg:w-36" 
+              width={144}
+              height={144}
+            />
+          </div>
+        </div>
       </div>
-      <div class="flex w-full gap-12 links justify-evenly lg:basis-1/2">
-        <section class="flex flex-col resources">
-          <h2 class="font-extrabold">Resources</h2>
-          <a href="https://www.rainn.org/ThatsHarassment" class=""
-            >RAINN - SA Resources</a
-          >
-          <a
-            href="https://www.dancedataproject.com/resources/sexual-assault-harassment-links-and-resources/#toggle-id-8"
-            class="">DanceDataProject - SA/Harassment Resources</a
-          >
-        </section>
-        <section class="flex flex-col gap-1 social sm:items-start">
-          <h2 class="font-extrabold">Connect With Us</h2>
-          <a href="https://www.instagram.com/cypherqueenz/?hl=en" class=""
-            >Instagram</a
-          >
-          <a
-            href="https://www.facebook.com/profile.php?id=100067459671198"
-            class="">Facebook</a
-          >
-          <a href="https://www.youtube.com/watch?v=bKIwJE20Dsk" class=""
-            >YouTube</a
-          >
-        </section>
+
+      <!-- Links section -->
+      <div class="w-full lg:w-1/2">
+        <div class="grid grid-cols-2 gap-6 sm:gap-8 md:gap-12">
+          <!-- Resources section -->
+          <section class="flex flex-col space-y-2">
+            <h2 class="mb-1 text-base font-extrabold sm:text-lg">Resources</h2>
+            <a href="https://www.rainn.org/ThatsHarassment" class="text-xs sm:text-sm py-1 hover:text-[#800000]"
+              >RAINN - SA Resources</a
+            >
+            <a
+              href="https://www.dancedataproject.com/resources/sexual-assault-harassment-links-and-resources/#toggle-id-8"
+              class="text-xs sm:text-sm py-1 hover:text-[#800000]"
+              >DanceDataProject - SA/Harassment Resources</a
+            >
+          </section>
+          
+          <!-- Connect With Us section -->
+          <section class="flex flex-col space-y-2">
+            <h2 class="mb-1 text-base font-extrabold sm:text-lg">Connect With Us</h2>
+            <a href="https://www.instagram.com/cypherqueenz/?hl=en" class="text-xs sm:text-sm py-1 hover:text-[#800000]"
+              >Instagram</a
+            >
+            <a
+              href="https://www.facebook.com/profile.php?id=100067459671198"
+              class="text-xs sm:text-sm py-1 hover:text-[#800000]">Facebook</a
+            >
+            <a href="https://www.youtube.com/watch?v=bKIwJE20Dsk" class="text-xs sm:text-sm py-1 hover:text-[#800000]"
+              >YouTube</a
+            >
+          </section>
+        </div>
       </div>
     </div>
-    <div class="flex items-center justify-center gap-4">
+
+    <!-- Credits section -->
+    <div class="mt-4 flex flex-col items-center gap-2 pt-4 border-t border-gray-200 sm:flex-row sm:justify-center sm:gap-6">
       <a
         href="https://seancswanson.com"
         target="_blank"
         rel="noreferrer"
-        class="flex items-center text-xs italic text-center rounded font-skinMono"
+        class="flex items-center text-xs italic rounded font-skinMono hover:underline"
       >
         <span class="inline-block mr-2">website by SDA</span>
-        <Image
-          src={swansong}
-          alt="swanson digital arts logo"
-          class="inline-block"
-        />
+
       </a>
       <a
         href="https://www.chriskaku.com/"
         target="_blank"
         rel="noreferrer"
-        class="text-xs italic text-center rounded font-skinMono"
+        class="text-xs italic rounded font-skinMono hover:underline"
       >
-        <span class="inline-block"> Logo Design by Chris Kaku</span>
+        <span class="inline-block">Logo Design by Chris Kaku</span>
       </a>
     </div>
   </div>

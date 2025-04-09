@@ -8,24 +8,30 @@ const navItems = [
   { href: "/media", label: "Media" },
   { href: "/connect", label: "Connect With Us" },
 ];
+
+// Events submenu items
+const eventsSubMenu = [
+  { href: "/events#upcoming", label: "Upcoming Events" },
+  { href: "/events#past", label: "Past Events" },
+];
 ---
 
-<header class="sticky-top border-b-2 border-[#800000]">
+<header class="sticky-top bg-[#800000] text-white">
   <nav
-    class="mx-auto flex max-w-[1440px] flex-wrap items-stretch justify-between border-r-2 border-l-2 border-[#800000] bg-white"
+    class="mx-auto flex max-w-[1440px] flex-wrap items-stretch justify-between "
   >
     <div
       class="relative flex min-h-[60px] w-full items-center justify-between lg:w-auto"
     >
       <a
         href="/"
-        class="pl-2 text-4xl font-normal tracking-tighter w-max md:text-5xl"
+        class="pl-2 text-4xl font-bold tracking-tighter w-max md:text-5xl"
         >CYPHER<span class="font-[100]">Queenz</span></a
       >
 
       <button
         id="hamburger"
-        class="ml-auto mr-2 self-center border-2 border-[#800000] p-2 transition-colors hover:bg-[#facc15] lg:hidden"
+        class="ml-auto mr-2 self-center p-2 transition-colors hover:bg-[#facc15] lg:hidden"
       >
         <span class="sr-only">Menu</span>
         <svg
@@ -46,28 +52,61 @@ const navItems = [
 
     <div
       id="navMenuContainer"
-      class="hidden w-full uppercase lg:mt-0 lg:flex lg:w-auto lg:items-stretch"
+      class="hidden w-full lowercase lg:mt-0 lg:flex lg:w-auto lg:items-stretch"
     >
       <ul class="flex flex-col w-full lg:w-auto lg:flex-row">
         {
-          navItems.map((item, index) => (
+          navItems.map((item) => (
             <li
-              class={`nav-item flex items-stretch ${
-                index !== 0 ? "lg:border-l-2" : ""
-              } ${
-                index !== navItems.length - 1 ? "border-b-2 lg:border-b-0" : ""
-              } border-[#800000] lg:border-r-2`}
+              class={`nav-item flex items-stretch ${item.label === "Events" ? "flex-col lg:flex-row lg:relative events-dropdown-wrapper" : ""}`}
             >
               <a
                 href={item.href}
-                class={`flex w-full items-center border-b-4 px-4 py-2 text-xl font-[100] tracking-tighter  hover:border-[#facc15]  lg:py-0 ${
+                class={`flex w-full items-center border-b-4 px-4 py-2 text-xl font-[100] hover:border-[#facc15] lg:py-0 ${
                   currentPath === item.href
                     ? "border-b-4 border-[#facc15]"
                     : "border-transparent"
                 }`}
+                id={item.label === "Events" ? "eventsLink" : ""}
               >
                 {item.label}
+                {item.label === "Events" && (
+                  <svg 
+                    class="w-4 h-4 ml-1" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      stroke-linecap="round" 
+                      stroke-linejoin="round" 
+                      stroke-width="2" 
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                )}
               </a>
+              
+              {item.label === "Events" && (
+                <div 
+                  id="eventsDropdown"
+                  class="hidden overflow-hidden lg:absolute lg:top-full lg:left-0 lg:mt-0 lg:w-48 lg:bg-white lg:shadow-lg lg:rounded-md lg:z-10 w-full"
+                >
+                  <ul class="lg:text-gray-800 text-white overflow-hidden">
+                    {eventsSubMenu.map((subItem) => (
+                      <li>
+                        <a
+                          href={subItem.href}
+                          class="block px-4 py-2 hover:bg-[#facc15] hover:text-gray-900 lg:text-gray-800 pl-8 lg:pl-4"
+                        >
+                          {subItem.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </li>
           ))
         }
@@ -85,41 +124,70 @@ const navItems = [
     .nav-item:last-child {
       border-bottom: none;
     }
-  }
-
-  @media (min-width: 1024px) {
-    .nav-item {
-      border-right-width: 0;
+    
+    #eventsDropdown {
+      background-color: #800000;
     }
-
-    .nav-item:first-child {
-      border-left-width: 2px;
+  }
+  
+  /* Desktop dropdown hover functionality */
+  @media (min-width: 1024px) {
+    .events-dropdown-wrapper:hover #eventsDropdown {
+      display: block;
     }
   }
 </style>
 
 <script is:inline data-astro-rerun>
-  function init() {
-    const hamburger = document.getElementById("hamburger");
-    const navMenuContainer = document.getElementById("navMenuContainer");
-
+  // Wait for the DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get elements
+    const hamburger = document.getElementById('hamburger');
+    const navMenuContainer = document.getElementById('navMenuContainer');
+    const eventsLink = document.getElementById('eventsLink');
+    const eventsDropdown = document.getElementById('eventsDropdown');
+    
+    // Toggle hamburger menu
     if (hamburger && navMenuContainer) {
-      hamburger.addEventListener("click", () => {
-        navMenuContainer.classList.toggle("hidden");
+      hamburger.addEventListener('click', function() {
+        navMenuContainer.classList.toggle('hidden');
       });
     }
-    document.addEventListener(
-      "astro:before-swap",
-      () => {
-        hamburger.destroy();
-        hamburger.removeEventListener(click);
-      },
-      { once: true }
-    );
-  }
-  // Initialize on first load
-  init();
-
-  // Re-initialize after swapping pages
-  document.addEventListener("astro:after-swap", init);
+    
+    // Toggle events dropdown
+    if (eventsLink && eventsDropdown) {
+      eventsLink.addEventListener('click', function(e) {
+        // Only prevent default on mobile
+        if (window.innerWidth < 1024) {
+          e.preventDefault();
+          eventsDropdown.classList.toggle('hidden');
+        }
+      });
+      
+      // Close dropdown when clicking elsewhere
+      document.addEventListener('click', function(e) {
+        const target = e.target;
+        if (eventsLink && eventsDropdown && 
+            !eventsLink.contains(target) && 
+            !eventsDropdown.contains(target)) {
+          if (window.innerWidth < 1024 && !eventsDropdown.classList.contains('hidden')) {
+            eventsDropdown.classList.add('hidden');
+          }
+        }
+      });
+      
+      // Close dropdown when clicking on a submenu item
+      const submenuLinks = eventsDropdown.querySelectorAll('a');
+      submenuLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth < 1024) {
+            eventsDropdown.classList.add('hidden');
+            if (navMenuContainer) {
+              navMenuContainer.classList.add('hidden');
+            }
+          }
+        });
+      });
+    }
+  });
 </script>
