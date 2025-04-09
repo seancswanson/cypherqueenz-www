@@ -10,9 +10,7 @@ const media = await getAllMedia();
 ---
 
 <Layout title="Cypher Queenz | Media">
-  <main
-    class="mx-auto flex w-full max-w-[1440px] flex-col border-l-2 border-r-2 border-[#800000] bg-white shadow-sm"
-  >
+  <main class="mx-auto flex w-full max-w-[1440px] flex-col bg-white shadow-sm">
     <div class="flex flex-col gap-4 p-8">
       <h1 class="text-4xl font-extrabold lowercase">Media</h1>
       <div class="flex flex-wrap justify-center gap-4">
@@ -206,12 +204,14 @@ const media = await getAllMedia();
     </div>
   </main>
 </Layout>
-<script is:inline  define:vars={{ rerunOnChange: true }}>
-function initializeGallery() {
+<script is:inline define:vars={{ rerunOnChange: true }}>
+  function initializeGallery() {
     // Find all images with the `gallery-image` class on the page.
     const galleryImages = document.querySelectorAll(".gallery-image");
     const selectedImage = document.querySelector(".gallery-image-selected");
-    const selectedImageContainer = document.querySelector(".selected-image-container");
+    const selectedImageContainer = document.querySelector(
+      ".selected-image-container"
+    );
     const selectedImageTitleEl = document.querySelector(".title");
 
     // Handle clicks on each image.
@@ -222,7 +222,10 @@ function initializeGallery() {
           return;
         }
 
-        if (selectedImageContainer && selectedImageContainer.classList.contains("hidden")) {
+        if (
+          selectedImageContainer &&
+          selectedImageContainer.classList.contains("hidden")
+        ) {
           selectedImageContainer.classList.toggle("hidden");
         }
 
@@ -253,6 +256,6 @@ function initializeGallery() {
 
   // Re-run the initialization when the page changes
   if (rerunOnChange) {
-    document.addEventListener('astro:page-load', initializeGallery);
+    document.addEventListener("astro:page-load", initializeGallery);
   }
 </script>
